@@ -163,8 +163,13 @@ WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,
         'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE':str(BASE_DIR.joinpath('frontend', 'webpack-stats.json')),
+        'STATS_FILE': str(BASE_DIR.joinpath('frontend', 'webpack-stats.json')),
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
+}
+
+REST_FRAMEWORK = {
+
+    'DATETIME_FORMAT': "%Y/%m/%d %H:%M:%S",
 }

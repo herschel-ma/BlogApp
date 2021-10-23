@@ -1,12 +1,12 @@
  <template>
   <!-- navbar goes here -->
-  <nav class="bg-gray-100">
+  <nav class="bg-gray-400">
     <div class="max-w-7xl mx-auto px-2">
       <div class="flex justify-between">
         <div class="flex space-x-3">
           <!-- logo -->
           <div>
-            <a href="#" class="flex items-center py-5 px-3 text-gray-600 hover:text-black">
+            <a href="#" class="flex items-center py-5 px-3 text-gray-600 hover:text-blue-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 mr-2 text-red-400 hover:text-red-500"
@@ -24,13 +24,13 @@
           </div>
           <!-- primary nav -->
           <div class="hidden md:flex space-x-5 items-center">
-            <a href="#" class="py-5 px-2 text-gray-700 hover:text-black">Blog</a>
-            <a href="#" class="text-gray-700 hover:text-black">Projects</a>
+            <a href="#" class="py-5 px-2 text-gray-700 hover:text-blue-500">Blog</a>
+            <a href="#" class="text-gray-700 hover:text-blue-500">Projects</a>
           </div>
         </div>
         <!-- secordary nav -->
         <div class="hidden md:flex space-x-2 items-center mr-3">
-          <a href="/auth/login/" class="py-5 px-4">Login</a>
+          <a href="/auth/login/" class="py-5 px-4 text-gray-700 hover:text-blue-500">Login</a>
           <a
             href="/rest-auth/registration/"
             class="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-700 hover:text-yellow-800 rounded transition duration-100"
@@ -41,7 +41,7 @@
           <button @click="showMobileMenu">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-6 w-6 mr-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -57,7 +57,7 @@
         </div>
       </div>
       <!-- mobile menu -->
-      <div :class="showMenu" class="hidden" ref="menu">
+      <div class="hidden" ref="menu">
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Blog</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Projects</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Friendly Link</router-link>
