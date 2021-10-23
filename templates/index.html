@@ -1,0 +1,16 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% render_bundle 'app' 'css' %}
+    <title>Django | Vue</title>  
+  </head>
+  <body>
+    <div id="app"></div>
+    {% render_bundle 'app' 'js' %}
+  </body>
+</html>
+
