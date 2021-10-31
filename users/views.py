@@ -6,7 +6,7 @@ from .serializer import UserSerializer
 # Create your views here.
 
 
-class ListUsers(APIView):
+class ListUsersView(APIView):
 
     def get(self, request, format=None):
         serializer = UserSerializer(request.user)

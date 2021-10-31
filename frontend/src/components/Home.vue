@@ -32,7 +32,10 @@
                 <p class="mt-2 text-gray-600">{{ article.body }}</p>
               </div>
               <div class="flex items-center justify-between mt-4">
-                <a href="#" class="text-blue-500 hover:underline">Read more</a>
+                <router-link
+                  class="text-blue-500 hover:underline"
+                  :to="{ name: 'details', params: { slug: article.slug } }"
+                >Read more</router-link>
                 <div>
                   <a href="#" class="flex items-center">
                     <img
@@ -62,12 +65,15 @@
 </template>
 
 <script>
-import { csrftoken } from "../csrf/csrf"
-import PageNation from '../components/PageNation'
-import Authors from '../components/Authors'
-import Category from '../components/Category'
-import RecentPost from '../components/RecentPost'
-import Footer from '../components/Footer'
+
+import Cookies from 'js-cookie'
+import axios from 'axios'
+import PageNation from '@/components/PageNation'
+import Authors from '@/components/Authors'
+import Category from '@/components/Category'
+import RecentPost from '@/components/RecentPost'
+import Footer from '@/components/Footer'
+
 
 export default {
   components: {
@@ -75,49 +81,40 @@ export default {
     Authors,
     Category,
     RecentPost,
-    Footer
+    Footer,
   },
   data() {
     return {
       articles: [],
-      args: "yyy-mm-dd hh:mm:ss"
+      args: "yyy-mm-dd hh:mm:ss",
     }
   },
   methods: {
     getAllArticles() {
-      fetch('api/articles/', {
-        method: 'GET',
+      axios.get('/api/articles/', {
         headers: {
           'Content-Type': "Application/json",
-          'X-CSRFTOKEN': csrftoken,
+          'X-CSRFTOKEN': Cookies.get('csrftoken'),
+          'Authorization': 'Token ' + localStorage.getItem('token')
         }
       })
-        .then(response => response.json())
+        .then(response => response.data)
         .then(data =>
-          this.articles.push(...data.map(this.timeFilter))
+          this.articles.push(...data.map(a => {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+            a.created_at = new Date(a.created_at).toLocaleDateString("en-US", options);
+            a.body = a.body.slice(0, 100)
+            return a
+          }))
         )
         .catch(error => console.log(error))
     },
-    timeFilter(value) {
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
-      const dt = new Date(value.created_at).toLocaleDateString("en-US", options);
-      //这里month得加1
-      //如果要求的时间格式只有年月日
-      if (this.args.toLowerCase() === "yyy-mm-dd") {
-        /* value.created_at = `${y}-${m}-${d}` */
-        value.created_at = dt
-        //如果时间要求精确到时分秒
-        return value
-      } else {
-        /* value.created_at = `${y}-${m}-${d}:${hh}:${mm}:${ss}` */
-        value.created_at = dt
-        return value
-      }
+    getTokens() {
     }
-
   },
-  created() {
+  mounted() {
     this.getAllArticles()
+    this.getTokens()
   },
 }
 </script>

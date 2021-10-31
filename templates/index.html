@@ -9,6 +9,7 @@
     <title>Django | Vue</title>  
   </head>
   <body>
+    {% csrf_token %}
     <div id="app"></div>
     {% render_bundle 'app' 'js' %}
   </body>

@@ -29,12 +29,15 @@
           </div>
         </div>
         <!-- secordary nav -->
-        <div class="hidden md:flex space-x-2 items-center mr-3">
-          <a href="/auth/login/" class="py-5 px-4 text-gray-700 hover:text-blue-500">Login</a>
+        <div v-if="!loggedIn" class="hidden md:flex space-x-2 items-center mr-3">
+          <router-link to="/login" class="py-5 px-4 text-gray-700 hover:text-blue-500">Login</router-link>
           <a
             href="/rest-auth/registration/"
             class="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-700 hover:text-yellow-800 rounded transition duration-100"
           >Signup</a>
+        </div>
+        <div v-else class="hidden md:flex space-x-2 items-center mr-3">
+          <a herf="#" @click="handleLogOut" class="py-2 px-3 bg-red-200 hover:bg-red-300 text-gray-700 rounded hover:text-red-500 transition duration-100">LogOut</a>
         </div>
         <!-- mobile button goes here -->
         <div class="md:hidden flex items-center">
@@ -57,10 +60,11 @@
         </div>
       </div>
       <!-- mobile menu -->
-      <div class="hidden" ref="menu">
+      <div :class="Show.hidden">
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Blog</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Projects</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Friendly Link</router-link>
+        <router-link to="/login" class="block py-2 px-4 text-sm hover:bg-gray-200">Login</router-link>
       </div>
     </div>
   </nav>
@@ -68,17 +72,26 @@
 </template> 
 
 <script>
+import { reactive, computed, onMounted } from "vue";
+import { useStore } from 'vuex';
 export default {
   name: "Navbar",
-  data() {
+  setup() {
+    const store = useStore()
+    let loggedIn = computed(function () {
+      return store.state.isLoggedIn
+    });
+    onMounted(() => {
+      store.dispatch('githubLoggedIn')  
+    })
+    const data = reactive({ hidden: 'hidden' })
     return {
+      Show: data,
+      showMobileMenu: () => data.hidden = data.hidden == "" ? "hidden" : "",
+      handleLogOut: () => store.dispatch('logout'),
+      loggedIn,
     }
-  },
-  methods: {
-    showMobileMenu() {
-      this.$refs.menu.classList.toggle('hidden')
-    }
-  },
+  }
 }
 </script>
 
