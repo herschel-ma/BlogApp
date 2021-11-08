@@ -130,6 +130,7 @@
         </a>
       </div>
     </aside>
+    <Footer class="w-full"/>
   </div>
 </template>
 
@@ -138,6 +139,7 @@ import Cookies from 'js-cookie'
 /* import Category from "@/components/Category.wue" */
 /* import Authors from "@/components/Authors.vue" */
 /* import RecentPost from "@/components/RecentPost.vue" */
+import Footer from "@/components/Footer.vue"
 export default {
   props: {
     slug: {
@@ -146,6 +148,7 @@ export default {
     }
   },
   components: {
+    Footer
     /* Category, */
     /* Authors, */
     /* RecentPost */

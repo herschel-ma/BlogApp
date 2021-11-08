@@ -55,9 +55,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'webpack_loader',
-    'users',
-    'articles',
-    'backend_res'
+    'users.apps.UsersConfig',
+    'articles.apps.ArticlesConfig',
+    'backend_res.apps.BackendResConfig'
 ]
 
 MIDDLEWARE = [

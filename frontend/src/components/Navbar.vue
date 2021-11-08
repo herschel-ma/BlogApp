@@ -37,7 +37,19 @@
           >Signup</a>
         </div>
         <div v-else class="hidden md:flex space-x-2 items-center mr-3">
-          <a herf="#" @click="handleLogOut" class="py-2 px-3 bg-red-200 hover:bg-red-300 text-gray-700 rounded hover:text-red-500 transition duration-100">LogOut</a>
+          <a href="#" class="flex items-center mr-4 text-gray-700 hover:text-blue-500">
+            <img
+              :src="avatarUrl"
+              alt="avatar"
+              class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
+            />
+            <p>{{ userName }}</p>
+          </a>
+          <a
+            herf="#"
+            @click="handleLogOut"
+            class="py-2 px-3 bg-red-200 hover:bg-red-300 text-gray-700 rounded hover:text-red-500 transition duration-100"
+          >LogOut</a>
         </div>
         <!-- mobile button goes here -->
         <div class="md:hidden flex items-center">
@@ -60,7 +72,7 @@
         </div>
       </div>
       <!-- mobile menu -->
-      <div :class="Show.hidden">
+      <div :class="hidden">
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Blog</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Projects</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Friendly Link</router-link>
@@ -72,7 +84,8 @@
 </template> 
 
 <script>
-import { reactive, computed, onMounted } from "vue";
+import axios from "axios";
+import { reactive, computed, onMounted, toRefs } from "vue";
 import { useStore } from 'vuex';
 export default {
   name: "Navbar",
@@ -82,11 +95,20 @@ export default {
       return store.state.isLoggedIn
     });
     onMounted(() => {
-      store.dispatch('githubLoggedIn')  
+      store.dispatch('githubLoggedIn')
+      axios.get("/api/user/").then(
+        response => {
+          data.userName = response.data.username
+          data.avatarUrl = response.data.user !== null ? response.data.user.avatar_url : "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
+        })
     })
-    const data = reactive({ hidden: 'hidden' })
+    const data = reactive({
+      hidden: 'hidden',
+      userName: '',
+      avatarUrl: '',
+    })
     return {
-      Show: data,
+      ...toRefs(data),
       showMobileMenu: () => data.hidden = data.hidden == "" ? "hidden" : "",
       handleLogOut: () => store.dispatch('logout'),
       loggedIn,
