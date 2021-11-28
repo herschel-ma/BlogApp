@@ -46,18 +46,18 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.google',
 
     'rest_auth',
     'rest_auth.registration',
 
     'corsheaders',
-    'crispy_forms',
-    'crispy_bootstrap5',
+
+    'mdeditor',
     'webpack_loader',
+    'django_filters',
     'users.apps.UsersConfig',
-    'articles.apps.ArticlesConfig',
-    'backend_res.apps.BackendResConfig'
+    'blog.apps.BlogConfig',
+    'backend_res.apps.BackendResConfig',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +102,16 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'mysite2',
+#         'USER': 'root',
+#         'PASSWORD': 'herschel123',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -140,6 +150,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -157,12 +169,10 @@ LOGIN_URL = "accounts/login"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 REST_FRAMEWORK = {
-    # DEFAULT_AUTHENTICATION_CLASSES': [
-    #     'rest_framework.authentication.TokenAuthentication',
-    #     'rest_framework.authentication.SessionAuthentication',
-    # ],
-    #
     'DATETIME_FORMAT': "%Y/%m/%d %H:%M:%S",
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'blog.pagination.CustomPageNumber',
+    'PAGE_SIZE': 20
 }
 
 WEBPACK_LOADER = {
@@ -192,3 +202,5 @@ CORS_ORIGIN_WHITELIST = ('localhost:8080', '127.0.0.1:8080')
 CSRF_COOKIE_HTTPONLY = False
 GITHUB_CLIENT_ID = env("GITHUB_CLIENT_ID")
 GITHUB_CLIENT_SECRET = env("GITHUB_CLIENT_SECRET")
+# mdeditor
+X_FRAME_OPTIONS = 'SAMEORIGIN'

@@ -9,7 +9,7 @@
             <a href="#" class="flex items-center py-5 px-3 text-gray-600 hover:text-blue-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 mr-2 text-red-400 hover:text-red-500"
+                class="h-5 w-5 mt-1 mr-2 text-red-400 hover:text-red-500 animate-bounce"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -24,17 +24,23 @@
           </div>
           <!-- primary nav -->
           <div class="hidden md:flex space-x-5 items-center">
-            <a href="#" class="py-5 px-2 text-gray-700 hover:text-blue-500">Blog</a>
+            <router-link
+              v-if="loggedIn"
+              :to="{ name: 'create' }"
+              href="#"
+              class="py-5 px-2 text-gray-700 hover:text-blue-500"
+            >Create Blog</router-link>
             <a href="#" class="text-gray-700 hover:text-blue-500">Projects</a>
           </div>
         </div>
         <!-- secordary nav -->
         <div v-if="!loggedIn" class="hidden md:flex space-x-2 items-center mr-3">
           <router-link to="/login" class="py-5 px-4 text-gray-700 hover:text-blue-500">Login</router-link>
-          <a
-            href="/rest-auth/registration/"
+          <router-link
+            to="/signup"
+            href="#"
             class="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-700 hover:text-yellow-800 rounded transition duration-100"
-          >Signup</a>
+          >Signup</router-link>
         </div>
         <div v-else class="hidden md:flex space-x-2 items-center mr-3">
           <a href="#" class="flex items-center mr-4 text-gray-700 hover:text-blue-500">
@@ -54,20 +60,11 @@
         <!-- mobile button goes here -->
         <div class="md:hidden flex items-center">
           <button @click="showMobileMenu">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <div class="tham tham-e-spin tham-w-8" :class="{ 'tham-active': !hidden }">
+              <div class="tham-box">
+                <div class="tham-inner bg-purple-500" />
+              </div>
+            </div>
           </button>
         </div>
       </div>
@@ -76,7 +73,11 @@
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Blog</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Projects</router-link>
         <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Friendly Link</router-link>
-        <router-link to="/login" class="block py-2 px-4 text-sm hover:bg-gray-200">Login</router-link>
+        <router-link
+          to="/login"
+          @click="showMobileMenu"
+          class="block py-2 px-4 text-sm hover:bg-gray-200"
+        >Login</router-link>
       </div>
     </div>
   </nav>

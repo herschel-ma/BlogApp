@@ -1,3 +1,3 @@
 <template>
-this is blog page
+  this is blog page
 </template>

@@ -1,9 +1,9 @@
 from django.apps import AppConfig
 
 
-class ArticlesConfig(AppConfig):
+class BlogConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'articles'
+    name = 'blog'
 
     def ready(self):
-        import articles.signals
+        import blog.signals

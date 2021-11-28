@@ -1,5 +1,3 @@
-from allauth.socialaccount.providers.github.views import GitHubOAuth2Adapter
-from rest_auth.registration.views import SocialLoginView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import APIView
@@ -11,10 +9,6 @@ from users.models import userModel
 from django.contrib import auth
 from rest_framework.authtoken.models import Token
 # Create your views here.
-
-
-class GithubLoginView(SocialLoginView):
-    adapter_class = GitHubOAuth2Adapter
 
 
 class githubCreditialView(APIView):

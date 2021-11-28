@@ -1,10 +1,10 @@
 from django.db.models.signals import pre_save
-from .models import Article
+from .models import Blog
 from django.dispatch import receiver
 from django.utils.text import slugify
 
 
-@receiver(pre_save, sender=Article)
+@receiver(pre_save, sender=Blog)
 def article_add_slug(sender, instance, **kwargs):
     if instance and not instance.slug:
         slug = slugify(instance.title)

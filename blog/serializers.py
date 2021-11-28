@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Article
+from .models import Blog
 
 
-class ArticleSerializer(serializers.ModelSerializer):
+class BlogSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     author = serializers.StringRelatedField()
 
     class Meta:
-        model = Article
+        model = Blog
         fields = "__all__"

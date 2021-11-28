@@ -13,7 +13,8 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(userModel, related_name='user', on_delete=models.CASCADE,)
+    user = models.OneToOneField(
+        userModel, related_name='user', on_delete=models.CASCADE,)
     nickname = models.CharField(max_length=20)
     avatar_url = models.TextField(
         max_length=255,

@@ -42,7 +42,6 @@
         <span class="h-px w-16 bg-gray-300"></span>
       </div>
       <form class="mt-8 space-y-6" method="POST" @submit.prevent="handleSignIn">
-        <input type="hidden" name="remember" value="true" />
         <div class="relative">
           <div class="absolute right-0 mt-4">
             <svg
@@ -104,10 +103,10 @@
           class="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500"
         >
           <span>Don't have an account?</span>
-          <a
+          <router-link to="/signup"
             href="#"
             class="text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300"
-          >Sign up</a>
+          >Sign up</router-link>
         </p>
       </form>
     </div>

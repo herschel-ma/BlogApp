@@ -5,18 +5,30 @@
       <article class="flex flex-col shadow my-4">
         <!-- Article Image -->
         <a href="#" class="hover:opacity-75">
-          <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1" />
+          <img
+            src="https://source.unsplash.com/collection/1346951/1000x500?sig=1"
+          />
         </a>
         <div class="bg-white flex flex-col justify-start p-6">
-          <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a>
-          <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ article.title }}</a>
+          <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"
+            >Technology</a
+          >
+          <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{
+            article.title
+          }}</a>
           <p href="#" class="text-sm pb-8">
             By
-            <a href="#" class="font-semibold hover:text-gray-800">{{ article.author }}</a>
-            , Published on {{ article.created_at }}
+            <a href="#" class="font-semibold hover:text-gray-800">{{
+              article.author
+            }}</a>
+            , Published on {{ article.created_time }}
           </p>
-          <h1 class="text-2xl font-bold pb-3">Introduction</h1>
-          <p class="pb-3">{{ article.body }}</p>
+          <!-- <h1 class="text-2xl font-bold pb-3">Introduction</h1> -->
+          <md-editor
+            v-model="article.content"
+            :preview-theme="theme"
+            :previewOnly="true"
+          />
         </div>
       </article>
 
@@ -27,8 +39,13 @@
           </p>
           <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
         </a>
-        <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
-          <p class="text-lg text-blue-800 font-bold flex items-center justify-end">
+        <a
+          href="#"
+          class="w-1/2 bg-white shadow hover:shadow-md text-right p-6"
+        >
+          <p
+            class="text-lg text-blue-800 font-bold flex items-center justify-end"
+          >
             Next
             <i class="fas fa-arrow-right pl-1"></i>
           </p>
@@ -47,9 +64,10 @@
         </div>
         <div class="flex-1 flex flex-col justify-center md:justify-start">
           <p class="font-semibold text-2xl">David</p>
-          <p
-            class="pt-2"
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel neque non libero suscipit suscipit eu eu urna.</p>
+          <p class="pt-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+            vel neque non libero suscipit suscipit eu eu urna.
+          </p>
           <div
             class="flex items-center justify-center md:justify-start text-2xl no-underline text-blue-800 pt-4"
           >
@@ -74,13 +92,16 @@
     <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
       <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-semibold pb-5">About Us</p>
-        <p
-          class="pb-2"
-        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
+        <p class="pb-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+          mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In
+          hac habitasse platea dictumst.
+        </p>
         <a
           href="#"
           class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4"
-        >Get to know us</a>
+          >Get to know us</a
+        >
       </div>
       <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-bold text-gray-700 pb-5">Instagram</p>
@@ -130,51 +151,50 @@
         </a>
       </div>
     </aside>
-    <Footer class="w-full"/>
   </div>
 </template>
 
 <script>
-import Cookies from 'js-cookie'
-/* import Category from "@/components/Category.wue" */
-/* import Authors from "@/components/Authors.vue" */
-/* import RecentPost from "@/components/RecentPost.vue" */
-import Footer from "@/components/Footer.vue"
+import Cookies from "js-cookie";
+import { reactive, toRefs } from "vue";
+import { useStore } from "vuex";
+import MdEditor from "md-editor-v3";
+import "md-editor-v3/lib/style.css";
 export default {
   props: {
     slug: {
       type: String,
       required: true,
-    }
+    },
   },
-  components: {
-    Footer
-    /* Category, */
-    /* Authors, */
-    /* RecentPost */
-  },
-  data() {
-    return {
-      article: {}
-    }
-  },
-  methods: {
-    getArticle() {
-      fetch(`/api/articles/${this.slug}/`, {
+  components: { MdEditor },
+  setup(props) {
+    const state = reactive({
+      article: {},
+      theme: "default",
+    });
+    const store = useStore();
+    const getArticle = () => {
+      fetch(`/api/blog/${props.slug}/`, {
         method: "GET",
         headers: {
           "Content-Type": "Application/json",
-          "X-CSRFTOKEN": Cookies.get('csrftoken'),
-          'Authorization': 'Token ' + localStorage.getItem('token')
-        }
+          "X-CSRFTOKEN": Cookies.get("csrftoken"),
+          Authorization: "Token " + store.state.isLoggedIn,
+        },
       })
-        .then(response => response.json())
-        .then(data => this.article = data)
-        .catch(error => console.log(error))
-    }
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          state.article = data;
+        })
+        .catch((error) => console.log(error));
+    };
+    getArticle();
+    return {
+      ...toRefs(state),
+      getArticle,
+    };
   },
-  created() {
-    this.getArticle()
-  },
-}
+};
 </script>
