@@ -5,9 +5,7 @@
       <article class="flex flex-col shadow my-4">
         <!-- Article Image -->
         <a href="#" class="hover:opacity-75">
-          <img
-            src="https://source.unsplash.com/collection/1346951/1000x500?sig=1"
-          />
+          <img src="https://img.paulzzh.com/touhou/random" />
         </a>
         <div class="bg-white flex flex-col justify-start p-6">
           <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"
@@ -33,23 +31,25 @@
       </article>
 
       <div class="w-full flex pt-6">
-        <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
-          <p class="text-lg text-blue-800 font-bold flex items-center">
-            <i class="fas fa-arrow-left pr-1"></i> Previous
+        <a class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
+          <p
+            class="text-blue-800 hover:underline text-lg font-bold flex items-center cursor-pointer"
+            @click="toPrev"
+          >
+            上一篇
           </p>
-          <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
+          <a class="pt-2">{{ messagePrev }}</a>
         </a>
         <a
-          href="#"
-          class="w-1/2 bg-white shadow hover:shadow-md text-right p-6"
+          class="w-1/2 items-end flex flex-col text-justify bg-white shadow hover:shadow-md p-6"
         >
           <p
-            class="text-lg text-blue-800 font-bold flex items-center justify-end"
+            class="text-blue-800 hover:underline text-lg font-bold flex items-center cursor-pointer"
+            @click="toNext"
           >
-            Next
-            <i class="fas fa-arrow-right pl-1"></i>
+            下一篇
           </p>
-          <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
+          <a class="pt-2">{{ messageNext }}</a>
         </a>
       </div>
 
@@ -58,7 +58,7 @@
       >
         <div class="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
           <img
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=1"
+            src="https://img.paulzzh.com/touhou/random"
             class="rounded-full shadow h-32 w-32"
           />
         </div>
@@ -100,47 +100,17 @@
         <a
           href="#"
           class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4"
-          >Get to know us</a
+          >关于我们</a
         >
       </div>
       <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-        <p class="text-xl font-bold text-gray-700 pb-5">Instagram</p>
+        <p class="text-xl font-bold text-gray-700 pb-5">图片集</p>
         <div class="grid grid-cols-3 gap-3">
           <img
+            v-for="i in 9"
+            :key="i"
             class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=1"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=2"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=3"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=4"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=5"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=6"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=7"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=8"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=9"
+            src="https://img.paulzzh.com/touhou/random"
           />
         </div>
         <a
@@ -156,8 +126,10 @@
 
 <script>
 import Cookies from "js-cookie";
+import axios from "axios";
 import { reactive, toRefs } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import MdEditor from "md-editor-v3";
 import "md-editor-v3/lib/style.css";
 export default {
@@ -168,14 +140,28 @@ export default {
     },
   },
   components: { MdEditor },
+  watch: {
+    // 监听路由变化获取上一章下一章内容
+    $route(to) {
+      if (to.fullPath.startsWith("/details")) {
+        this.getArticle(to.params.slug);
+        this.getPrevNext(to.params.slug);
+      }
+    },
+  },
   setup(props) {
+    const store = useStore();
+    const router = useRouter();
     const state = reactive({
       article: {},
       theme: "default",
+      messagePrev: null,
+      messageNext: null,
+      prevSlug: "",
+      nextSlug: "",
     });
-    const store = useStore();
-    const getArticle = () => {
-      fetch(`/api/blog/${props.slug}/`, {
+    const getArticle = (slug = props.slug) => {
+      fetch(`/api/blog/${slug}/`, {
         method: "GET",
         headers: {
           "Content-Type": "Application/json",
@@ -185,15 +171,63 @@ export default {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           state.article = data;
         })
         .catch((error) => console.log(error));
     };
+    const getPrevNext = (slug = props.slug) => {
+      axios
+        .get(`/api/blog/${slug}?prev`, {
+          headers: {
+            "Content-Type": "Application/json",
+            "X-CSRFTOKEN": Cookies.get("csrftoken"),
+            Authorization: "Token " + store.state.isLoggedIn,
+          },
+        })
+        .then((res) => {
+          state.messagePrev = res.data.message || res.data.title;
+          state.prevSlug = res.data.slug || props.slug;
+        })
+        .catch((e) => {
+          console.log(e.response.message);
+        });
+      axios
+        .get(`/api/blog/${slug}?next`, {
+          headers: {
+            "Content-Type": "Application/json",
+            "X-CSRFTOKEN": Cookies.get("csrftoken"),
+            Authorization: "Token " + store.state.isLoggedIn,
+          },
+        })
+        .then((res) => {
+          state.messageNext = res.data.message || res.data.title;
+          state.nextSlug = res.data.slug || props.slug;
+        })
+        .catch((e) => {
+          console.log(e.response.message);
+        });
+    };
     getArticle();
+    getPrevNext();
+
     return {
       ...toRefs(state),
+      router,
       getArticle,
+      getPrevNext,
+      toPrev: () => {
+        router.replace({
+          name: "details",
+          params: { slug: state.prevSlug },
+        });
+      },
+      toNext: () => {
+        router.replace({
+          name: "details",
+          params: { slug: state.nextSlug },
+        });
+      },
     };
   },
 };

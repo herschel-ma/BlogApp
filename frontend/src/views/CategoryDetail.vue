@@ -54,7 +54,7 @@
                         slug: article.slug,
                       },
                     }"
-                    >[阅读全文]
+                    >阅读更多>
                   </router-link>
                   <!-- todo: click update button, navgation guid protect -->
                   <router-link
@@ -154,7 +154,6 @@
         enter-from-class="opacity-0 transform translate-y-20"
         enter-to-class="opacity-100"
       >
-        <recent-post />
       </transition>
     </aside>
   </div>
@@ -166,7 +165,6 @@ import axios from "axios";
 import { onMounted, toRefs, reactive } from "vue";
 import Authors from "@/components/Authors";
 import Category from "@/components/Category";
-import RecentPost from "@/components/RecentPost";
 import VPagination from "@hennge/vue3-pagination";
 import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 import { useToast } from "vue-toastification";
@@ -176,7 +174,6 @@ export default {
   components: {
     Authors,
     Category,
-    RecentPost,
     VPagination,
   },
   setup() {

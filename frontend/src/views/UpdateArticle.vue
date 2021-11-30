@@ -4,21 +4,40 @@
     method="PUT"
     @submit.prevent="handleCreate"
   >
-    <label class="text-gray-600 font-light">Title:</label>
+    <label class="text-gray-600 font-light">标题:</label>
     <input
       type="text"
       placeholder="{{title}}"
       class="w-1/2 px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
       v-model="title"
     />
-    <label class="text-gray-600 font-light">Content:</label>
-    <md-editor v-model="content" :preview-theme="theme" />
+    <label class="text-gray-600 font-light">内容:</label>
+    <div class="flex space-x-1">
+      <select
+        class="w-3/7 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        @change="changeMDTheme($event)"
+      >
+        <option v-for="t in mdthemes" :value="t" :key="t"
+          >编辑器主题切换为 {{ t }}
+        </option>
+      </select>
+      <select
+        class="w-4/7 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        @change="changeTheme($event)"
+      >
+        <option v-for="t in themes" :value="t" :key="t"
+          >预览主题切换为 {{ t }}
+        </option>
+      </select>
+    </div>
+
+    <md-editor v-model="content" :preview-theme="theme" :theme="mdtheme" />
 
     <button
       type="submit"
       class="w-40 flex justify-center bg-indigo-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
     >
-      submit
+      提交并发布
     </button>
   </form>
 </template>
@@ -48,7 +67,10 @@ export default {
     const state = reactive({
       title: "",
       content: "",
-      theme: "default",
+      theme: "",
+      mdtheme: "",
+      themes: ["default", "github", "vuepress"],
+      mdthemes: ["light", "dark"],
     });
     const store = useStore();
     const router = useRouter();
@@ -104,6 +126,12 @@ export default {
               console.log(e);
             }
           });
+      },
+      changeTheme: (event) => {
+        state.theme = event.target.value;
+      },
+      changeMDTheme: (event) => {
+        state.mdtheme = event.target.value;
       },
     };
   },

@@ -1,4 +1,4 @@
- <template>
+<template>
   <!-- navbar goes here -->
   <nav class="bg-gray-400">
     <div class="max-w-7xl mx-auto px-2">
@@ -6,7 +6,10 @@
         <div class="flex space-x-3">
           <!-- logo -->
           <div>
-            <a href="#" class="flex items-center py-5 px-3 text-gray-600 hover:text-blue-500">
+            <a
+              href="#"
+              class="flex items-center py-5 px-3 text-gray-600 hover:text-blue-500"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 mt-1 mr-2 text-red-400 hover:text-red-500 animate-bounce"
@@ -19,7 +22,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <router-link to="/" class="font-bold">Home</router-link>
+              <router-link to="/" class="font-bold">主页</router-link>
             </a>
           </div>
           <!-- primary nav -->
@@ -29,21 +32,33 @@
               :to="{ name: 'create' }"
               href="#"
               class="py-5 px-2 text-gray-700 hover:text-blue-500"
-            >Create Blog</router-link>
-            <a href="#" class="text-gray-700 hover:text-blue-500">Projects</a>
+              >新建博文</router-link
+            >
+            <a href="#" class="text-gray-700 hover:text-blue-500">项目</a>
           </div>
         </div>
         <!-- secordary nav -->
-        <div v-if="!loggedIn" class="hidden md:flex space-x-2 items-center mr-3">
-          <router-link to="/login" class="py-5 px-4 text-gray-700 hover:text-blue-500">Login</router-link>
+        <div
+          v-if="!loggedIn"
+          class="hidden md:flex space-x-2 items-center mr-3"
+        >
+          <router-link
+            to="/login"
+            class="py-5 px-4 text-gray-700 hover:text-blue-500"
+            >登录</router-link
+          >
           <router-link
             to="/signup"
             href="#"
             class="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-700 hover:text-yellow-800 rounded transition duration-100"
-          >Signup</router-link>
+            >注册</router-link
+          >
         </div>
         <div v-else class="hidden md:flex space-x-2 items-center mr-3">
-          <a href="#" class="flex items-center mr-4 text-gray-700 hover:text-blue-500">
+          <a
+            href="#"
+            class="flex items-center mr-4 text-gray-700 hover:text-blue-500"
+          >
             <img
               :src="avatarUrl"
               alt="avatar"
@@ -55,12 +70,16 @@
             herf="#"
             @click="handleLogOut"
             class="py-2 px-3 bg-red-200 hover:bg-red-300 text-gray-700 rounded hover:text-red-500 transition duration-100"
-          >LogOut</a>
+            >登出</a
+          >
         </div>
         <!-- mobile button goes here -->
         <div class="md:hidden flex items-center">
           <button @click="showMobileMenu">
-            <div class="tham tham-e-spin tham-w-8" :class="{ 'tham-active': !hidden }">
+            <div
+              class="tham tham-e-spin tham-w-8"
+              :class="{ 'tham-active': !hidden }"
+            >
               <div class="tham-box">
                 <div class="tham-inner bg-purple-500" />
               </div>
@@ -70,51 +89,65 @@
       </div>
       <!-- mobile menu -->
       <div :class="hidden">
-        <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Blog</router-link>
-        <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Projects</router-link>
-        <router-link to="/post" class="block py-2 px-4 text-sm hover:bg-gray-200">Friendly Link</router-link>
+        <router-link
+          to="/post"
+          class="block py-2 px-4 text-sm hover:bg-gray-200"
+          >Blog</router-link
+        >
+        <router-link
+          to="/post"
+          class="block py-2 px-4 text-sm hover:bg-gray-200"
+          >Projects</router-link
+        >
+        <router-link
+          to="/post"
+          class="block py-2 px-4 text-sm hover:bg-gray-200"
+          >Friendly Link</router-link
+        >
         <router-link
           to="/login"
           @click="showMobileMenu"
           class="block py-2 px-4 text-sm hover:bg-gray-200"
-        >Login</router-link>
+          >Login</router-link
+        >
       </div>
     </div>
   </nav>
   <!--content goes here-->
-</template> 
+</template>
 
 <script>
 import axios from "axios";
 import { reactive, computed, onMounted, toRefs } from "vue";
-import { useStore } from 'vuex';
+import { useStore } from "vuex";
 export default {
   name: "Navbar",
   setup() {
-    const store = useStore()
-    let loggedIn = computed(function () {
-      return store.state.isLoggedIn
+    const store = useStore();
+    let loggedIn = computed(function() {
+      return store.state.isLoggedIn;
     });
     onMounted(() => {
-      store.dispatch('githubLoggedIn')
-      axios.get("/api/user/").then(
-        response => {
-          data.userName = response.data.username
-          data.avatarUrl = response.data.user !== null ? response.data.user.avatar_url : "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
-        })
-    })
+      store.dispatch("githubLoggedIn");
+      axios.get("/api/user/").then((response) => {
+        data.userName = response.data.username;
+        data.avatarUrl =
+          response.data.user !== null
+            ? response.data.user.avatar_url
+            : "https://img.paulzzh.com/touhou/random";
+      });
+    });
     const data = reactive({
-      hidden: 'hidden',
-      userName: '',
-      avatarUrl: '',
-    })
+      hidden: "hidden",
+      userName: "",
+      avatarUrl: "",
+    });
     return {
       ...toRefs(data),
-      showMobileMenu: () => data.hidden = data.hidden == "" ? "hidden" : "",
-      handleLogOut: () => store.dispatch('logout'),
+      showMobileMenu: () => (data.hidden = data.hidden == "" ? "hidden" : ""),
+      handleLogOut: () => store.dispatch("logout"),
       loggedIn,
-    }
-  }
-}
+    };
+  },
+};
 </script>
-

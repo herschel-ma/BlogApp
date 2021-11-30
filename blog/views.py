@@ -1,17 +1,18 @@
 from rest_framework import viewsets
-from .serializers import BlogSerializer
-from .models import Blog
+from .models import Blog, Category
+from .serializers import BlogSerializer, CategorySerializer, CategoryDetailSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication,\
     SessionAuthentication
 from .permissions import IsAuthor
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.response import Response
 # Create your views here.
 
 
 class BlogViewSet(viewsets.ModelViewSet):
-
+    """博文視圖集"""
     queryset = Blog.objects.all().order_by('-created_time')
     lookup_field = 'slug'
     authentication_classes = [TokenAuthentication, SessionAuthentication]
@@ -21,8 +22,42 @@ class BlogViewSet(viewsets.ModelViewSet):
     filterset_fields = ['id', 'slug']
     ordering = ('-created_time')
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if 'prev' in request.query_params:
+            instance = Blog.objects.filter(
+                created_time__gt=instance.created_time).last()
+            if instance is None:
+                return Response({"message": "没有上一篇了"})
+        elif 'next' in request.query_params:
+            instance = Blog.objects.filter(
+                created_time__lt=instance.created_time).first()
+            if instance is None:
+                return Response({"message": "没有下一篇了"})
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    """分类视图集"""
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def retrieve(self, request, *args, **kwargs):
+        # do your customization here
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return CategorySerializer
+        else:
+            return CategoryDetailSerializer
 
 
 """

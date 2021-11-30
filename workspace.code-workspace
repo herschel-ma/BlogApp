@@ -1,11 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "./frontend"
+			"name": "frontend",
+			"path": "frontend"
 		},
 		{
+			"name": "BlogApp",
 			"path": "."
-		},
+		}
 	],
 	"settings": {}
 }
