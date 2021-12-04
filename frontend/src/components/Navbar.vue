@@ -22,7 +22,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <router-link to="/" class="font-bold">主页</router-link>
+              <router-link to="/" class="font-bold">首页</router-link>
             </a>
           </div>
           <!-- primary nav -->
@@ -30,11 +30,14 @@
             <router-link
               v-if="loggedIn"
               :to="{ name: 'create' }"
-              href="#"
-              class="py-5 px-2 text-gray-700 hover:text-blue-500"
+              class="py-5 text-gray-700 hover:text-blue-500"
               >新建博文</router-link
             >
-            <a href="#" class="text-gray-700 hover:text-blue-500">项目</a>
+            <router-link
+              :to="{ name: 'archive' }"
+              class="py-5 text-gray-700 hover:text-blue-500"
+              >归档</router-link
+            >
           </div>
         </div>
         <!-- secordary nav -->
@@ -49,16 +52,12 @@
           >
           <router-link
             to="/signup"
-            href="#"
             class="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-700 hover:text-yellow-800 rounded transition duration-100"
             >注册</router-link
           >
         </div>
         <div v-else class="hidden md:flex space-x-2 items-center mr-3">
-          <a
-            href="#"
-            class="flex items-center mr-4 text-gray-700 hover:text-blue-500"
-          >
+          <a class="flex items-center mr-4 text-gray-700 hover:text-blue-500">
             <img
               :src="avatarUrl"
               alt="avatar"
@@ -67,7 +66,6 @@
             <p>{{ userName }}</p>
           </a>
           <a
-            herf="#"
             @click="handleLogOut"
             class="py-2 px-3 bg-red-200 hover:bg-red-300 text-gray-700 rounded hover:text-red-500 transition duration-100"
             >登出</a
@@ -81,7 +79,7 @@
               :class="{ 'tham-active': !hidden }"
             >
               <div class="tham-box">
-                <div class="tham-inner bg-purple-500" />
+                <div class="tham-inner bg-green-700" />
               </div>
             </div>
           </button>
@@ -95,9 +93,10 @@
           >Blog</router-link
         >
         <router-link
-          to="/post"
+          :to="{ name: 'archive' }"
+          @click="showMobileMenu"
           class="block py-2 px-4 text-sm hover:bg-gray-200"
-          >Projects</router-link
+          >归档</router-link
         >
         <router-link
           to="/post"
@@ -108,7 +107,7 @@
           to="/login"
           @click="showMobileMenu"
           class="block py-2 px-4 text-sm hover:bg-gray-200"
-          >Login</router-link
+          >登录</router-link
         >
       </div>
     </div>
@@ -131,6 +130,7 @@ export default {
       store.dispatch("githubLoggedIn");
       axios.get("/api/user/").then((response) => {
         data.userName = response.data.username;
+        store.dispatch("storeUserName", response.data.username);
         data.avatarUrl =
           response.data.user !== null
             ? response.data.user.avatar_url

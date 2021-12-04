@@ -7,12 +7,12 @@ from django.utils import timezone
 
 class Category(models.Model):
     """文章分类"""
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     created_time = models.DateTimeField(default=timezone.now)
 
     class Meta:
         ordering = ['-created_time']
-        verbose_name = verbose_name_plural = "分類"
+        verbose_name = verbose_name_plural = "分类"
 
     def __str__(self) -> str:
         return self.title
@@ -25,7 +25,7 @@ class Blog(models.Model):
         null=True,
         blank=True,
     )
-    slug = models.SlugField(max_length=200, unique=True, null=True)
+    slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
     content = MDTextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE,

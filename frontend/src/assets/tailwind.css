@@ -4,3 +4,19 @@
 
 @tailwind utilities;
 
+@layer components {
+  .timeline-img {
+    @apply h-24 w-24 object-cover rounded-full 
+        shadow-md border-2 border-blue-400 xs:absolute
+        md:left-0 md:right-0;
+  }
+  .timeline-container {
+    @apply relative pt-2 xs:pl-28 xs:pt-0;
+  }
+
+  .timeline-pointer {
+    @apply absolute inset-0 left-10 h-4 w-4 
+          bg-gray-400 transform rotate-45
+          xs:top-10 xs:left-26;
+  }
+}

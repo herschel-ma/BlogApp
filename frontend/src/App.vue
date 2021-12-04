@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
   <router-view />
-  <Footer class="mt-10" />
+  <Footer class="mt-10 " />
 </template>
 
 <script>
@@ -17,4 +17,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#app {
+  background-color: rgb(236, 233, 233);
+}
+</style>

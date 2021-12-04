@@ -1,6 +1,6 @@
 <template>
   <!-- component -->
-  <div class="bg-gray-100 flex flex-wrap">
+  <div class="flex flex-wrap">
     <!-- post section -->
     <section class="w-full md:w-2/3 flex flex-col items-center px-3 mt-6">
       <div class="w-full lg:w-8/12">
@@ -42,7 +42,11 @@
                   class="text-2xl font-bold text-gray-700 hover:underline"
                   >{{ article.title }}</a
                 >
-                <p class="mt-2 text-gray-600">{{ article.content }}</p>
+                <p
+                  v-if="article.content"
+                  v-html="article.content"
+                  class="mt-2 text-gray-600"
+                ></p>
               </div>
               <div class="flex items-center justify-between mt-4">
                 <div class="flex space-x-2">
@@ -54,11 +58,16 @@
                         slug: article.slug,
                       },
                     }"
-                    >[阅读全文]
+                    >【阅读全文】
                   </router-link>
-                  <!-- todo: click update button, navgation guid protect -->
                   <router-link
-                    :to="{ name: 'update', params: { slug: article.slug } }"
+                    :to="{
+                      name: 'update',
+                      params: {
+                        slug: article.slug,
+                        author: article.author,
+                      },
+                    }"
                   >
                     <svg
                       class="w-6 h-6 text-gray-600 hover:text-blue-500"
@@ -93,7 +102,7 @@
                   </a>
                 </div>
                 <div>
-                  <a href="#" class="flex items-center">
+                  <a class="flex items-center">
                     <img
                       src="https://img.paulzzh.com/touhou/random"
                       alt="avatar"
@@ -128,7 +137,7 @@
         </transition>
       </div>
     </section>
-    <aside class="mt-6 md:w-1/3 w-full hidden lg:block -mx-10">
+    <aside class="mt-6 md:w-1/3 w-full hidden md:block lg:block lg:-mx-10">
       <!--Authors-->
       <transition
         appear
@@ -163,7 +172,7 @@
 <script>
 import Cookies from "js-cookie";
 import axios from "axios";
-import { onMounted, toRefs, reactive } from "vue";
+import { onMounted, toRefs, reactive, computed } from "vue";
 import Authors from "@/components/Authors";
 import Category from "@/components/Category";
 import RecentPost from "@/components/RecentPost";
@@ -188,6 +197,7 @@ export default {
       totalPages: 0,
       args: "yyy-mm-dd hh:mm:ss",
       page: 1,
+      isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
     const getAllArticles = (url = "/api/blog/") => {
       axios
@@ -195,7 +205,7 @@ export default {
           headers: {
             "Content-Type": "Application/json",
             "X-CSRFTOKEN": Cookies.get("csrftoken"),
-            Authorization: "Token " + store.state.isLoggedIn,
+            Authorization: "Token " + state.isLoggedIn,
           },
         })
         .then((response) => {
@@ -204,23 +214,28 @@ export default {
           return response.data.results;
         })
         .then((results) => {
-          (state.articles = []),
-            state.articles.push(
-              ...results.map((a) => {
-                const options = {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                };
-                a.created_time = new Date(a.created_time).toLocaleDateString(
-                  "en-US",
-                  options
-                );
-                a.content = a.content.slice(0, 100);
-                return a;
-              })
-            );
+          state.articles = [];
+          state.articles.push(
+            ...results.map((a) => {
+              const options = {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false,
+              };
+              a.created_time = new Date(a.created_time).toLocaleDateString(
+                // "en-US",
+                "zh-hans",
+                options
+              );
+              a.content = a.summery;
+              return a;
+            })
+          );
         })
         .catch((error) => console.log(error));
     };
@@ -231,7 +246,7 @@ export default {
           headers: {
             "Content-Type": "Application/json",
             "X-CSRFTOKEN": Cookies.get("csrftoken"),
-            Authorization: "Token " + store.state.isLoggedIn,
+            Authorization: "Token " + state.isLoggedIn,
           },
         })
         .then((res) => {
@@ -266,7 +281,9 @@ export default {
       }
       getAllArticles(url);
     };
-    onMounted(() => getAllArticles());
+    onMounted(() => {
+      getAllArticles();
+    });
     return {
       toast,
       store,

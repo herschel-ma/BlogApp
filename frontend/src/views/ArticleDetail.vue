@@ -8,8 +8,11 @@
           <img src="https://img.paulzzh.com/touhou/random" />
         </a>
         <div class="bg-white flex flex-col justify-start p-6">
-          <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"
-            >Technology</a
+          <a
+            v-if="article.category"
+            class="text-blue-700 text-sm font-bold uppercase pb-4"
+          >
+            {{ article.category.title }}</a
           >
           <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{
             article.title
@@ -26,6 +29,7 @@
             v-model="article.content"
             :preview-theme="theme"
             :previewOnly="true"
+            @onGetCatalog="onGetCatalog"
           />
         </div>
       </article>
@@ -127,7 +131,7 @@
 <script>
 import Cookies from "js-cookie";
 import axios from "axios";
-import { reactive, toRefs } from "vue";
+import { reactive, toRefs, computed } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import MdEditor from "md-editor-v3";
@@ -141,7 +145,7 @@ export default {
   },
   components: { MdEditor },
   watch: {
-    // 监听路由变化获取上一章下一章内容
+    // 监听路由变化获取上一章|下一章内容
     $route(to) {
       if (to.fullPath.startsWith("/details")) {
         this.getArticle(to.params.slug);
@@ -159,6 +163,9 @@ export default {
       messageNext: null,
       prevSlug: "",
       nextSlug: "",
+      catalogList: [],
+      catalogHtmlTitle: [],
+      isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
     const getArticle = (slug = props.slug) => {
       fetch(`/api/blog/${slug}/`, {
@@ -166,7 +173,7 @@ export default {
         headers: {
           "Content-Type": "Application/json",
           "X-CSRFTOKEN": Cookies.get("csrftoken"),
-          Authorization: "Token " + store.state.isLoggedIn,
+          Authorization: "Token " + state.isLoggedIn,
         },
       })
         .then((response) => response.json())
@@ -182,7 +189,7 @@ export default {
           headers: {
             "Content-Type": "Application/json",
             "X-CSRFTOKEN": Cookies.get("csrftoken"),
-            Authorization: "Token " + store.state.isLoggedIn,
+            Authorization: "Token " + state.isLoggedIn,
           },
         })
         .then((res) => {
@@ -197,7 +204,7 @@ export default {
           headers: {
             "Content-Type": "Application/json",
             "X-CSRFTOKEN": Cookies.get("csrftoken"),
-            Authorization: "Token " + store.state.isLoggedIn,
+            Authorization: "Token " + state.isLoggedIn,
           },
         })
         .then((res) => {
@@ -208,6 +215,40 @@ export default {
           console.log(e.response.message);
         });
     };
+    const onGetCatalog = (list) => {
+      state.catalogList.push(
+        ...list.map((cat) => {
+          switch (cat.level) {
+            case 1: {
+              cat.text = `<h1>${cat.text}</h1>`;
+              break;
+            }
+            case 2: {
+              cat.text = `<h2>${cat.text}</h2>`;
+              break;
+            }
+            case 3: {
+              cat.text = `<h3>${cat.text}</h3>`;
+              break;
+            }
+            case 4: {
+              cat.text = `<h4>${cat.text}</h4>`;
+              break;
+            }
+            case 5: {
+              cat.text = `<h5>${cat.text}</h5>`;
+              break;
+            }
+            case 6: {
+              cat.text = `<h6>${cat.text}</h6>`;
+              break;
+            }
+          }
+          return cat;
+        })
+      );
+      state.catalogHtmlTitle.push(...state.catalogList.map((a) => a.text));
+    };
     getArticle();
     getPrevNext();
 
@@ -216,6 +257,7 @@ export default {
       router,
       getArticle,
       getPrevNext,
+      onGetCatalog,
       toPrev: () => {
         router.replace({
           name: "details",

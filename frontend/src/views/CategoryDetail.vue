@@ -5,7 +5,9 @@
     <section class="w-full md:w-2/3 flex flex-col items-center px-3 mt-6">
       <div class="w-full lg:w-8/12">
         <div class="flex items-center justify-between">
-          <h1 class="text-xl font-bold text-gray-700 md:text-2xl">博文</h1>
+          <h1 class="text-xl font-bold text-gray-700 md:text-2xl">
+            {{ route.query.cate }}
+          </h1>
           <div>
             <select
               class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -33,7 +35,7 @@
                   v-if="article.category"
                   href="#"
                   class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500"
-                  >{{ article.category.title }}</a
+                  >{{ route.query.cate }}</a
                 >
               </div>
               <div class="mt-2">
@@ -54,11 +56,16 @@
                         slug: article.slug,
                       },
                     }"
-                    >阅读更多>
+                    >【阅读全文】
                   </router-link>
-                  <!-- todo: click update button, navgation guid protect -->
                   <router-link
-                    :to="{ name: 'update', params: { slug: article.slug } }"
+                    :to="{
+                      name: 'update',
+                      params: {
+                        slug: article.slug,
+                        author: article.author.username,
+                      },
+                    }"
                   >
                     <svg
                       class="w-6 h-6 text-gray-600 hover:text-blue-500"
@@ -100,7 +107,7 @@
                       class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
                     />
                     <h1 class="font-bold text-gray-700 hover:underline">
-                      {{ article.author }}
+                      {{ article.author.username }}
                     </h1>
                   </a>
                 </div>
@@ -162,13 +169,14 @@
 <script>
 import Cookies from "js-cookie";
 import axios from "axios";
-import { onMounted, toRefs, reactive } from "vue";
+import { toRefs, reactive, computed } from "vue";
 import Authors from "@/components/Authors";
 import Category from "@/components/Category";
 import VPagination from "@hennge/vue3-pagination";
 import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 import { useToast } from "vue-toastification";
 import { useStore } from "vuex";
+import { useRoute } from "vue-router";
 
 export default {
   components: {
@@ -176,51 +184,39 @@ export default {
     Category,
     VPagination,
   },
+  watch: {
+    // 监听路由变化获取分类文章
+    $route(to) {
+      // console.log(to);
+      if (to.fullPath.startsWith("/category")) {
+        this.getArticles("", to.query);
+      }
+    },
+  },
   setup() {
     const toast = useToast();
     const store = useStore();
+    const route = useRoute();
     const state = reactive({
       articles: [],
       results: {},
       totalPages: 0,
       args: "yyy-mm-dd hh:mm:ss",
       page: 1,
+      isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
-    const getAllArticles = (url = "/api/blog/") => {
-      axios
-        .get(url, {
-          headers: {
-            "Content-Type": "Application/json",
-            "X-CSRFTOKEN": Cookies.get("csrftoken"),
-            Authorization: "Token " + store.state.isLoggedIn,
-          },
-        })
-        .then((response) => {
-          state.results = response.data;
-          state.totalPages = response.data.total_pages;
-          return response.data.results;
-        })
-        .then((results) => {
-          (state.articles = []),
-            state.articles.push(
-              ...results.map((a) => {
-                const options = {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                };
-                a.created_time = new Date(a.created_time).toLocaleDateString(
-                  "en-US",
-                  options
-                );
-                a.content = a.content.slice(0, 100);
-                return a;
-              })
-            );
-        })
-        .catch((error) => console.log(error));
+    const getArticles = (url = "", query = route.query) => {
+      state.articles = [];
+      if (url == "") {
+        url = `/api/blog/?category=${query.id}`;
+        state.page = 1; // 分页组件默认激活第一页
+      }
+      axios.get(url).then((res) => {
+        state.articles.push(...res.data.results);
+        state.totalPages = res.data.total_pages;
+      });
     };
+    getArticles();
     const handleDelete = (event, slug) => {
       event.preventDefault();
       axios
@@ -228,7 +224,7 @@ export default {
           headers: {
             "Content-Type": "Application/json",
             "X-CSRFTOKEN": Cookies.get("csrftoken"),
-            Authorization: "Token " + store.state.isLoggedIn,
+            Authorization: "Token " + state.isLoggedIn,
           },
         })
         .then((res) => {
@@ -257,20 +253,20 @@ export default {
         });
     };
     const updateHandler = (number) => {
-      let url = `/api/blog?page=${number}`;
-      if (url === "/api/blog?page=1") {
-        url = "/api/blog/";
+      let url = `/api/blog/?category=${route.query.id}&page=${number}`;
+      if (url === `/api/blog/?category=${route.query.id}&page=1`) {
+        url = `/api/blog/?category=${route.query.id}`;
       }
-      getAllArticles(url);
+      getArticles(url, route.query);
     };
-    onMounted(() => getAllArticles());
     return {
       toast,
       store,
+      route,
       ...toRefs(state),
-      getAllArticles,
       handleDelete,
       updateHandler,
+      getArticles,
     };
   },
 };

@@ -1,12 +1,17 @@
 from rest_framework import viewsets
+from rest_framework.generics import ListAPIView
 from .models import Blog, Category
-from .serializers import BlogSerializer, CategorySerializer, CategoryDetailSerializer
+from .serializers import BlogSerializer, CategorySerializer,\
+     CategoryDetailSerializer, BlogRecentSerializer, BlogArchiveSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication,\
     SessionAuthentication
 from .permissions import IsAuthor
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.decorators import action
+from rest_framework.serializers import DateField
+from rest_framework import status
 from rest_framework.response import Response
 # Create your views here.
 
@@ -19,8 +24,19 @@ class BlogViewSet(viewsets.ModelViewSet):
     serializer_class = BlogSerializer
     permission_classes = [IsAuthenticated, IsAuthor]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['id', 'slug']
+    filterset_fields = ['category']
     ordering = ('-created_time')
+
+    @action(methods=['GET'],
+            detail=False,
+            url_path="archive/dates",
+            url_name="archive-date")
+    def list_archive_dates(self, request, *args, **kwargs):
+        """返回博客的归档日期"""
+        dates = Blog.objects.dates("created_time", "month", order="DESC")
+        date_field = DateField()
+        data = [date_field.to_representation(date) for date in dates]
+        return Response(data=data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -46,6 +62,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def retrieve(self, request, *args, **kwargs):
         # do your customization here
@@ -76,3 +93,24 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data) 
 """
+
+
+class BlogRecentView(ListAPIView):
+    queryset = Blog.objects.order_by('-last_updated_time')[:3]
+    permission_classes = [IsAuthenticated]
+    serializer_class = BlogRecentSerializer
+    pagination_class = None
+
+
+class BlogArchiveView(ListAPIView):
+
+    serializer_class = BlogArchiveSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        year = self.kwargs['year']
+        month = self.kwargs['month']
+        queryset = Blog.objects.filter(
+            created_time__year=year,
+            created_time__month=month).order_by('-created_time')
+        return queryset
