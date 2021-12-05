@@ -4,33 +4,35 @@
     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
       <article class="flex flex-col shadow my-4">
         <!-- Article Image -->
-        <a href="#" class="hover:opacity-75">
+        <a class="hover:opacity-75">
           <img src="https://img.paulzzh.com/touhou/random" />
         </a>
-        <div class="bg-white flex flex-col justify-start p-6">
+        <div class="bg-white flex flex-col justify-center p-6">
           <a
             v-if="article.category"
             class="text-blue-700 text-sm font-bold uppercase pb-4"
           >
             {{ article.category.title }}</a
           >
-          <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{
+          <a class="text-3xl font-bold hover:text-gray-700 pb-4">{{
             article.title
           }}</a>
-          <p href="#" class="text-sm pb-8">
+          <p class="text-sm pb-8">
             By
-            <a href="#" class="font-semibold hover:text-gray-800">{{
+            <a class="font-semibold hover:text-gray-800">{{
               article.author
             }}</a>
             , Published on {{ article.created_time }}
           </p>
           <!-- <h1 class="text-2xl font-bold pb-3">Introduction</h1> -->
-          <md-editor
-            v-model="article.content"
-            :preview-theme="theme"
-            :previewOnly="true"
-            @onGetCatalog="onGetCatalog"
-          />
+          <div class="overflow-auto w-full">
+            <md-editor
+              v-model="article.content"
+              :preview-theme="theme"
+              :previewOnly="true"
+              @onGetCatalog="onGetCatalog"
+            />
+          </div>
         </div>
       </article>
 
@@ -93,7 +95,7 @@
     </section>
 
     <!-- Sidebar Section -->
-    <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+    <aside class="w-full md:w-1/3 flex flex-col  px-3">
       <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-semibold pb-5">About Us</p>
         <p class="pb-2">
@@ -118,11 +120,31 @@
           />
         </div>
         <a
-          href="#"
           class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6"
         >
           <i class="fab fa-instagram"></i> Follow @dgrzyb
         </a>
+      </div>
+      <div id="boxFixed"></div>
+      <div
+        class="p-2 xs:hidden sm:hidden md:block lg:block"
+        :class="{ is_fixed: isFixed }"
+      >
+        <button
+          class="w-16 h-8 rounded-md bg-pink-200 
+        hover:bg-red-600 transition duration-500 mb-2"
+        >
+          目录
+        </button>
+        <div
+          v-for="(catalog, i) in catalogList"
+          :key="i"
+          class="hover:bg-gray-300 transition duration-500"
+        >
+          <a :href="`#${catalog.text}`" :class="`catalog-${catalog.level}`">{{
+            catalog.text
+          }}</a>
+        </div>
       </div>
     </aside>
   </div>
@@ -131,7 +153,14 @@
 <script>
 import Cookies from "js-cookie";
 import axios from "axios";
-import { reactive, toRefs, computed } from "vue";
+import {
+  reactive,
+  toRefs,
+  computed,
+  onMounted,
+  nextTick,
+  onUnmounted,
+} from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import MdEditor from "md-editor-v3";
@@ -165,6 +194,9 @@ export default {
       nextSlug: "",
       catalogList: [],
       catalogHtmlTitle: [],
+      isFixed: false,
+      offsetTop: 0,
+      scrollTop: 0,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
     const getArticle = (slug = props.slug) => {
@@ -216,39 +248,32 @@ export default {
         });
     };
     const onGetCatalog = (list) => {
+      state.catalogList = [];
       state.catalogList.push(
         ...list.map((cat) => {
-          switch (cat.level) {
-            case 1: {
-              cat.text = `<h1>${cat.text}</h1>`;
-              break;
-            }
-            case 2: {
-              cat.text = `<h2>${cat.text}</h2>`;
-              break;
-            }
-            case 3: {
-              cat.text = `<h3>${cat.text}</h3>`;
-              break;
-            }
-            case 4: {
-              cat.text = `<h4>${cat.text}</h4>`;
-              break;
-            }
-            case 5: {
-              cat.text = `<h5>${cat.text}</h5>`;
-              break;
-            }
-            case 6: {
-              cat.text = `<h6>${cat.text}</h6>`;
-              break;
-            }
-          }
           return cat;
         })
       );
-      state.catalogHtmlTitle.push(...state.catalogList.map((a) => a.text));
     };
+    const initHeight = () => {
+      // 设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离 (被卷曲的高度)
+      var scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      //如果被卷曲的高度大于吸顶元素到顶端位置 的距离
+      state.isFixed = scrollTop > state.offsetTop ? true : false;
+    };
+    onMounted(() => {
+      window.addEventListener("scroll", initHeight);
+      nextTick(() => {
+        //获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置
+        state.offsetTop = document.querySelector("#boxFixed").offsetTop;
+      });
+    });
+    onUnmounted(() => {
+      window.removeEventListener("scroll", initHeight);
+    });
     getArticle();
     getPrevNext();
 
@@ -270,7 +295,61 @@ export default {
           params: { slug: state.nextSlug },
         });
       },
+      initHeight,
     };
   },
 };
 </script>
+
+<style scope>
+.is_fixed {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 22px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 10px;
+}
+.catalog-1 {
+  color: rgb(97, 168, 173);
+}
+.catalog-2 {
+  margin-left: 1em;
+  color: rgb(97, 168, 173);
+}
+.catalog-3 {
+  margin-left: 2em;
+  font-size: 16px;
+  color: rgb(111, 116, 161);
+}
+.catalog-4 {
+  margin-left: 3em;
+  font-size: 14px;
+  color: rgb(111, 116, 161);
+}
+.catalog-5 {
+  margin-left: 4em;
+  font-size: 14px;
+  color: rgb(153, 119, 185);
+}
+.catalog-6 {
+  margin-left: 5em;
+  font-size: 14px;
+  color: rgb(153, 119, 185);
+}
+</style>

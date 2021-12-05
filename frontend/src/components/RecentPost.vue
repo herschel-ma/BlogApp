@@ -8,7 +8,7 @@
     >
       <div class="flex items-center justify-center">
         <a
-          href="#"
+          v-if="article.category"
           class="px-2 py-1 text-sm text-green-100 bg-gray-600 rounded hover:bg-gray-500"
           >{{ article.category.title }}</a
         >

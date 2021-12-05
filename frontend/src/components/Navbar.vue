@@ -38,6 +38,11 @@
               class="py-5 text-gray-700 hover:text-blue-500"
               >归档</router-link
             >
+            <router-link
+              :to="{ name: 'test' }"
+              class="py-5 text-gray-700 hover:text-blue-500"
+              >测试</router-link
+            >
           </div>
         </div>
         <!-- secordary nav -->
@@ -86,30 +91,32 @@
         </div>
       </div>
       <!-- mobile menu -->
-      <div :class="hidden">
-        <router-link
-          to="/post"
-          class="block py-2 px-4 text-sm hover:bg-gray-200"
-          >Blog</router-link
-        >
-        <router-link
-          :to="{ name: 'archive' }"
-          @click="showMobileMenu"
-          class="block py-2 px-4 text-sm hover:bg-gray-200"
-          >归档</router-link
-        >
-        <router-link
-          to="/post"
-          class="block py-2 px-4 text-sm hover:bg-gray-200"
-          >Friendly Link</router-link
-        >
-        <router-link
-          to="/login"
-          @click="showMobileMenu"
-          class="block py-2 px-4 text-sm hover:bg-gray-200"
-          >登录</router-link
-        >
-      </div>
+      <transition name="collapse" class="flex flex-col justify-start">
+        <div v-show="!hidden" class="column h-auto">
+          <router-link
+            to="/post"
+            class="block py-2 px-4 text-sm hover:bg-gray-200"
+            >Blog</router-link
+          >
+          <router-link
+            :to="{ name: 'archive' }"
+            @click="showMobileMenu"
+            class="block py-2 px-4 text-sm hover:bg-gray-200"
+            >归档</router-link
+          >
+          <router-link
+            to="/post"
+            class="block py-2 px-4 text-sm hover:bg-gray-200"
+            >Friendly Link</router-link
+          >
+          <router-link
+            to="/login"
+            @click="showMobileMenu"
+            class="block py-2 px-4 text-sm hover:bg-gray-200"
+            >登录</router-link
+          >
+        </div>
+      </transition>
     </div>
   </nav>
   <!--content goes here-->
@@ -151,3 +158,16 @@ export default {
   },
 };
 </script>
+
+<style>
+.collapse-enter-active {
+  transition: opacity 2s;
+}
+.collapse-leave-active {
+  transition: opacity 0.5s;
+}
+.collapse-enter,
+.collapse-leave-to {
+  opacity: 0;
+}
+</style>

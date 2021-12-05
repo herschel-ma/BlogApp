@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useToast } from "vue-toastification";
 import store from "@/store";
-// import { storeForRouter } from "@/store";
-// const store = storeForRouter();
 const toast = useToast();
 const routes = [
   {
@@ -57,6 +55,11 @@ const routes = [
     path: "/archive",
     name: "archive",
     component: () => import("@/views/ArchiveBlog"),
+  },
+  {
+    path: "/test",
+    name: "test",
+    component: () => import("@/views/Test"),
   },
 ];
 
