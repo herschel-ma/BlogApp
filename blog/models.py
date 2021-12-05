@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from mdeditor.fields import MDTextField
 from django.utils import timezone
+from taggit.managers import TaggableManager
 # Create your models here.
 
 
@@ -26,6 +27,7 @@ class Blog(models.Model):
         blank=True,
     )
     slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
+    tags = TaggableManager(verbose_name="标签", blank=True)
     content = MDTextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE,

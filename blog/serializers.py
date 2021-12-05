@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from users.serializer import UserSerializer
 from .models import Blog, Category
+from taggit.serializers import (TagListSerializerField, TaggitSerializer)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -13,7 +14,7 @@ class CategorySerializer(serializers.ModelSerializer):
         read_only_fields = ['created_time']
 
 
-class BlogSerializer(serializers.ModelSerializer):
+class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
     slug = serializers.SlugField(read_only=True)
@@ -22,6 +23,8 @@ class BlogSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(write_only=True,
                                            allow_null=True,
                                            required=False)
+
+    tags = TagListSerializerField()
 
     def validate_category_id(self, value):
         if not Category.objects.filter(
@@ -41,6 +44,7 @@ class BlogSerializer(serializers.ModelSerializer):
             "summery",
             "author",
             "content",
+            "tags",
             "category",
             "category_id",
             "created_time",

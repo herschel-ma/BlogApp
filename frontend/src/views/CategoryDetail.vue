@@ -33,18 +33,15 @@
                 }}</span>
                 <a
                   v-if="article.category"
-                  href="#"
                   class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500"
                   >{{ route.query.cate }}</a
                 >
               </div>
               <div class="mt-2">
-                <a
-                  href="#"
-                  class="text-2xl font-bold text-gray-700 hover:underline"
-                  >{{ article.title }}</a
-                >
-                <p class="mt-2 text-gray-600">{{ article.content }}</p>
+                <a class="text-2xl font-bold text-gray-700 hover:underline">{{
+                  article.title
+                }}</a>
+                <p class="mt-2 text-gray-600">{{ article.summery }}</p>
               </div>
               <div class="flex items-center justify-between mt-4">
                 <div class="flex space-x-2">

@@ -29,12 +29,19 @@
                 <span class="font-light text-gray-600">{{
                   article.created_time
                 }}</span>
-                <a
+                <router-link
                   v-if="article.category"
-                  href="#"
+                  :to="{
+                    name: 'category',
+                    query: {
+                      cate: article.category.title,
+                      id: article.category.id,
+                    },
+                  }"
                   class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500"
-                  >{{ article.category.title }}</a
                 >
+                  {{ article.category.title }}
+                </router-link>
               </div>
               <div class="mt-2">
                 <a

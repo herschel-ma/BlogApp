@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto flex flex-wrap py-6">
     <!-- Post Section -->
-    <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+    <section class="w-full md:w-2/3 flex flex-col px-3 ">
       <article class="flex flex-col shadow my-4">
         <!-- Article Image -->
         <a class="hover:opacity-75">
@@ -25,7 +25,7 @@
             , Published on {{ article.created_time }}
           </p>
           <!-- <h1 class="text-2xl font-bold pb-3">Introduction</h1> -->
-          <div class="overflow-auto w-full">
+          <div class="md-e">
             <md-editor
               v-model="article.content"
               :preview-theme="theme"
@@ -306,6 +306,11 @@ export default {
   position: fixed;
   top: 0;
   z-index: 999;
+}
+.md-e {
+  /*父元素设置为flex后，子元素会自动布局并适应宽度，
+  但里面的文本文字超出边界却无法换 */
+  overflow-wrap: break-word;
 }
 h1 {
   font-size: 30px;
