@@ -2,6 +2,7 @@ from rest_framework import serializers
 from users.serializer import UserSerializer
 from .models import Blog, Category
 from taggit.serializers import (TagListSerializerField, TaggitSerializer)
+from taggit.models import Tag
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -137,3 +138,10 @@ class BlogArchiveSerializer(serializers.ModelSerializer):
         # 序列化author的详细信息，否则只会序列化出id
         rep['author'] = UserSerializer(instance.author).data
         return rep
+
+
+class TagsSerializer(serializers.ModelSerializer):
+    """标签"""
+    class Meta:
+        model = Tag
+        fields = "__all__"

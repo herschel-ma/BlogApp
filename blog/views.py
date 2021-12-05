@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from .models import Blog, Category
 from .serializers import BlogSerializer, CategorySerializer,\
-     CategoryDetailSerializer, BlogRecentSerializer, BlogArchiveSerializer
+    CategoryDetailSerializer, BlogRecentSerializer, \
+    BlogArchiveSerializer, TagsSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication,\
     SessionAuthentication
@@ -13,6 +14,7 @@ from rest_framework.decorators import action
 from rest_framework.serializers import DateField
 from rest_framework import status
 from rest_framework.response import Response
+from taggit.models import Tag
 # Create your views here.
 
 
@@ -103,8 +105,9 @@ class BlogRecentView(ListAPIView):
 
 
 class BlogArchiveView(ListAPIView):
-
+    """归档博文视图集"""
     serializer_class = BlogArchiveSerializer
+    permission_classes = [IsAuthenticated]
     pagination_class = None
 
     def get_queryset(self):
@@ -113,4 +116,15 @@ class BlogArchiveView(ListAPIView):
         queryset = Blog.objects.filter(
             created_time__year=year,
             created_time__month=month).order_by('-created_time')
+        return queryset
+
+
+class TagViewSet(viewsets.ModelViewSet):
+    """标签视图集"""
+    serializer_class = TagsSerializer
+    pagination_class = None
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = Tag.objects.all()
         return queryset
