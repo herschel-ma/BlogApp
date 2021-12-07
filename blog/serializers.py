@@ -25,7 +25,13 @@ class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
                                            allow_null=True,
                                            required=False)
 
-    tags = TagListSerializerField()
+    tags = TagListSerializerField(allow_null=True, required=False)
+
+    def validate_title(self, value):
+        if self.context.get('request').method == 'POST':
+            if Blog.objects.filter(title=value):
+                raise serializers.ValidationError("文章标题重复")
+        return value
 
     def validate_category_id(self, value):
         if not Category.objects.filter(
@@ -53,10 +59,18 @@ class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
         ]
 
 
-class BlogCategoryDetailSerializer(serializers.ModelSerializer):
-    """給文章詳情的嵌套序列化器"""
+class BlogListSerializer(TaggitSerializer, serializers.ModelSerializer):
+    """返回博客列表,用户不直接用DRF外键关联"""
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
+    slug = serializers.SlugField(read_only=True)
+    # author = serializers.StringRelatedField()
+    category = CategorySerializer(read_only=True)
+    category_id = serializers.IntegerField(write_only=True,
+                                           allow_null=True,
+                                           required=False)
+
+    tags = TagListSerializerField()
 
     class Meta:
         model = Blog
@@ -65,6 +79,42 @@ class BlogCategoryDetailSerializer(serializers.ModelSerializer):
             "url",
             "slug",
             "title",
+            "summery",
+            "author",
+            "content",
+            "tags",
+            "category",
+            "category_id",
+            "created_time",
+            "last_updated_time",
+        ]
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        # 序列化author的详细信息，否则只会序列化出id
+        rep['author'] = UserSerializer(
+            instance.author,
+            read_only=True,
+            required=False,
+        ).data
+        return rep
+
+
+class BlogCategoryDetailSerializer(serializers.ModelSerializer):
+    """給文章詳情的嵌套序列化器"""
+    url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
+                                               lookup_field="slug")
+
+    tags = TagListSerializerField()
+
+    class Meta:
+        model = Blog
+        fields = [
+            "id",
+            "url",
+            "slug",
+            "title",
+            "tags",
             "summery",
             "author",
             "content",

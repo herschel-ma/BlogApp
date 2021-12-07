@@ -48,14 +48,65 @@
       <p v-show="RcategoryId" class="text-sm text-red-400 mb-2">
         {{ RcategoryId }}
       </p>
-      <label class="text-gray-600 font-light">摘要（非必须）:</label>
-      <input
-        type="text"
-        placeholder="请修改摘要"
-        class="lg:w-1/2 px-3 py-2 mb-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-indigo-300"
-        v-model="summery"
-      />
-      <label class="text-gray-600 font-light">内容:</label>
+      <label class="text-gray-600 font-light">标签:</label>
+      <div
+        class="md:grid md:grid-cols-5 md:gap-2 flex flex-wrap lg:flex lg:flex-wrap mb-2 item-center"
+      >
+        <span v-for="tag in tags" :key="tag.id" class="relative mr-2">
+          <button
+            v-if="checkTagExist(tag)"
+            @click.prevent="chooseTag(tag)"
+            class="inline-block border px-6 py-2 mb-2 rounded-md hover:border-red-300 border-red-300 text-base font-medium"
+          >
+            {{ tag.name }}
+            <svg
+              @click.stop.prevent="tolggleDeleteTag(tag)"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 absolute -right-2 -top-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+
+          <button
+            v-else
+            @click.prevent="chooseTag(tag)"
+            class="inline-block border px-6 py-2 mb-2 rounded-md hover:border-red-300 border-gray-300 text-base font-medium"
+          >
+            {{ tag.name }}
+            <svg
+              @click.stop.prevent="tolggleDeleteTag(tag)"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 absolute -right-2 -top-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </span>
+      </div>
+      <p v-show="Rtags" class="text-sm text-red-400 mb-2">
+        <label class="text-gray-600 font-light">摘要（非必须）:</label>
+        <input
+          type="text"
+          placeholder="请修改摘要"
+          class="lg:w-1/2 px-3 py-2 mb-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-indigo-300"
+          v-model="summery"
+        />
+        <label class="text-gray-600 font-light">内容:</label>
+      </p>
+
       <p v-show="Rcontent" class="text-sm text-red-400 mb-2">
         {{ Rcontent }}
       </p>
@@ -132,6 +183,30 @@
       </div>
     </template>
   </ModalDialog>
+  <ModalDialog :show="showDelModal" @close="showDelModal = false">
+    <template v-slot:innerForm>
+      <div
+        class="w-1/2 h-1/3 flex flex-col bg-white 
+        bg-opacity-90 space-y-8 justify-center align-middle z-10"
+      >
+        <div class="p-3 z-10 text-center">确定要删除吗？</div>
+        <div class="container flex justify-center align-middle space-x-5">
+          <div
+            @click="showDelModal = false"
+            class="rounded-lg shawdow-lg cursor-pointer bg-green-600 z-10 p-3"
+          >
+            不，我不删除了
+          </div>
+          <div
+            @click="deleteTag"
+            class="rounded-lg shawdow-lg cursor-pointer bg-red-600 z-10 p-3"
+          >
+            是的,我确定
+          </div>
+        </div>
+      </div>
+    </template>
+  </ModalDialog>
 </template>
 
 <script>
@@ -176,21 +251,35 @@ export default {
       Rcontent: "",
       RcategoryId: "",
       showModal: false,
+      showDelModal: false,
       cate: "",
       Rcate: "",
       isLoggedIn: computed(() => store.getters.isLoggedIn),
+      delTag: computed(() => store.getters.delTag),
+      tags: [],
+      Rtags: "",
+      selectedTag: [],
     });
     const store = useStore();
     const router = useRouter();
+    // 默认渲染的所有标签
+    state.tags = store.state.tags;
     state.categorys = store.getters.categorys;
     onMounted(() => {
       axios
-        .get(`/api/blog/${props.slug}/`)
+        .get(`/api/blog/${props.slug}/`, {
+          headers: {
+            "Content-Type": "Application/json",
+            "X-CSRFTOKEN": Cookies.get("csrftoken"),
+            Authorization: state.isLoggedIn,
+          },
+        })
         .then((res) => {
           state.title = res.data.title;
           state.content = res.data.content;
           state.summery = res.data.summery;
           state.selectedCategory = res.data.category;
+          state.selectedTag = res.data.tags;
         })
         .catch((error) => {
           console.log(error.message);
@@ -199,6 +288,40 @@ export default {
     return {
       ...toRefs(state),
       toast,
+      checkTagExist: (tag) => {
+        // console.log(tag);
+        // console.log(state.selectedTag);
+        if (state.selectedTag.length > 0) {
+          if (state.selectedTag.indexOf(tag.name) !== -1) {
+            return true;
+          }
+        }
+        return false;
+      },
+      tolggleDeleteTag: (tag) => {
+        // 存储要删除的tag的id,删除后需要删除存储id并跳转页面
+        store.dispatch("storeDelTag", tag.id);
+        state.showDelModal = !state.showDelModal;
+      },
+      deleteTag: () => {
+        axios
+          .delete(`/api/tag/${state.delTag}`, {
+            headers: {
+              "Content-Type": "Application/json",
+              "X-CSRFTOKEN": Cookies.get("csrftoken"),
+              Authorization: state.isLoggedIn,
+            },
+          })
+          .then(() => {
+            toast.success("删除标签成功", { timeout: 2000 });
+            store.dispatch("deleteDeleteTag");
+            state.showDelModal = !state.showDelModal;
+            router.push({ name: "home" });
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      },
       handleCreate: () => {
         axios
           .put(
@@ -210,6 +333,8 @@ export default {
               category_id: state.selectedCategory
                 ? state.selectedCategory.id
                 : 0,
+              // 提交的标签
+              tags: state.selectedTag,
             },
             {
               headers: {
@@ -240,6 +365,7 @@ export default {
               state.Rtitle = e.response.data.title
                 ? e.response.data.title[0]
                 : "";
+              state.Rtags = e.response.data.tags ? e.response.data.tags[0] : "";
               if (e.response.data.detail) {
                 toast.error(e.response.data.detail, { timeout: 2000 });
               }
@@ -280,8 +406,32 @@ export default {
           state.selectedCategory = category;
         }
       },
+      chooseTag: (tag) => {
+        // 如果选择的标签不在提交的标签里，则添加, 否则删除
+        // console.log(tag);
+        // console.log(state.selectedTag);
+        if (state.selectedTag.length > 0) {
+          const index = state.selectedTag.indexOf(tag.name);
+          if (index > -1) {
+            // 删除存在的元素
+            state.selectedTag.splice(index, 1);
+            return;
+          } else {
+            // 赋值给提交的标签
+            state.selectedTag.push(tag.name);
+            return;
+          }
+        } else if (state.selectedTag.length === 0) {
+          state.selectedTag.push(tag.name);
+        }
+      },
+      // 改变样式
+
       toggleModal: () => {
         state.showModal = !state.showModal;
+      },
+      toggleTagModal: () => {
+        state.showTagModal = !state.showTagModal;
       },
       handleCreateCate: () => {
         axios

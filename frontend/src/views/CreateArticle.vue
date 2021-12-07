@@ -39,6 +39,16 @@
       <p v-show="RcategoryId" class="text-sm text-red-400 mb-2">
         {{ RcategoryId }}
       </p>
+      <label class="text-gray-600 font-light">标签:</label>
+      <input
+        type="text"
+        placeholder="请输入文章标签，以逗号分隔"
+        class="lg:w-1/2 px-3 py-2 mb-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-indigo-300"
+        v-model="tags"
+      />
+      <p v-show="Rtags.length > 0" class="text-sm text-red-400 mb-2">
+        {{ Rtags }}
+      </p>
       <label class="text-gray-600 font-light">摘要（非必须）:</label>
       <input
         type="text"
@@ -154,11 +164,13 @@ export default {
       selectedCategory: null,
 
       cate: "",
+      tags: null,
 
       Rtitle: "",
       Rcontent: "",
       RcategoryId: "",
       Rcate: "",
+      Rtags: [],
       showModal: false,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
@@ -171,6 +183,12 @@ export default {
       ...toRefs(state),
       toast,
       handleCreatePost: () => {
+        state.tags =
+          state.tags !== null ? state.tags.replace(/，/g, ",") : null;
+        if (state.tags == null || state.tags == "") {
+          state.Rtags = "标签不能为空";
+          return;
+        }
         axios
           .post(
             "/api/blog/",
@@ -181,6 +199,7 @@ export default {
                 ? state.selectedCategory.id
                 : 0,
               summery: state.summery,
+              tags: state.tags ? state.tags.split(",") : null,
             },
             {
               headers: {
@@ -209,6 +228,7 @@ export default {
               state.Rtitle = e.response.data.title
                 ? e.response.data.title[0]
                 : "";
+              state.Rtags = e.response.data.tags ? e.response.data.tags[0] : "";
               if (e.response.data.detail) {
                 toast.error(e.response.data.detail, { timeout: 2000 });
               }

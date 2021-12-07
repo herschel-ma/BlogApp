@@ -72,14 +72,14 @@
                       name: 'update',
                       params: {
                         slug: article.slug,
-                        author: article.author,
+                        author: article.author.username,
                       },
                     }"
                   >
                     <svg
                       class="w-6 h-6 text-gray-600 hover:text-blue-500"
                       fill="none"
-                      stroke="currentColor"
+                      stroke="indigo"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -95,7 +95,7 @@
                     <svg
                       class="w-6 h-6 text-gray-600 hover:text-blue-500"
                       fill="none"
-                      stroke="currentColor"
+                      stroke="red"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -111,15 +111,35 @@
                 <div>
                   <a class="flex items-center">
                     <img
+                      v-if="article.author.user"
+                      :src="article.author.user.avatar_url"
+                      alt="avatar"
+                      class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
+                    />
+                    <img
+                      v-else
                       src="https://img.paulzzh.com/touhou/random"
                       alt="avatar"
                       class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
                     />
-                    <h1 class="font-bold text-gray-700 hover:underline">
-                      {{ article.author }}
+                    <h1
+                      class="font-bold text-gray-700 sm:text-sm md:text-xl hover:underline"
+                    >
+                      {{ article.author.username }}
                     </h1>
                   </a>
                 </div>
+              </div>
+              <div v-if="article.tags" class="flex space-x-3">
+                <button
+                  v-for="(tag, i) in article.tags"
+                  :key="i"
+                  ref="button"
+                  class="py-1 px-2 rounded-lg shadow-lg mt-2 flex justify-center align-middle"
+                  :class="randomColor(i)"
+                >
+                  {{ tag }}
+                </button>
               </div>
             </div>
           </transition>
@@ -172,6 +192,9 @@
       >
         <recent-post />
       </transition>
+      <div class="lg:-ml-14 md:-ml-36 sm:hidden md:hidden lg:block">
+        <Tags :width="width" :height="height" :RADIUS="radius" />
+      </div>
     </aside>
   </div>
 </template>
@@ -184,6 +207,7 @@ import Authors from "@/components/Authors";
 import Category from "@/components/Category";
 import RecentPost from "@/components/RecentPost";
 import VPagination from "@hennge/vue3-pagination";
+import Tags from "@/views/Tags";
 import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 import { useToast } from "vue-toastification";
 import { useStore } from "vuex";
@@ -194,6 +218,7 @@ export default {
     Category,
     RecentPost,
     VPagination,
+    Tags,
   },
   setup() {
     const toast = useToast();
@@ -204,8 +229,40 @@ export default {
       totalPages: 0,
       args: "yyy-mm-dd hh:mm:ss",
       page: 1,
+      width: 500,
+      height: 500,
+      radius: 200,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
+    const randomColor = (i) => {
+      const colors = [
+        "red",
+        "gray",
+        "blue",
+        "indigo",
+        "pink",
+        "purple",
+        "yellow",
+        "orange",
+      ];
+      const text = [
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900",
+      ];
+      if (i > colors.length) {
+        i = 0;
+      } else if (i > text.length) {
+        i = 0;
+      }
+      return `bg-${colors[i]}-${text[i]}`;
+    };
     const getAllArticles = (url = "/api/blog/") => {
       axios
         .get(url, {
@@ -288,8 +345,23 @@ export default {
       }
       getAllArticles(url);
     };
+    const askMediaScreen = () => {
+      // var result = window.matchMedia("(max-width:418px)"); //要加括号
+      var result2 = window.matchMedia("(max-width:768px)");
+      var result3 = window.matchMedia("(max-width:992px)");
+      if (result2.matches) {
+        state.width = 100;
+        state.height = 100;
+        state.radius = 25;
+      } else if (result3.matches) {
+        state.width = 400;
+        state.height = 400;
+        state.radius = 25;
+      }
+    };
     onMounted(() => {
       getAllArticles();
+      askMediaScreen();
     });
     return {
       toast,
@@ -298,6 +370,8 @@ export default {
       getAllArticles,
       handleDelete,
       updateHandler,
+      askMediaScreen,
+      randomColor,
     };
   },
 };

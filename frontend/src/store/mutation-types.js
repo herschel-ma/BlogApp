@@ -4,3 +4,6 @@ export const LOGOUT = "LOGOUT";
 export const GITHUB_LOGGEDIN = "GITHUB_LOGGEDIN";
 export const S_USERNAME = "S_USERNAME";
 export const S_CATEGORIES = "S_CATEGORIES";
+export const S_TAGS = "S_TAGS";
+export const S_DEL_TAG = "S_DEL_TAG";
+export const D_DEL_TAG = "D_DEL_TAG";

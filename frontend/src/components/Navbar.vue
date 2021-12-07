@@ -38,11 +38,6 @@
               class="py-5 text-gray-700 hover:text-blue-500"
               >归档</router-link
             >
-            <router-link
-              :to="{ name: 'test' }"
-              class="py-5 text-gray-700 hover:text-blue-500"
-              >测试</router-link
-            >
           </div>
         </div>
         <!-- secordary nav -->

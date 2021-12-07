@@ -56,11 +56,6 @@ const routes = [
     name: "archive",
     component: () => import("@/views/ArchiveBlog"),
   },
-  {
-    path: "/test",
-    name: "test",
-    component: () => import("@/views/Test"),
-  },
 ];
 
 const router = createRouter({
@@ -69,7 +64,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== "login" && !store.state.isLoggedIn) {
+  if (to.name !== "login" && to.name !== "github" && !store.state.isLoggedIn) {
     next({ name: "login" });
   }
   if (

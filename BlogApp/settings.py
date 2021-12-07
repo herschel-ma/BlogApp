@@ -168,9 +168,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y/%m/%d %H:%M:%S",
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_PAGINATION_CLASS': 'blog.pagination.CustomPageNumber',
-    'PAGE_SIZE': 20
+    'PAGE_SIZE': 20,
+    # 'EXCEPTION_HANDLER': 'blog.exception.exception_handler'
 }
 
 WEBPACK_LOADER = {

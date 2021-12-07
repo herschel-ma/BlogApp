@@ -97,8 +97,15 @@
                   </a>
                 </div>
                 <div>
-                  <a href="#" class="flex items-center">
+                  <a class="flex items-center">
                     <img
+                      v-if="article.author.user"
+                      :src="article.author.user.avatar_url"
+                      alt="avatar"
+                      class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
+                    />
+                    <img
+                      v-else
                       src="https://img.paulzzh.com/touhou/random"
                       alt="avatar"
                       class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
@@ -108,6 +115,17 @@
                     </h1>
                   </a>
                 </div>
+              </div>
+              <div v-if="article.tags" class="flex space-x-3">
+                <button
+                  v-for="(tag, i) in article.tags"
+                  :key="i"
+                  ref="button"
+                  class="py-1 px-2 rounded-lg shadow-lg mt-2 flex justify-center align-middle"
+                  :class="randomColor(i)"
+                >
+                  {{ tag }}
+                </button>
               </div>
             </div>
           </transition>
@@ -202,6 +220,35 @@ export default {
       page: 1,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
+    const randomColor = (i) => {
+      const colors = [
+        "red",
+        "gray",
+        "blue",
+        "indigo",
+        "pink",
+        "purple",
+        "yellow",
+        "orange",
+      ];
+      const text = [
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900",
+      ];
+      if (i > colors.length) {
+        i = 0;
+      } else if (i > text.length) {
+        i = 0;
+      }
+      return `bg-${colors[i]}-${text[i]}`;
+    };
     const getArticles = (url = "", query = route.query) => {
       state.articles = [];
       if (url == "") {
@@ -264,6 +311,7 @@ export default {
       handleDelete,
       updateHandler,
       getArticles,
+      randomColor,
     };
   },
 };

@@ -3,7 +3,7 @@ from rest_framework.generics import ListAPIView
 from .models import Blog, Category
 from .serializers import BlogSerializer, CategorySerializer,\
     CategoryDetailSerializer, BlogRecentSerializer, \
-    BlogArchiveSerializer, TagsSerializer
+    BlogArchiveSerializer, TagsSerializer,BlogListSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication,\
     SessionAuthentication
@@ -54,6 +54,12 @@ class BlogViewSet(viewsets.ModelViewSet):
                 return Response({"message": "没有下一篇了"})
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return BlogListSerializer
+        else:
+            return BlogSerializer
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

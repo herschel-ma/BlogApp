@@ -12,6 +12,8 @@ const store = createStore({
       token: "",
       user_name: "",
       categorys: [],
+      tags: [],
+      delTag: 0,
     };
   },
   mutations: {
@@ -33,6 +35,15 @@ const store = createStore({
     },
     [types.S_CATEGORIES](state, categorys) {
       state.categorys = categorys;
+    },
+    [types.S_TAGS](state, tags) {
+      state.tags = tags;
+    },
+    [types.S_DEL_TAG](state, tag) {
+      state.delTag = tag;
+    },
+    [types.D_DEL_TAG](state) {
+      state.delTag = 0;
     },
   },
   actions: {
@@ -89,10 +100,21 @@ const store = createStore({
     storeCategories({ commit }, categories) {
       commit(types.S_CATEGORIES, categories);
     },
+    storeTags({ commit }, tags) {
+      commit(types.S_TAGS, tags);
+    },
+    storeDelTag({ commit }, tag) {
+      commit(types.S_DEL_TAG, tag);
+    },
+    deleteDeleteTag({ commit }) {
+      commit(types.S_DEL_TAG);
+    },
   },
   getters: {
     isLoggedIn: (state) => state.isLoggedIn,
     categorys: (state) => state.categorys,
+    tags: (state) => state.tags,
+    delTag: (state) => state.delTag,
   },
 });
 
