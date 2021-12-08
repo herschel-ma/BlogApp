@@ -1,9 +1,12 @@
+from django.db.models import Count
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from .models import Blog, Category
 from .serializers import BlogSerializer, CategorySerializer,\
     CategoryDetailSerializer, BlogRecentSerializer, \
-    BlogArchiveSerializer, TagsSerializer,BlogListSerializer
+    BlogArchiveSerializer, TagsSerializer,BlogListSerializer, \
+    BlogSimilarSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication,\
     SessionAuthentication
@@ -52,12 +55,20 @@ class BlogViewSet(viewsets.ModelViewSet):
                 created_time__lt=instance.created_time).first()
             if instance is None:
                 return Response({"message": "没有下一篇了"})
+        elif 'similar' in request.query_params:
+            # 根据django-taggit获取相似文章
+            instance.similar_posts = instance.tags.similar_objects()
+            serializer = self.get_serializer(instance.similar_posts[:3],
+                                             many=True)
+            return Response(serializer.data)
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
     def get_serializer_class(self):
         if self.action == "list":
             return BlogListSerializer
+        elif self.action == "retrieve":
+            return BlogSimilarSerializer
         else:
             return BlogSerializer
 

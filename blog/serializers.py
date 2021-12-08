@@ -165,6 +165,26 @@ class BlogRecentSerializer(serializers.ModelSerializer):
         ]
 
 
+class BlogSimilarSerializer(serializers.ModelSerializer):
+    """相似博文"""
+    url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
+                                               lookup_field="slug")
+    slug = serializers.SlugField(read_only=True)
+    author = serializers.StringRelatedField()
+    category = CategorySerializer(read_only=True)
+
+    class Meta:
+        model = Blog
+        fields = [
+            "url",
+            "slug",
+            "title",
+            "author",
+            "category",
+            "created_time",
+        ]
+
+
 class BlogArchiveSerializer(serializers.ModelSerializer):
     """归档博文"""
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",

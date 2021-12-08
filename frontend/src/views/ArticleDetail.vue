@@ -95,19 +95,57 @@
     </section>
 
     <!-- Sidebar Section -->
-    <aside class="w-full md:w-1/3 flex flex-col  px-3">
-      <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-        <p class="text-xl font-semibold pb-5">About Us</p>
-        <p class="pb-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-          mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In
-          hac habitasse platea dictumst.
-        </p>
-        <a
-          href="#"
-          class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4"
-          >关于我们</a
+    <aside class="w-full md:w-1/3 flex flex-col px-3">
+      <div
+        v-if="articles.length > 0"
+        class="w-full bg-white shadow flex flex-col my-4 p-6 space-y-3 justify-center align-middle"
+      >
+        <h1 class="mb-4 text-xl font-bold text-gray-700">相似文章</h1>
+        <div
+          v-for="a in articles"
+          :key="a.id"
+          class="flex flex-col px-8 py-6 bg-white rounded-lg shadow-md justify-center align-middle"
         >
+          <div class="flex items-center justify-center">
+            <a
+              v-if="a.category"
+              class="px-2 py-1 text-sm text-green-100 bg-gray-600 rounded hover:bg-gray-500"
+              >{{ a.category.title }}</a
+            >
+          </div>
+          <router-link
+            class="mt-4 text-center"
+            :to="{
+              name: 'details',
+              params: {
+                slug: a.slug,
+              },
+            }"
+          >
+            {{ a.title }}
+          </router-link>
+          <div
+            class="flex space-y-3 items-center
+            md:flex-col md:justify-center md:space-x-0 md:space-y-3  
+            lg:flex-row lg:space-y-0 lg:justify-between lg:space-x-12 
+            sm:flex-row sm:space-y-0 sm:justify-between sm:space-x-12
+            xs:flex-row sm:space-y-0 xs:justify-between sm:space-x-12"
+          >
+            <div class="flex items-center align-center md:mt-2 lg:mt-0">
+              <img
+                src="https://img.paulzzh.com/touhou/random"
+                alt="avatar"
+                class="object-cover w-8 h-8 rounded-full"
+              />
+              <a class="mx-3 text-sm text-gray-700 hover:underline">{{
+                a.author
+              }}</a>
+            </div>
+            <span class="text-sm font-light text-gray-600">{{
+              a.created_time
+            }}</span>
+          </div>
+        </div>
       </div>
       <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-bold text-gray-700 pb-5">图片集</p>
@@ -187,6 +225,7 @@ export default {
     const router = useRouter();
     const state = reactive({
       article: {},
+      articles: [],
       theme: "default",
       messagePrev: null,
       messageNext: null,
@@ -243,9 +282,30 @@ export default {
           state.messageNext = res.data.message || res.data.title;
           state.nextSlug = res.data.slug || props.slug;
         })
-        .catch((e) => {
-          console.log(e.response.message);
-        });
+        .catch((e) => console.log(e));
+      axios
+        .get(`/api/blog/${slug}?similar`, {
+          headers: {
+            "Content-Type": "Application/json",
+            "X-CSRFTOKEN": Cookies.get("csrftoken"),
+            Authorization: "Token " + state.isLoggedIn,
+          },
+        })
+        .then((response) => {
+          return response.data;
+        })
+        .then((results) => {
+          state.articles = [];
+          state.articles.push(
+            ...results.map((a) => {
+              a.created_time = new Date(a.created_time).toLocaleDateString(
+                "zh-hans"
+              );
+              return a;
+            })
+          );
+        })
+        .catch((e) => console.log(e));
     };
     const onGetCatalog = (list) => {
       state.catalogList = [];

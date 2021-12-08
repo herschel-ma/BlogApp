@@ -5840,6 +5840,1051 @@
       "name": "1854728be2defbdded06.hot-update.json",
       "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1854728be2defbdded06.hot-update.json",
       "publicPath": "http://127.0.0.1:8080/1854728be2defbdded06.hot-update.json"
+    },
+    "0.edbe82f3ef92bf01dbda.hot-update.js": {
+      "name": "0.edbe82f3ef92bf01dbda.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.edbe82f3ef92bf01dbda.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.edbe82f3ef92bf01dbda.hot-update.js"
+    },
+    "edbe82f3ef92bf01dbda.hot-update.json": {
+      "name": "edbe82f3ef92bf01dbda.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/edbe82f3ef92bf01dbda.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/edbe82f3ef92bf01dbda.hot-update.json"
+    },
+    "0.c443949420b2f63dfbad.hot-update.js": {
+      "name": "0.c443949420b2f63dfbad.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.c443949420b2f63dfbad.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.c443949420b2f63dfbad.hot-update.js"
+    },
+    "c443949420b2f63dfbad.hot-update.json": {
+      "name": "c443949420b2f63dfbad.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/c443949420b2f63dfbad.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/c443949420b2f63dfbad.hot-update.json"
+    },
+    "0.bc191481660fcc863d70.hot-update.js": {
+      "name": "0.bc191481660fcc863d70.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.bc191481660fcc863d70.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.bc191481660fcc863d70.hot-update.js"
+    },
+    "bc191481660fcc863d70.hot-update.json": {
+      "name": "bc191481660fcc863d70.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/bc191481660fcc863d70.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/bc191481660fcc863d70.hot-update.json"
+    },
+    "0.11492f1c9c3b4e278b41.hot-update.js": {
+      "name": "0.11492f1c9c3b4e278b41.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.11492f1c9c3b4e278b41.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.11492f1c9c3b4e278b41.hot-update.js"
+    },
+    "11492f1c9c3b4e278b41.hot-update.json": {
+      "name": "11492f1c9c3b4e278b41.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/11492f1c9c3b4e278b41.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/11492f1c9c3b4e278b41.hot-update.json"
+    },
+    "0.a5d090fccd9871603801.hot-update.js": {
+      "name": "0.a5d090fccd9871603801.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a5d090fccd9871603801.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a5d090fccd9871603801.hot-update.js"
+    },
+    "a5d090fccd9871603801.hot-update.json": {
+      "name": "a5d090fccd9871603801.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a5d090fccd9871603801.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a5d090fccd9871603801.hot-update.json"
+    },
+    "0.dddbb61454559fdc837f.hot-update.js": {
+      "name": "0.dddbb61454559fdc837f.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.dddbb61454559fdc837f.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.dddbb61454559fdc837f.hot-update.js"
+    },
+    "dddbb61454559fdc837f.hot-update.json": {
+      "name": "dddbb61454559fdc837f.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/dddbb61454559fdc837f.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/dddbb61454559fdc837f.hot-update.json"
+    },
+    "0.081a30aa916186467093.hot-update.js": {
+      "name": "0.081a30aa916186467093.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.081a30aa916186467093.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.081a30aa916186467093.hot-update.js"
+    },
+    "081a30aa916186467093.hot-update.json": {
+      "name": "081a30aa916186467093.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/081a30aa916186467093.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/081a30aa916186467093.hot-update.json"
+    },
+    "0.0c0dbbaf01e3a5ec6137.hot-update.js": {
+      "name": "0.0c0dbbaf01e3a5ec6137.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.0c0dbbaf01e3a5ec6137.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.0c0dbbaf01e3a5ec6137.hot-update.js"
+    },
+    "0c0dbbaf01e3a5ec6137.hot-update.json": {
+      "name": "0c0dbbaf01e3a5ec6137.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0c0dbbaf01e3a5ec6137.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/0c0dbbaf01e3a5ec6137.hot-update.json"
+    },
+    "0.9b9f7bd0a6fde0fa22dc.hot-update.js": {
+      "name": "0.9b9f7bd0a6fde0fa22dc.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.9b9f7bd0a6fde0fa22dc.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.9b9f7bd0a6fde0fa22dc.hot-update.js"
+    },
+    "9b9f7bd0a6fde0fa22dc.hot-update.json": {
+      "name": "9b9f7bd0a6fde0fa22dc.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/9b9f7bd0a6fde0fa22dc.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/9b9f7bd0a6fde0fa22dc.hot-update.json"
+    },
+    "0.ac5412a47951969455df.hot-update.js": {
+      "name": "0.ac5412a47951969455df.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.ac5412a47951969455df.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.ac5412a47951969455df.hot-update.js"
+    },
+    "ac5412a47951969455df.hot-update.json": {
+      "name": "ac5412a47951969455df.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ac5412a47951969455df.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ac5412a47951969455df.hot-update.json"
+    },
+    "1.10e7b0568742f1fd49d7.hot-update.js": {
+      "name": "1.10e7b0568742f1fd49d7.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1.10e7b0568742f1fd49d7.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/1.10e7b0568742f1fd49d7.hot-update.js"
+    },
+    "10e7b0568742f1fd49d7.hot-update.json": {
+      "name": "10e7b0568742f1fd49d7.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/10e7b0568742f1fd49d7.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/10e7b0568742f1fd49d7.hot-update.json"
+    },
+    "1.e25a5e2ff0bf34d2f8b3.hot-update.js": {
+      "name": "1.e25a5e2ff0bf34d2f8b3.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1.e25a5e2ff0bf34d2f8b3.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/1.e25a5e2ff0bf34d2f8b3.hot-update.js"
+    },
+    "e25a5e2ff0bf34d2f8b3.hot-update.json": {
+      "name": "e25a5e2ff0bf34d2f8b3.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e25a5e2ff0bf34d2f8b3.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e25a5e2ff0bf34d2f8b3.hot-update.json"
+    },
+    "1.8e758490ea827e1a6e70.hot-update.js": {
+      "name": "1.8e758490ea827e1a6e70.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1.8e758490ea827e1a6e70.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/1.8e758490ea827e1a6e70.hot-update.js"
+    },
+    "8e758490ea827e1a6e70.hot-update.json": {
+      "name": "8e758490ea827e1a6e70.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/8e758490ea827e1a6e70.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/8e758490ea827e1a6e70.hot-update.json"
+    },
+    "1.2f7d4f822dc7bc41b607.hot-update.js": {
+      "name": "1.2f7d4f822dc7bc41b607.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1.2f7d4f822dc7bc41b607.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/1.2f7d4f822dc7bc41b607.hot-update.js"
+    },
+    "2f7d4f822dc7bc41b607.hot-update.json": {
+      "name": "2f7d4f822dc7bc41b607.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/2f7d4f822dc7bc41b607.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/2f7d4f822dc7bc41b607.hot-update.json"
+    },
+    "0.b6d9fbead9231c14d436.hot-update.js": {
+      "name": "0.b6d9fbead9231c14d436.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.b6d9fbead9231c14d436.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.b6d9fbead9231c14d436.hot-update.js"
+    },
+    "b6d9fbead9231c14d436.hot-update.json": {
+      "name": "b6d9fbead9231c14d436.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/b6d9fbead9231c14d436.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/b6d9fbead9231c14d436.hot-update.json"
+    },
+    "5b9d6bb677b9e0f41260.hot-update.json": {
+      "name": "5b9d6bb677b9e0f41260.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/5b9d6bb677b9e0f41260.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/5b9d6bb677b9e0f41260.hot-update.json"
+    },
+    "0.ff0c09434ea5fb89a524.hot-update.js": {
+      "name": "0.ff0c09434ea5fb89a524.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.ff0c09434ea5fb89a524.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.ff0c09434ea5fb89a524.hot-update.js"
+    },
+    "ff0c09434ea5fb89a524.hot-update.json": {
+      "name": "ff0c09434ea5fb89a524.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ff0c09434ea5fb89a524.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ff0c09434ea5fb89a524.hot-update.json"
+    },
+    "0.7e8d33cbe3957a80d086.hot-update.js": {
+      "name": "0.7e8d33cbe3957a80d086.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.7e8d33cbe3957a80d086.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.7e8d33cbe3957a80d086.hot-update.js"
+    },
+    "7e8d33cbe3957a80d086.hot-update.json": {
+      "name": "7e8d33cbe3957a80d086.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/7e8d33cbe3957a80d086.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/7e8d33cbe3957a80d086.hot-update.json"
+    },
+    "0.2f039a0c70fd9b193c74.hot-update.js": {
+      "name": "0.2f039a0c70fd9b193c74.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.2f039a0c70fd9b193c74.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.2f039a0c70fd9b193c74.hot-update.js"
+    },
+    "2f039a0c70fd9b193c74.hot-update.json": {
+      "name": "2f039a0c70fd9b193c74.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/2f039a0c70fd9b193c74.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/2f039a0c70fd9b193c74.hot-update.json"
+    },
+    "49a4c64af0e0817552e7.hot-update.json": {
+      "name": "49a4c64af0e0817552e7.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/49a4c64af0e0817552e7.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/49a4c64af0e0817552e7.hot-update.json"
+    },
+    "0.29785aeec28d153449c9.hot-update.js": {
+      "name": "0.29785aeec28d153449c9.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.29785aeec28d153449c9.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.29785aeec28d153449c9.hot-update.js"
+    },
+    "29785aeec28d153449c9.hot-update.json": {
+      "name": "29785aeec28d153449c9.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/29785aeec28d153449c9.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/29785aeec28d153449c9.hot-update.json"
+    },
+    "0.e45dbd7e43523d83dabb.hot-update.js": {
+      "name": "0.e45dbd7e43523d83dabb.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.e45dbd7e43523d83dabb.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.e45dbd7e43523d83dabb.hot-update.js"
+    },
+    "e45dbd7e43523d83dabb.hot-update.json": {
+      "name": "e45dbd7e43523d83dabb.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e45dbd7e43523d83dabb.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e45dbd7e43523d83dabb.hot-update.json"
+    },
+    "0.be26779536a370f13ec6.hot-update.js": {
+      "name": "0.be26779536a370f13ec6.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.be26779536a370f13ec6.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.be26779536a370f13ec6.hot-update.js"
+    },
+    "be26779536a370f13ec6.hot-update.json": {
+      "name": "be26779536a370f13ec6.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/be26779536a370f13ec6.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/be26779536a370f13ec6.hot-update.json"
+    },
+    "0.d9fe32d09387648fd0fd.hot-update.js": {
+      "name": "0.d9fe32d09387648fd0fd.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.d9fe32d09387648fd0fd.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.d9fe32d09387648fd0fd.hot-update.js"
+    },
+    "d9fe32d09387648fd0fd.hot-update.json": {
+      "name": "d9fe32d09387648fd0fd.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/d9fe32d09387648fd0fd.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/d9fe32d09387648fd0fd.hot-update.json"
+    },
+    "004fd7dcea851f8ca607.hot-update.json": {
+      "name": "004fd7dcea851f8ca607.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/004fd7dcea851f8ca607.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/004fd7dcea851f8ca607.hot-update.json"
+    },
+    "0.de51357f8a9bc8a7b24d.hot-update.js": {
+      "name": "0.de51357f8a9bc8a7b24d.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.de51357f8a9bc8a7b24d.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.de51357f8a9bc8a7b24d.hot-update.js"
+    },
+    "de51357f8a9bc8a7b24d.hot-update.json": {
+      "name": "de51357f8a9bc8a7b24d.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/de51357f8a9bc8a7b24d.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/de51357f8a9bc8a7b24d.hot-update.json"
+    },
+    "0.db8190db7ebadcfceb95.hot-update.js": {
+      "name": "0.db8190db7ebadcfceb95.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.db8190db7ebadcfceb95.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.db8190db7ebadcfceb95.hot-update.js"
+    },
+    "db8190db7ebadcfceb95.hot-update.json": {
+      "name": "db8190db7ebadcfceb95.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/db8190db7ebadcfceb95.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/db8190db7ebadcfceb95.hot-update.json"
+    },
+    "0.afe8415cd46cd62f3ab5.hot-update.js": {
+      "name": "0.afe8415cd46cd62f3ab5.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.afe8415cd46cd62f3ab5.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.afe8415cd46cd62f3ab5.hot-update.js"
+    },
+    "afe8415cd46cd62f3ab5.hot-update.json": {
+      "name": "afe8415cd46cd62f3ab5.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/afe8415cd46cd62f3ab5.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/afe8415cd46cd62f3ab5.hot-update.json"
+    },
+    "0.345cbb35021267be0df1.hot-update.js": {
+      "name": "0.345cbb35021267be0df1.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.345cbb35021267be0df1.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.345cbb35021267be0df1.hot-update.js"
+    },
+    "345cbb35021267be0df1.hot-update.json": {
+      "name": "345cbb35021267be0df1.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/345cbb35021267be0df1.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/345cbb35021267be0df1.hot-update.json"
+    },
+    "0.2bb782b4e748064839dd.hot-update.js": {
+      "name": "0.2bb782b4e748064839dd.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.2bb782b4e748064839dd.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.2bb782b4e748064839dd.hot-update.js"
+    },
+    "2bb782b4e748064839dd.hot-update.json": {
+      "name": "2bb782b4e748064839dd.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/2bb782b4e748064839dd.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/2bb782b4e748064839dd.hot-update.json"
+    },
+    "0.947d39bd7fa38dbf1ab5.hot-update.js": {
+      "name": "0.947d39bd7fa38dbf1ab5.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.947d39bd7fa38dbf1ab5.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.947d39bd7fa38dbf1ab5.hot-update.js"
+    },
+    "947d39bd7fa38dbf1ab5.hot-update.json": {
+      "name": "947d39bd7fa38dbf1ab5.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/947d39bd7fa38dbf1ab5.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/947d39bd7fa38dbf1ab5.hot-update.json"
+    },
+    "0.a15b296662431a3fb1bd.hot-update.js": {
+      "name": "0.a15b296662431a3fb1bd.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a15b296662431a3fb1bd.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a15b296662431a3fb1bd.hot-update.js"
+    },
+    "a15b296662431a3fb1bd.hot-update.json": {
+      "name": "a15b296662431a3fb1bd.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a15b296662431a3fb1bd.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a15b296662431a3fb1bd.hot-update.json"
+    },
+    "0.e8c5a809f04aabca7490.hot-update.js": {
+      "name": "0.e8c5a809f04aabca7490.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.e8c5a809f04aabca7490.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.e8c5a809f04aabca7490.hot-update.js"
+    },
+    "e8c5a809f04aabca7490.hot-update.json": {
+      "name": "e8c5a809f04aabca7490.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e8c5a809f04aabca7490.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e8c5a809f04aabca7490.hot-update.json"
+    },
+    "0.ed2ed3b398a868d2d79e.hot-update.js": {
+      "name": "0.ed2ed3b398a868d2d79e.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.ed2ed3b398a868d2d79e.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.ed2ed3b398a868d2d79e.hot-update.js"
+    },
+    "ed2ed3b398a868d2d79e.hot-update.json": {
+      "name": "ed2ed3b398a868d2d79e.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ed2ed3b398a868d2d79e.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ed2ed3b398a868d2d79e.hot-update.json"
+    },
+    "0.8f595e969296df247aff.hot-update.js": {
+      "name": "0.8f595e969296df247aff.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.8f595e969296df247aff.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.8f595e969296df247aff.hot-update.js"
+    },
+    "8f595e969296df247aff.hot-update.json": {
+      "name": "8f595e969296df247aff.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/8f595e969296df247aff.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/8f595e969296df247aff.hot-update.json"
+    },
+    "0.becd81b45113edd63fac.hot-update.js": {
+      "name": "0.becd81b45113edd63fac.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.becd81b45113edd63fac.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.becd81b45113edd63fac.hot-update.js"
+    },
+    "becd81b45113edd63fac.hot-update.json": {
+      "name": "becd81b45113edd63fac.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/becd81b45113edd63fac.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/becd81b45113edd63fac.hot-update.json"
+    },
+    "0.04e6529c166039cb3b45.hot-update.js": {
+      "name": "0.04e6529c166039cb3b45.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.04e6529c166039cb3b45.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.04e6529c166039cb3b45.hot-update.js"
+    },
+    "04e6529c166039cb3b45.hot-update.json": {
+      "name": "04e6529c166039cb3b45.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/04e6529c166039cb3b45.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/04e6529c166039cb3b45.hot-update.json"
+    },
+    "0.0d34b23959a52aadd021.hot-update.js": {
+      "name": "0.0d34b23959a52aadd021.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.0d34b23959a52aadd021.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.0d34b23959a52aadd021.hot-update.js"
+    },
+    "0d34b23959a52aadd021.hot-update.json": {
+      "name": "0d34b23959a52aadd021.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0d34b23959a52aadd021.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/0d34b23959a52aadd021.hot-update.json"
+    },
+    "0.1c38508b2cd78b9d76da.hot-update.js": {
+      "name": "0.1c38508b2cd78b9d76da.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.1c38508b2cd78b9d76da.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.1c38508b2cd78b9d76da.hot-update.js"
+    },
+    "1c38508b2cd78b9d76da.hot-update.json": {
+      "name": "1c38508b2cd78b9d76da.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1c38508b2cd78b9d76da.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/1c38508b2cd78b9d76da.hot-update.json"
+    },
+    "0.f37f489b7ffb505eea8d.hot-update.js": {
+      "name": "0.f37f489b7ffb505eea8d.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.f37f489b7ffb505eea8d.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.f37f489b7ffb505eea8d.hot-update.js"
+    },
+    "f37f489b7ffb505eea8d.hot-update.json": {
+      "name": "f37f489b7ffb505eea8d.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/f37f489b7ffb505eea8d.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/f37f489b7ffb505eea8d.hot-update.json"
+    },
+    "0.22637b5b1701bf6ae98e.hot-update.js": {
+      "name": "0.22637b5b1701bf6ae98e.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.22637b5b1701bf6ae98e.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.22637b5b1701bf6ae98e.hot-update.js"
+    },
+    "22637b5b1701bf6ae98e.hot-update.json": {
+      "name": "22637b5b1701bf6ae98e.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/22637b5b1701bf6ae98e.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/22637b5b1701bf6ae98e.hot-update.json"
+    },
+    "0.ea6288776da83a0045b2.hot-update.js": {
+      "name": "0.ea6288776da83a0045b2.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.ea6288776da83a0045b2.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.ea6288776da83a0045b2.hot-update.js"
+    },
+    "ea6288776da83a0045b2.hot-update.json": {
+      "name": "ea6288776da83a0045b2.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ea6288776da83a0045b2.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ea6288776da83a0045b2.hot-update.json"
+    },
+    "0.0c0b34106bb8c6a4c416.hot-update.js": {
+      "name": "0.0c0b34106bb8c6a4c416.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.0c0b34106bb8c6a4c416.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.0c0b34106bb8c6a4c416.hot-update.js"
+    },
+    "0c0b34106bb8c6a4c416.hot-update.json": {
+      "name": "0c0b34106bb8c6a4c416.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0c0b34106bb8c6a4c416.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/0c0b34106bb8c6a4c416.hot-update.json"
+    },
+    "0.1a05e8c4b1f137c3faa8.hot-update.js": {
+      "name": "0.1a05e8c4b1f137c3faa8.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.1a05e8c4b1f137c3faa8.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.1a05e8c4b1f137c3faa8.hot-update.js"
+    },
+    "1a05e8c4b1f137c3faa8.hot-update.json": {
+      "name": "1a05e8c4b1f137c3faa8.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1a05e8c4b1f137c3faa8.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/1a05e8c4b1f137c3faa8.hot-update.json"
+    },
+    "0.48e2101641be0b1807b4.hot-update.js": {
+      "name": "0.48e2101641be0b1807b4.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.48e2101641be0b1807b4.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.48e2101641be0b1807b4.hot-update.js"
+    },
+    "48e2101641be0b1807b4.hot-update.json": {
+      "name": "48e2101641be0b1807b4.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/48e2101641be0b1807b4.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/48e2101641be0b1807b4.hot-update.json"
+    },
+    "0.73e279272d350635a8ab.hot-update.js": {
+      "name": "0.73e279272d350635a8ab.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.73e279272d350635a8ab.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.73e279272d350635a8ab.hot-update.js"
+    },
+    "73e279272d350635a8ab.hot-update.json": {
+      "name": "73e279272d350635a8ab.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/73e279272d350635a8ab.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/73e279272d350635a8ab.hot-update.json"
+    },
+    "0.17a021055106160141ac.hot-update.js": {
+      "name": "0.17a021055106160141ac.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.17a021055106160141ac.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.17a021055106160141ac.hot-update.js"
+    },
+    "17a021055106160141ac.hot-update.json": {
+      "name": "17a021055106160141ac.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/17a021055106160141ac.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/17a021055106160141ac.hot-update.json"
+    },
+    "0.0a8df2f94ad14d7a24e2.hot-update.js": {
+      "name": "0.0a8df2f94ad14d7a24e2.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.0a8df2f94ad14d7a24e2.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.0a8df2f94ad14d7a24e2.hot-update.js"
+    },
+    "0a8df2f94ad14d7a24e2.hot-update.json": {
+      "name": "0a8df2f94ad14d7a24e2.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0a8df2f94ad14d7a24e2.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/0a8df2f94ad14d7a24e2.hot-update.json"
+    },
+    "0.b799649df4e8dabdb8a3.hot-update.js": {
+      "name": "0.b799649df4e8dabdb8a3.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.b799649df4e8dabdb8a3.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.b799649df4e8dabdb8a3.hot-update.js"
+    },
+    "b799649df4e8dabdb8a3.hot-update.json": {
+      "name": "b799649df4e8dabdb8a3.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/b799649df4e8dabdb8a3.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/b799649df4e8dabdb8a3.hot-update.json"
+    },
+    "0.eb4d7731cbd8f290b17a.hot-update.js": {
+      "name": "0.eb4d7731cbd8f290b17a.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.eb4d7731cbd8f290b17a.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.eb4d7731cbd8f290b17a.hot-update.js"
+    },
+    "eb4d7731cbd8f290b17a.hot-update.json": {
+      "name": "eb4d7731cbd8f290b17a.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/eb4d7731cbd8f290b17a.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/eb4d7731cbd8f290b17a.hot-update.json"
+    },
+    "0.4b00c7d80eb52552df13.hot-update.js": {
+      "name": "0.4b00c7d80eb52552df13.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.4b00c7d80eb52552df13.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.4b00c7d80eb52552df13.hot-update.js"
+    },
+    "4b00c7d80eb52552df13.hot-update.json": {
+      "name": "4b00c7d80eb52552df13.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/4b00c7d80eb52552df13.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/4b00c7d80eb52552df13.hot-update.json"
+    },
+    "0.e84d8ffb8840cbc6fa57.hot-update.js": {
+      "name": "0.e84d8ffb8840cbc6fa57.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.e84d8ffb8840cbc6fa57.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.e84d8ffb8840cbc6fa57.hot-update.js"
+    },
+    "e84d8ffb8840cbc6fa57.hot-update.json": {
+      "name": "e84d8ffb8840cbc6fa57.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e84d8ffb8840cbc6fa57.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e84d8ffb8840cbc6fa57.hot-update.json"
+    },
+    "0.94f368844c7669ac9c5c.hot-update.js": {
+      "name": "0.94f368844c7669ac9c5c.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.94f368844c7669ac9c5c.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.94f368844c7669ac9c5c.hot-update.js"
+    },
+    "94f368844c7669ac9c5c.hot-update.json": {
+      "name": "94f368844c7669ac9c5c.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/94f368844c7669ac9c5c.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/94f368844c7669ac9c5c.hot-update.json"
+    },
+    "0.09c5abffa917f265d15d.hot-update.js": {
+      "name": "0.09c5abffa917f265d15d.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.09c5abffa917f265d15d.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.09c5abffa917f265d15d.hot-update.js"
+    },
+    "09c5abffa917f265d15d.hot-update.json": {
+      "name": "09c5abffa917f265d15d.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/09c5abffa917f265d15d.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/09c5abffa917f265d15d.hot-update.json"
+    },
+    "0.cf9b6db4762f0b51882f.hot-update.js": {
+      "name": "0.cf9b6db4762f0b51882f.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.cf9b6db4762f0b51882f.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.cf9b6db4762f0b51882f.hot-update.js"
+    },
+    "cf9b6db4762f0b51882f.hot-update.json": {
+      "name": "cf9b6db4762f0b51882f.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/cf9b6db4762f0b51882f.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/cf9b6db4762f0b51882f.hot-update.json"
+    },
+    "0.27bd4eb82e0215e5555b.hot-update.js": {
+      "name": "0.27bd4eb82e0215e5555b.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.27bd4eb82e0215e5555b.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.27bd4eb82e0215e5555b.hot-update.js"
+    },
+    "27bd4eb82e0215e5555b.hot-update.json": {
+      "name": "27bd4eb82e0215e5555b.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/27bd4eb82e0215e5555b.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/27bd4eb82e0215e5555b.hot-update.json"
+    },
+    "0.3e82c4b706e97161a16a.hot-update.js": {
+      "name": "0.3e82c4b706e97161a16a.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.3e82c4b706e97161a16a.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.3e82c4b706e97161a16a.hot-update.js"
+    },
+    "3e82c4b706e97161a16a.hot-update.json": {
+      "name": "3e82c4b706e97161a16a.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/3e82c4b706e97161a16a.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/3e82c4b706e97161a16a.hot-update.json"
+    },
+    "0.d213d6b92588c76aa2bb.hot-update.js": {
+      "name": "0.d213d6b92588c76aa2bb.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.d213d6b92588c76aa2bb.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.d213d6b92588c76aa2bb.hot-update.js"
+    },
+    "d213d6b92588c76aa2bb.hot-update.json": {
+      "name": "d213d6b92588c76aa2bb.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/d213d6b92588c76aa2bb.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/d213d6b92588c76aa2bb.hot-update.json"
+    },
+    "0.50200b79e0846df319ed.hot-update.js": {
+      "name": "0.50200b79e0846df319ed.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.50200b79e0846df319ed.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.50200b79e0846df319ed.hot-update.js"
+    },
+    "50200b79e0846df319ed.hot-update.json": {
+      "name": "50200b79e0846df319ed.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/50200b79e0846df319ed.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/50200b79e0846df319ed.hot-update.json"
+    },
+    "0.640767588cb0cf7fd223.hot-update.js": {
+      "name": "0.640767588cb0cf7fd223.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.640767588cb0cf7fd223.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.640767588cb0cf7fd223.hot-update.js"
+    },
+    "640767588cb0cf7fd223.hot-update.json": {
+      "name": "640767588cb0cf7fd223.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/640767588cb0cf7fd223.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/640767588cb0cf7fd223.hot-update.json"
+    },
+    "0.0385d934fa0d5a1b6526.hot-update.js": {
+      "name": "0.0385d934fa0d5a1b6526.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.0385d934fa0d5a1b6526.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.0385d934fa0d5a1b6526.hot-update.js"
+    },
+    "0385d934fa0d5a1b6526.hot-update.json": {
+      "name": "0385d934fa0d5a1b6526.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0385d934fa0d5a1b6526.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/0385d934fa0d5a1b6526.hot-update.json"
+    },
+    "0.5177477b53e36d05e08c.hot-update.js": {
+      "name": "0.5177477b53e36d05e08c.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.5177477b53e36d05e08c.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.5177477b53e36d05e08c.hot-update.js"
+    },
+    "5177477b53e36d05e08c.hot-update.json": {
+      "name": "5177477b53e36d05e08c.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/5177477b53e36d05e08c.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/5177477b53e36d05e08c.hot-update.json"
+    },
+    "1f9a915946452a81742f.hot-update.json": {
+      "name": "1f9a915946452a81742f.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1f9a915946452a81742f.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/1f9a915946452a81742f.hot-update.json"
+    },
+    "0.de0b744668588c4c1d24.hot-update.js": {
+      "name": "0.de0b744668588c4c1d24.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.de0b744668588c4c1d24.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.de0b744668588c4c1d24.hot-update.js"
+    },
+    "de0b744668588c4c1d24.hot-update.json": {
+      "name": "de0b744668588c4c1d24.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/de0b744668588c4c1d24.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/de0b744668588c4c1d24.hot-update.json"
+    },
+    "0.a1f59e936b9594141b1e.hot-update.js": {
+      "name": "0.a1f59e936b9594141b1e.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a1f59e936b9594141b1e.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a1f59e936b9594141b1e.hot-update.js"
+    },
+    "a1f59e936b9594141b1e.hot-update.json": {
+      "name": "a1f59e936b9594141b1e.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a1f59e936b9594141b1e.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a1f59e936b9594141b1e.hot-update.json"
+    },
+    "0.7aaab1593ff46ff37c67.hot-update.js": {
+      "name": "0.7aaab1593ff46ff37c67.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.7aaab1593ff46ff37c67.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.7aaab1593ff46ff37c67.hot-update.js"
+    },
+    "7aaab1593ff46ff37c67.hot-update.json": {
+      "name": "7aaab1593ff46ff37c67.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/7aaab1593ff46ff37c67.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/7aaab1593ff46ff37c67.hot-update.json"
+    },
+    "e7f5235c7ef6fe4945f3.hot-update.json": {
+      "name": "e7f5235c7ef6fe4945f3.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e7f5235c7ef6fe4945f3.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e7f5235c7ef6fe4945f3.hot-update.json"
+    },
+    "0.20347e4f07e8e398f725.hot-update.js": {
+      "name": "0.20347e4f07e8e398f725.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.20347e4f07e8e398f725.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.20347e4f07e8e398f725.hot-update.js"
+    },
+    "20347e4f07e8e398f725.hot-update.json": {
+      "name": "20347e4f07e8e398f725.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/20347e4f07e8e398f725.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/20347e4f07e8e398f725.hot-update.json"
+    },
+    "0.c1b01ec5cd6f98a41ef5.hot-update.js": {
+      "name": "0.c1b01ec5cd6f98a41ef5.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.c1b01ec5cd6f98a41ef5.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.c1b01ec5cd6f98a41ef5.hot-update.js"
+    },
+    "c1b01ec5cd6f98a41ef5.hot-update.json": {
+      "name": "c1b01ec5cd6f98a41ef5.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/c1b01ec5cd6f98a41ef5.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/c1b01ec5cd6f98a41ef5.hot-update.json"
+    },
+    "0.c46547141f07509f7f87.hot-update.js": {
+      "name": "0.c46547141f07509f7f87.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.c46547141f07509f7f87.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.c46547141f07509f7f87.hot-update.js"
+    },
+    "c46547141f07509f7f87.hot-update.json": {
+      "name": "c46547141f07509f7f87.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/c46547141f07509f7f87.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/c46547141f07509f7f87.hot-update.json"
+    },
+    "88128462cd9625ed455a.hot-update.json": {
+      "name": "88128462cd9625ed455a.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/88128462cd9625ed455a.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/88128462cd9625ed455a.hot-update.json"
+    },
+    "0.ff5fa7a49a8b20c0fae2.hot-update.js": {
+      "name": "0.ff5fa7a49a8b20c0fae2.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.ff5fa7a49a8b20c0fae2.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.ff5fa7a49a8b20c0fae2.hot-update.js"
+    },
+    "ff5fa7a49a8b20c0fae2.hot-update.json": {
+      "name": "ff5fa7a49a8b20c0fae2.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ff5fa7a49a8b20c0fae2.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ff5fa7a49a8b20c0fae2.hot-update.json"
+    },
+    "0.b75a846ca86b1fe6ca4b.hot-update.js": {
+      "name": "0.b75a846ca86b1fe6ca4b.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.b75a846ca86b1fe6ca4b.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.b75a846ca86b1fe6ca4b.hot-update.js"
+    },
+    "b75a846ca86b1fe6ca4b.hot-update.json": {
+      "name": "b75a846ca86b1fe6ca4b.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/b75a846ca86b1fe6ca4b.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/b75a846ca86b1fe6ca4b.hot-update.json"
+    },
+    "0.a6fe819c944658816cde.hot-update.js": {
+      "name": "0.a6fe819c944658816cde.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a6fe819c944658816cde.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a6fe819c944658816cde.hot-update.js"
+    },
+    "a6fe819c944658816cde.hot-update.json": {
+      "name": "a6fe819c944658816cde.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a6fe819c944658816cde.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a6fe819c944658816cde.hot-update.json"
+    },
+    "0.c90cb3d143c3f225dfaa.hot-update.js": {
+      "name": "0.c90cb3d143c3f225dfaa.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.c90cb3d143c3f225dfaa.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.c90cb3d143c3f225dfaa.hot-update.js"
+    },
+    "c90cb3d143c3f225dfaa.hot-update.json": {
+      "name": "c90cb3d143c3f225dfaa.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/c90cb3d143c3f225dfaa.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/c90cb3d143c3f225dfaa.hot-update.json"
+    },
+    "0.b082b053b9d9baf5947b.hot-update.js": {
+      "name": "0.b082b053b9d9baf5947b.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.b082b053b9d9baf5947b.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.b082b053b9d9baf5947b.hot-update.js"
+    },
+    "b082b053b9d9baf5947b.hot-update.json": {
+      "name": "b082b053b9d9baf5947b.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/b082b053b9d9baf5947b.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/b082b053b9d9baf5947b.hot-update.json"
+    },
+    "0.4c6d5746cfdc048dd91c.hot-update.js": {
+      "name": "0.4c6d5746cfdc048dd91c.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.4c6d5746cfdc048dd91c.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.4c6d5746cfdc048dd91c.hot-update.js"
+    },
+    "4c6d5746cfdc048dd91c.hot-update.json": {
+      "name": "4c6d5746cfdc048dd91c.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/4c6d5746cfdc048dd91c.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/4c6d5746cfdc048dd91c.hot-update.json"
+    },
+    "0.e74a642db093222a984a.hot-update.js": {
+      "name": "0.e74a642db093222a984a.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.e74a642db093222a984a.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.e74a642db093222a984a.hot-update.js"
+    },
+    "e74a642db093222a984a.hot-update.json": {
+      "name": "e74a642db093222a984a.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e74a642db093222a984a.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e74a642db093222a984a.hot-update.json"
+    },
+    "0.a441e50afdbd313437d2.hot-update.js": {
+      "name": "0.a441e50afdbd313437d2.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a441e50afdbd313437d2.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a441e50afdbd313437d2.hot-update.js"
+    },
+    "a441e50afdbd313437d2.hot-update.json": {
+      "name": "a441e50afdbd313437d2.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a441e50afdbd313437d2.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a441e50afdbd313437d2.hot-update.json"
+    },
+    "0.cf0da9a5cf869287b616.hot-update.js": {
+      "name": "0.cf0da9a5cf869287b616.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.cf0da9a5cf869287b616.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.cf0da9a5cf869287b616.hot-update.js"
+    },
+    "cf0da9a5cf869287b616.hot-update.json": {
+      "name": "cf0da9a5cf869287b616.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/cf0da9a5cf869287b616.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/cf0da9a5cf869287b616.hot-update.json"
+    },
+    "0.e089a9c7018da8325616.hot-update.js": {
+      "name": "0.e089a9c7018da8325616.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.e089a9c7018da8325616.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.e089a9c7018da8325616.hot-update.js"
+    },
+    "e089a9c7018da8325616.hot-update.json": {
+      "name": "e089a9c7018da8325616.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e089a9c7018da8325616.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e089a9c7018da8325616.hot-update.json"
+    },
+    "71e4ce5056757c7633eb.hot-update.json": {
+      "name": "71e4ce5056757c7633eb.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/71e4ce5056757c7633eb.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/71e4ce5056757c7633eb.hot-update.json"
+    },
+    "0.9b7de7ab5d3f5afdce90.hot-update.js": {
+      "name": "0.9b7de7ab5d3f5afdce90.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.9b7de7ab5d3f5afdce90.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.9b7de7ab5d3f5afdce90.hot-update.js"
+    },
+    "9b7de7ab5d3f5afdce90.hot-update.json": {
+      "name": "9b7de7ab5d3f5afdce90.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/9b7de7ab5d3f5afdce90.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/9b7de7ab5d3f5afdce90.hot-update.json"
+    },
+    "0.c793f6f7203d337454ff.hot-update.js": {
+      "name": "0.c793f6f7203d337454ff.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.c793f6f7203d337454ff.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.c793f6f7203d337454ff.hot-update.js"
+    },
+    "c793f6f7203d337454ff.hot-update.json": {
+      "name": "c793f6f7203d337454ff.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/c793f6f7203d337454ff.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/c793f6f7203d337454ff.hot-update.json"
+    },
+    "0.767448d06a1ef64cbe6d.hot-update.js": {
+      "name": "0.767448d06a1ef64cbe6d.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.767448d06a1ef64cbe6d.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.767448d06a1ef64cbe6d.hot-update.js"
+    },
+    "767448d06a1ef64cbe6d.hot-update.json": {
+      "name": "767448d06a1ef64cbe6d.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/767448d06a1ef64cbe6d.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/767448d06a1ef64cbe6d.hot-update.json"
+    },
+    "0.a3c9c68677678eb0b2e2.hot-update.js": {
+      "name": "0.a3c9c68677678eb0b2e2.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a3c9c68677678eb0b2e2.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a3c9c68677678eb0b2e2.hot-update.js"
+    },
+    "a3c9c68677678eb0b2e2.hot-update.json": {
+      "name": "a3c9c68677678eb0b2e2.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a3c9c68677678eb0b2e2.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a3c9c68677678eb0b2e2.hot-update.json"
+    },
+    "0.ad55aa85fc59c14b3e43.hot-update.js": {
+      "name": "0.ad55aa85fc59c14b3e43.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.ad55aa85fc59c14b3e43.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.ad55aa85fc59c14b3e43.hot-update.js"
+    },
+    "ad55aa85fc59c14b3e43.hot-update.json": {
+      "name": "ad55aa85fc59c14b3e43.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ad55aa85fc59c14b3e43.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ad55aa85fc59c14b3e43.hot-update.json"
+    },
+    "0.a891423141f060d31edd.hot-update.js": {
+      "name": "0.a891423141f060d31edd.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a891423141f060d31edd.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a891423141f060d31edd.hot-update.js"
+    },
+    "a891423141f060d31edd.hot-update.json": {
+      "name": "a891423141f060d31edd.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a891423141f060d31edd.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a891423141f060d31edd.hot-update.json"
+    },
+    "ee7d460b88ec996cad95.hot-update.json": {
+      "name": "ee7d460b88ec996cad95.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ee7d460b88ec996cad95.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ee7d460b88ec996cad95.hot-update.json"
+    },
+    "b651eb9d5afcf14038d0.hot-update.json": {
+      "name": "b651eb9d5afcf14038d0.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/b651eb9d5afcf14038d0.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/b651eb9d5afcf14038d0.hot-update.json"
+    },
+    "0.c254071edba729e2405a.hot-update.js": {
+      "name": "0.c254071edba729e2405a.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.c254071edba729e2405a.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.c254071edba729e2405a.hot-update.js"
+    },
+    "c254071edba729e2405a.hot-update.json": {
+      "name": "c254071edba729e2405a.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/c254071edba729e2405a.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/c254071edba729e2405a.hot-update.json"
+    },
+    "0.6f1a635c1a10cb7c1c8b.hot-update.js": {
+      "name": "0.6f1a635c1a10cb7c1c8b.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.6f1a635c1a10cb7c1c8b.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.6f1a635c1a10cb7c1c8b.hot-update.js"
+    },
+    "6f1a635c1a10cb7c1c8b.hot-update.json": {
+      "name": "6f1a635c1a10cb7c1c8b.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/6f1a635c1a10cb7c1c8b.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/6f1a635c1a10cb7c1c8b.hot-update.json"
+    },
+    "0.97b5d11d4bd6414b601b.hot-update.js": {
+      "name": "0.97b5d11d4bd6414b601b.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.97b5d11d4bd6414b601b.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.97b5d11d4bd6414b601b.hot-update.js"
+    },
+    "97b5d11d4bd6414b601b.hot-update.json": {
+      "name": "97b5d11d4bd6414b601b.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/97b5d11d4bd6414b601b.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/97b5d11d4bd6414b601b.hot-update.json"
+    },
+    "0.3ed71ff135cf13ce86b0.hot-update.js": {
+      "name": "0.3ed71ff135cf13ce86b0.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.3ed71ff135cf13ce86b0.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.3ed71ff135cf13ce86b0.hot-update.js"
+    },
+    "3ed71ff135cf13ce86b0.hot-update.json": {
+      "name": "3ed71ff135cf13ce86b0.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/3ed71ff135cf13ce86b0.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/3ed71ff135cf13ce86b0.hot-update.json"
+    },
+    "0.a649bcb238d7381e41cb.hot-update.js": {
+      "name": "0.a649bcb238d7381e41cb.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a649bcb238d7381e41cb.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a649bcb238d7381e41cb.hot-update.js"
+    },
+    "a649bcb238d7381e41cb.hot-update.json": {
+      "name": "a649bcb238d7381e41cb.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a649bcb238d7381e41cb.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a649bcb238d7381e41cb.hot-update.json"
+    },
+    "f4b325ec4d4d4e98f1ff.hot-update.json": {
+      "name": "f4b325ec4d4d4e98f1ff.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/f4b325ec4d4d4e98f1ff.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/f4b325ec4d4d4e98f1ff.hot-update.json"
+    },
+    "0.879c2e7ec5852d5b8f3d.hot-update.js": {
+      "name": "0.879c2e7ec5852d5b8f3d.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.879c2e7ec5852d5b8f3d.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.879c2e7ec5852d5b8f3d.hot-update.js"
+    },
+    "879c2e7ec5852d5b8f3d.hot-update.json": {
+      "name": "879c2e7ec5852d5b8f3d.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/879c2e7ec5852d5b8f3d.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/879c2e7ec5852d5b8f3d.hot-update.json"
+    },
+    "0.15d268a73a3c82de52dc.hot-update.js": {
+      "name": "0.15d268a73a3c82de52dc.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.15d268a73a3c82de52dc.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.15d268a73a3c82de52dc.hot-update.js"
+    },
+    "15d268a73a3c82de52dc.hot-update.json": {
+      "name": "15d268a73a3c82de52dc.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/15d268a73a3c82de52dc.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/15d268a73a3c82de52dc.hot-update.json"
+    },
+    "0.e31aa2fd17c8cc9515d9.hot-update.js": {
+      "name": "0.e31aa2fd17c8cc9515d9.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.e31aa2fd17c8cc9515d9.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.e31aa2fd17c8cc9515d9.hot-update.js"
+    },
+    "e31aa2fd17c8cc9515d9.hot-update.json": {
+      "name": "e31aa2fd17c8cc9515d9.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/e31aa2fd17c8cc9515d9.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/e31aa2fd17c8cc9515d9.hot-update.json"
+    },
+    "7542caa8cce3477c1ff1.hot-update.json": {
+      "name": "7542caa8cce3477c1ff1.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/7542caa8cce3477c1ff1.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/7542caa8cce3477c1ff1.hot-update.json"
+    },
+    "0.fa0245bf086595308874.hot-update.js": {
+      "name": "0.fa0245bf086595308874.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.fa0245bf086595308874.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.fa0245bf086595308874.hot-update.js"
+    },
+    "fa0245bf086595308874.hot-update.json": {
+      "name": "fa0245bf086595308874.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/fa0245bf086595308874.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/fa0245bf086595308874.hot-update.json"
+    },
+    "0.ccd23e17c2b1d8ec91d3.hot-update.js": {
+      "name": "0.ccd23e17c2b1d8ec91d3.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.ccd23e17c2b1d8ec91d3.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.ccd23e17c2b1d8ec91d3.hot-update.js"
+    },
+    "ccd23e17c2b1d8ec91d3.hot-update.json": {
+      "name": "ccd23e17c2b1d8ec91d3.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/ccd23e17c2b1d8ec91d3.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/ccd23e17c2b1d8ec91d3.hot-update.json"
+    },
+    "0.d41fde6b264c3f6fa018.hot-update.js": {
+      "name": "0.d41fde6b264c3f6fa018.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.d41fde6b264c3f6fa018.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.d41fde6b264c3f6fa018.hot-update.js"
+    },
+    "d41fde6b264c3f6fa018.hot-update.json": {
+      "name": "d41fde6b264c3f6fa018.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/d41fde6b264c3f6fa018.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/d41fde6b264c3f6fa018.hot-update.json"
+    },
+    "0.4d477fec3e8f45c7048e.hot-update.js": {
+      "name": "0.4d477fec3e8f45c7048e.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.4d477fec3e8f45c7048e.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.4d477fec3e8f45c7048e.hot-update.js"
+    },
+    "4d477fec3e8f45c7048e.hot-update.json": {
+      "name": "4d477fec3e8f45c7048e.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/4d477fec3e8f45c7048e.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/4d477fec3e8f45c7048e.hot-update.json"
+    },
+    "0.323b811c8d758f6c59a8.hot-update.js": {
+      "name": "0.323b811c8d758f6c59a8.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.323b811c8d758f6c59a8.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.323b811c8d758f6c59a8.hot-update.js"
+    },
+    "323b811c8d758f6c59a8.hot-update.json": {
+      "name": "323b811c8d758f6c59a8.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/323b811c8d758f6c59a8.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/323b811c8d758f6c59a8.hot-update.json"
+    },
+    "0.67e0487e71358c333b9c.hot-update.js": {
+      "name": "0.67e0487e71358c333b9c.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.67e0487e71358c333b9c.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.67e0487e71358c333b9c.hot-update.js"
+    },
+    "67e0487e71358c333b9c.hot-update.json": {
+      "name": "67e0487e71358c333b9c.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/67e0487e71358c333b9c.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/67e0487e71358c333b9c.hot-update.json"
+    },
+    "0.338c1cf0de8c9f31e189.hot-update.js": {
+      "name": "0.338c1cf0de8c9f31e189.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.338c1cf0de8c9f31e189.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.338c1cf0de8c9f31e189.hot-update.js"
+    },
+    "338c1cf0de8c9f31e189.hot-update.json": {
+      "name": "338c1cf0de8c9f31e189.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/338c1cf0de8c9f31e189.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/338c1cf0de8c9f31e189.hot-update.json"
+    },
+    "0.41fdddda8a2442ba324b.hot-update.js": {
+      "name": "0.41fdddda8a2442ba324b.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.41fdddda8a2442ba324b.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.41fdddda8a2442ba324b.hot-update.js"
+    },
+    "41fdddda8a2442ba324b.hot-update.json": {
+      "name": "41fdddda8a2442ba324b.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/41fdddda8a2442ba324b.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/41fdddda8a2442ba324b.hot-update.json"
+    },
+    "0.a30b6284678575ec5f44.hot-update.js": {
+      "name": "0.a30b6284678575ec5f44.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.a30b6284678575ec5f44.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.a30b6284678575ec5f44.hot-update.js"
+    },
+    "a30b6284678575ec5f44.hot-update.json": {
+      "name": "a30b6284678575ec5f44.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/a30b6284678575ec5f44.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/a30b6284678575ec5f44.hot-update.json"
+    },
+    "0.1996c19ac0dc5871dbcd.hot-update.js": {
+      "name": "0.1996c19ac0dc5871dbcd.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/0.1996c19ac0dc5871dbcd.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/0.1996c19ac0dc5871dbcd.hot-update.js"
+    },
+    "1996c19ac0dc5871dbcd.hot-update.json": {
+      "name": "1996c19ac0dc5871dbcd.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/1996c19ac0dc5871dbcd.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/1996c19ac0dc5871dbcd.hot-update.json"
     }
   },
   "chunks": {
@@ -5849,5 +6894,5 @@
   },
   "publicPath": "http://127.0.0.1:8080/",
   "error": "ModuleError",
-  "message": "Module Error (from ./node_modules/eslint-loader/index.js):\n\n/home/herschel/pythonProjects/BlogApp/frontend/src/views/UpdateArticle.vue\n  76:13  error  'v-else' directives require being preceded by the element which has a 'v-if' or 'v-else-if' directive  vue/valid-v-else\n\n✖ 1 problem (1 error, 0 warnings)\n"
+  "message": "Module Error (from ./node_modules/eslint-loader/index.js):\n\n/home/herschel/pythonProjects/BlogApp/frontend/src/views/ArticleDetail.vue\n  290:27  error  Parsing error: Unexpected token\n\n  103 |         })\n  104 |         .then((res) => {\n> 105 |           state.articles = ...res.data.map((v) => {\n      |                            ^\n  106 |             v.created_time = new Date(v.last_updated_time).toLocaleDateString(\n  107 |               \"zh-hans\"\n  108 |             );\n\n✖ 1 problem (1 error, 0 warnings)\n"
 }
