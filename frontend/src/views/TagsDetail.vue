@@ -6,7 +6,7 @@
       <div class="w-full lg:w-8/12">
         <div class="flex items-center justify-between">
           <h1 class="text-xl font-bold text-gray-700 md:text-2xl">
-            {{ route.query.cate }}
+            {{ route.query.tag }}
           </h1>
           <div>
             <select
@@ -31,10 +31,18 @@
                 <span class="font-light text-gray-600">{{
                   article.created_time
                 }}</span>
-                <a
+                <router-link
                   v-if="article.category"
+                  :to="{
+                    name: 'category',
+                    query: {
+                      cate: article.category.title,
+                      id: article.category.id,
+                    },
+                  }"
                   class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500"
-                  >{{ route.query.cate }}</a
+                >
+                  {{ article.category.title }}</router-link
                 >
               </div>
               <div class="mt-2">
@@ -111,7 +119,7 @@
                       class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
                     />
                     <h1 class="font-bold text-gray-700 hover:underline">
-                      {{ article.author.username }}
+                      {{ article.author }}
                     </h1>
                   </a>
                 </div>
@@ -138,24 +146,6 @@
             </div>
           </transition>
         </div>
-        <!-- paganation -->
-        <!-- <page-nation :results="counted" @clickPagenation="handleClickPagenation" /> -->
-        <transition
-          appear
-          enter-active-class="transition delay-500 duration-1000 ease-out"
-          enter-from-class="opacity-0 transform translate-x-24"
-          enter-to-class="opacity-100"
-        >
-          <div class="mt-8">
-            <v-pagination
-              v-model="page"
-              :pages="totalPages"
-              :range-size="1"
-              active-color="#DCEDFF"
-              @update:modelValue="updateHandler"
-            />
-          </div>
-        </transition>
       </div>
     </section>
     <aside class="mt-6 md:w-1/3 w-full hidden lg:block -mx-10">
@@ -195,7 +185,6 @@ import axios from "axios";
 import { toRefs, reactive, computed } from "vue";
 import Authors from "@/components/Authors";
 import Category from "@/components/Category";
-import VPagination from "@hennge/vue3-pagination";
 import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 import { useToast } from "vue-toastification";
 import { useStore } from "vuex";
@@ -205,13 +194,12 @@ export default {
   components: {
     Authors,
     Category,
-    VPagination,
   },
   watch: {
-    // 监听路由变化获取分类文章
+    // 监听路由变化获取标签文章
     $route(to) {
-      // console.log(to);
-      if (to.fullPath.startsWith("/category")) {
+      console.log(to);
+      if (to.fullPath.startsWith("/tags")) {
         this.getArticles("", to.query);
       }
     },
@@ -223,9 +211,6 @@ export default {
     const state = reactive({
       articles: [],
       results: {},
-      totalPages: 0,
-      args: "yyy-mm-dd hh:mm:ss",
-      page: 1,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
     const randomColor = (i) => {
@@ -260,11 +245,11 @@ export default {
     const getArticles = (url = "", query = route.query) => {
       state.articles = [];
       if (url == "") {
-        url = `/api/blog/?category=${query.id}`;
+        url = `/api/blog/archive/tags/?tag_name=${query.tag}`;
         state.page = 1; // 分页组件默认激活第一页
       }
       axios.get(url).then((res) => {
-        state.articles.push(...res.data.results);
+        state.articles.push(...res.data);
         state.totalPages = res.data.total_pages;
       });
     };
@@ -304,20 +289,13 @@ export default {
           }
         });
     };
-    const updateHandler = (number) => {
-      let url = `/api/blog/?category=${route.query.id}&page=${number}`;
-      if (url === `/api/blog/?category=${route.query.id}&page=1`) {
-        url = `/api/blog/?category=${route.query.id}`;
-      }
-      getArticles(url, route.query);
-    };
+
     return {
       toast,
       store,
       route,
       ...toRefs(state),
       handleDelete,
-      updateHandler,
       getArticles,
       randomColor,
     };

@@ -138,7 +138,15 @@
                   class="py-1 px-2 rounded-lg shadow-lg mt-2 flex justify-center align-middle"
                   :class="randomColor(i)"
                 >
-                  {{ tag }}
+                  <router-link
+                    :to="{
+                      name: 'tags',
+                      query: {
+                        tag: tag,
+                      },
+                    }"
+                    >{{ tag }}
+                  </router-link>
                 </button>
               </div>
             </div>

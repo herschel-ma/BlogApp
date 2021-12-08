@@ -56,6 +56,11 @@ const routes = [
     name: "archive",
     component: () => import("@/views/ArchiveBlog"),
   },
+  {
+    path: "/tags",
+    name: "tags",
+    component: () => import("@/views/TagsDetail"),
+  },
 ];
 
 const router = createRouter({

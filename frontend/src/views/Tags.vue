@@ -1,6 +1,15 @@
 <template>
   <svg :width="width" :height="height" @mousemove="listener($event)">
-    <a :href="tag.href" v-for="tag in tags" :key="tag">
+    <router-link
+      v-for="tag in tags"
+      :key="tag"
+      :to="{
+        name: 'tags',
+        query: {
+          tag: tag.text,
+        },
+      }"
+    >
       <text
         :x="tag.x"
         :y="tag.y"
@@ -10,7 +19,7 @@
       >
         {{ tag.text }}
       </text>
-    </a>
+    </router-link>
   </svg>
 </template>
 

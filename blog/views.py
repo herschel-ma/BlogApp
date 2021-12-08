@@ -18,6 +18,7 @@ from rest_framework.serializers import DateField
 from rest_framework import status
 from rest_framework.response import Response
 from taggit.models import Tag
+from .pagination import CustomPageNumber
 # Create your views here.
 
 
@@ -42,6 +43,20 @@ class BlogViewSet(viewsets.ModelViewSet):
         date_field = DateField()
         data = [date_field.to_representation(date) for date in dates]
         return Response(data=data, status=status.HTTP_200_OK)
+
+    @action(methods=['GET'],
+            detail=False,
+            url_path="archive/tags",
+            url_name="archive-tags")
+    def list_archive_tags(self, request, *args, **kwargs):
+        """返回给定标签名的博文列表/ 分页"""
+        tag_name = self.request.query_params.get("tag_name")
+        instance = Blog.objects.filter(tags__name__in=[tag_name])
+        # serializer = self.get_serializer(instance, many=True)
+        serializer = BlogSimilarSerializer(instance,
+                                           many=True,
+                                           context={'request': request})
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()

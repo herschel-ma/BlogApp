@@ -81,7 +81,6 @@ class BlogListSerializer(TaggitSerializer, serializers.ModelSerializer):
             "title",
             "summery",
             "author",
-            "content",
             "tags",
             "category",
             "category_id",
@@ -171,6 +170,7 @@ class BlogSimilarSerializer(serializers.ModelSerializer):
                                                lookup_field="slug")
     slug = serializers.SlugField(read_only=True)
     author = serializers.StringRelatedField()
+    tags = TagListSerializerField(allow_null=True, required=False)
     category = CategorySerializer(read_only=True)
 
     class Meta:
@@ -178,6 +178,7 @@ class BlogSimilarSerializer(serializers.ModelSerializer):
         fields = [
             "url",
             "slug",
+            "tags",
             "title",
             "author",
             "category",
