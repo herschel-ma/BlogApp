@@ -10,15 +10,15 @@
 8. 归档 done
 9. 标签 后端 done 前端3d标签 done
 10. mdeditor summery 去掉html标签 done
-11. mobile style navbar links
+11. mobile style navbar links l_todo
 12. 文章详情手机端样式调整 done
-13. 首页侧边栏（分类）实现更多收起功能
-14. 首页keep-alive?
+13. 首页侧边栏（分类）实现更多收起功能 realy_todo？
+14. 首页keep-alive realy_todo?
 15. 更改分类详情页请求方式，原来：从分类的articles中获取当前分类文章, 
 更改为：参数是分类的id，去请求文章接口，文章接口使用django-filter来通过
 分类id 过滤出当前分类的文章，
 同时修改前端收到数据后的取值方式 done
-16. 相似文章
+16. 相似文章 done
 17. 新增，修改文章时提交标签， 注意要提交一个数组，要做处理 done
 18. 首页，分类详情页面展示标签 done 
 19. 首页，分类详情页面链接去到标签详情页

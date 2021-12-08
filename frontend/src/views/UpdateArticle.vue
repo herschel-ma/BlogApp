@@ -186,7 +186,7 @@
   <ModalDialog :show="showDelModal" @close="showDelModal = false">
     <template v-slot:innerForm>
       <div
-        class="w-1/2 h-1/3 flex flex-col bg-white 
+        class="xs:w-4/5 sm:w-3/4 md:w-1/2 h-1/3 flex flex-col bg-white 
         bg-opacity-90 space-y-8 justify-center align-middle z-10"
       >
         <div class="p-3 z-10 text-center">确定要删除吗？</div>
@@ -291,7 +291,7 @@ export default {
       checkTagExist: (tag) => {
         // console.log(tag);
         // console.log(state.selectedTag);
-        if (state.selectedTag.length > 0) {
+        if (state.selectedTag && state.selectedTag.length > 0) {
           if (state.selectedTag.indexOf(tag.name) !== -1) {
             return true;
           }

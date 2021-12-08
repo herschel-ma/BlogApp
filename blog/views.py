@@ -67,7 +67,7 @@ class BlogViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == "list":
             return BlogListSerializer
-        elif self.action == "retrieve":
+        elif self.action == "retrieve" and 'similar' in self.request.query_params:
             return BlogSimilarSerializer
         else:
             return BlogSerializer
