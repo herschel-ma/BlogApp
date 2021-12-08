@@ -147,7 +147,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+      <div id="photo" class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-bold text-gray-700 pb-5">图片集</p>
         <div class="grid grid-cols-3 gap-3">
           <img
@@ -162,10 +162,12 @@
         >
           <i class="fab fa-instagram"></i> Follow @dgrzyb
         </a>
+        <div id="boxFixed"><br /></div>
       </div>
-      <div id="boxFixed"></div>
       <div
-        class="p-2 xs:hidden sm:hidden md:block lg:block"
+        class="bg-white mt-4 p-2 xs:hidden 
+        sm:hidden md:block lg:block boxFixed
+        shadow"
         :class="{ is_fixed: isFixed }"
       >
         <button
@@ -322,7 +324,17 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       //如果被卷曲的高度大于吸顶元素到顶端位置 的距离
-      state.isFixed = scrollTop > state.offsetTop ? true : false;
+      let offset = 0;
+      if (state.articles.length > 0) {
+        if (state.articles.length == 1) {
+          offset = 406;
+        } else if (state.articles.length == 2) {
+          offset = 506;
+        } else if (state.articles.length == 3) {
+          offset = 706;
+        }
+      }
+      state.isFixed = scrollTop > state.offsetTop + offset ? true : false;
     };
     onMounted(() => {
       window.addEventListener("scroll", initHeight);
