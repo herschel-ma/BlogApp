@@ -7,3 +7,5 @@ export const S_CATEGORIES = "S_CATEGORIES";
 export const S_TAGS = "S_TAGS";
 export const S_DEL_TAG = "S_DEL_TAG";
 export const D_DEL_TAG = "D_DEL_TAG";
+export const S_DEL_CATA = "S_DEL_CATA";
+export const D_DEL_CATA = "D_DEL_CATA";

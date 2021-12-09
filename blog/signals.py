@@ -19,4 +19,4 @@ def create_auth_token(sender, instance=None, **kwargs):
     if instance and not instance.summery:
         html = markdown.markdown(instance.content)
         summery = etree.HTML(html)
-        instance.summery = summery.xpath("string()")
+        instance.summery = summery.xpath("string()")[:120]

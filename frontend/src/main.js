@@ -7,8 +7,11 @@ import store from "./store";
 
 // Toast
 import Toast from "vue-toastification";
+
 // Import the CSS or use your own!
 import "vue-toastification/dist/index.css";
+
+import './assets/tailwind.css'
 const options = {};
 
 const app = createApp(App);

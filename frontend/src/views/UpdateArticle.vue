@@ -20,19 +20,47 @@
         <span v-for="cate in categorys" :key="cate.id" class="mr-2">
           <button
             v-if="selectedCategory && cate.id == selectedCategory.id"
-            class="inline-block border px-6 py-2 mb-2 rounded-md hover:border-red-300 border-red-300 text-base font-medium"
+            class="relative inline-block border px-6 py-2 mb-2 rounded-md hover:border-red-300 border-red-300 text-base font-medium"
             :class="changeColor(cate)"
             @click.prevent="chooseCategory(cate)"
           >
             {{ cate.title }}
+            <svg
+              @click.stop.prevent="tolggleDeleteCate(cate)"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 absolute -right-2 -top-2 
+              bg-gray-400 text-red-50 rounded-full animate-pulse
+              hover:text-red-500 hover:bg-red-300 transition delay-150"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
           </button>
           <button
             v-else
-            class="inline-block border px-6 py-2 mb-2 border-gray-300 rounded-md hover:border-red-300 text-base font-medium"
+            class="relative inline-block border px-6 py-2 mb-2 border-gray-300 rounded-md hover:border-red-300 text-base font-medium"
             :class="changeColor(cate)"
             @click.prevent="chooseCategory(cate)"
           >
-            {{ cate.title }}
+            {{ cate.title
+            }}<svg
+              @click.stop.prevent="tolggleDeleteCate(cate)"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 absolute -right-2 -top-2 bg-gray-400 text-red-50 rounded-full animate-pulse hover:text-red-500 hover:bg-red-300 transition delay-150"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
           </button>
         </span>
         <span>
@@ -62,7 +90,7 @@
             <svg
               @click.stop.prevent="tolggleDeleteTag(tag)"
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 absolute -right-2 -top-2"
+              class="h-5 w-5 absolute -right-2 -top-2 bg-gray-400 text-red-50 rounded-full animate-pulse hover:text-red-500 hover:bg-red-300 transition delay-150"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -83,7 +111,7 @@
             <svg
               @click.stop.prevent="tolggleDeleteTag(tag)"
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 absolute -right-2 -top-2"
+              class="h-5 w-5 absolute -right-2 -top-2 bg-gray-400 text-red-50 rounded-full animate-pulse hover:text-red-500 hover:bg-red-300 transition delay-150"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -95,17 +123,25 @@
             </svg>
           </button>
         </span>
+        <span>
+          <button
+            class="bg-green-500 mb-2 text-white rounded-md px-6 py-2 text-base font-medium hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+            id="open-btn"
+            @click.prevent="toggleTagModal"
+          >
+            创建标签
+          </button>
+        </span>
       </div>
-      <p v-show="Rtags" class="text-sm text-red-400 mb-2">
-        <label class="text-gray-600 font-light">摘要（非必须）:</label>
-        <input
-          type="text"
-          placeholder="请修改摘要"
-          class="lg:w-1/2 px-3 py-2 mb-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-indigo-300"
-          v-model="summery"
-        />
-        <label class="text-gray-600 font-light">内容:</label>
-      </p>
+      <p v-show="Rtags" class="text-sm text-red-400 mb-2"></p>
+      <label class="text-gray-600 font-light">摘要（非必须）:</label>
+      <input
+        type="text"
+        placeholder="请修改摘要"
+        class="lg:w-1/2 px-3 py-2 mb-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-indigo-300"
+        v-model="summery"
+      />
+      <label class="text-gray-600 font-light">内容:</label>
 
       <p v-show="Rcontent" class="text-sm text-red-400 mb-2">
         {{ Rcontent }}
@@ -173,7 +209,7 @@
                 type="submit"
                 class="flex items-center justify-center w-full px-6 py-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
               >
-                <span class="m-2  text-white" @click="close_modal()">
+                <span class="m-2  text-white" @click="showModal = false">
                   创建分类
                 </span>
               </button>
@@ -189,7 +225,7 @@
         class="xs:w-4/5 sm:w-3/4 md:w-1/2 h-1/3 flex flex-col bg-white 
         bg-opacity-90 space-y-8 justify-center align-middle z-10"
       >
-        <div class="p-3 z-10 text-center">确定要删除吗？</div>
+        <div class="p-3 z-10 text-center text-3xl">确定要删除吗？</div>
         <div class="container flex justify-center align-middle space-x-5">
           <div
             @click="showDelModal = false"
@@ -207,10 +243,85 @@
       </div>
     </template>
   </ModalDialog>
+  <ModalDialog :show="showDelCateModal" @close="showDelCateModal = false">
+    <template v-slot:innerForm>
+      <div
+        class="xs:w-4/5 sm:w-3/4 md:w-1/2 h-1/3 flex flex-col bg-white 
+        bg-opacity-90 space-y-8 justify-center align-middle z-10"
+      >
+        <div class="p-3 z-10 text-center text-3xl">确定要删除吗？</div>
+        <div class="container flex justify-center align-middle space-x-5">
+          <div
+            @click="showDelCateModal = false"
+            class="rounded-lg shawdow-lg cursor-pointer bg-green-600 z-10 p-3"
+          >
+            不，我不删除了
+          </div>
+          <div
+            @click="deleteCate"
+            class="rounded-lg shawdow-lg cursor-pointer bg-red-600 z-10 p-3"
+          >
+            是的,我确定
+          </div>
+        </div>
+      </div>
+    </template>
+  </ModalDialog>
+  <ModalDialog :show="showTagModal" @close="showTagModal = false">
+    <template v-slot:innerForm>
+      <div
+        class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <div class="modal-content py-4 text-left px-6">
+          <div class="flex justify-center items-center pb-3">
+            <p class="text-2xl font-bold text-center">创建标签</p>
+          </div>
+
+          <form class="mt-6" method="POST" @submit.prevent="handleCreateTag">
+            <div>
+              <label
+                for="tag"
+                class="block text-sm text-gray-800 dark:text-gray-200"
+                >标签名：</label
+              >
+              <input
+                type="text"
+                v-model="tagTitle"
+                id="tag"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+              />
+              <label
+                for="tagSlug"
+                class="block text-sm text-gray-800 dark:text-gray-200"
+                >标签唯一标识：</label
+              >
+              <input
+                type="text"
+                v-model="tagSlug"
+                id="tagSlug"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+              />
+            </div>
+
+            <div class="mt-6">
+              <button
+                type="submit"
+                class="flex items-center justify-center w-full px-6 py-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
+              >
+                <span class="m-2  text-white" @click="showTagModal = false">
+                  创建标签
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </template>
+  </ModalDialog>
 </template>
 
 <script>
-import { onMounted, reactive, toRefs, computed } from "vue";
+import { onMounted, reactive, toRefs, computed, watch } from "vue";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useStore } from "vuex";
@@ -219,6 +330,7 @@ import { useToast } from "vue-toastification";
 import MdEditor from "md-editor-v3";
 import "md-editor-v3/lib/style.css";
 import ModalDialog from "@/components/ModalDialog";
+import pinyin from "@/utils/utils";
 
 export default {
   props: {
@@ -252,14 +364,32 @@ export default {
       RcategoryId: "",
       showModal: false,
       showDelModal: false,
+      showDelCateModal: false,
+      showTagModal: false,
       cate: "",
       Rcate: "",
       isLoggedIn: computed(() => store.getters.isLoggedIn),
       delTag: computed(() => store.getters.delTag),
+      delCate: computed(() => store.getters.delCate),
       tags: [],
       Rtags: "",
+      tagTitle: "",
+      RtagTitle: "",
+      tagSlug: "",
+      RtagSlug: "",
       selectedTag: [],
     });
+    watch(
+      () => state.tagTitle,
+      (tagTitle, prevTagTitle) => {
+        if (tagTitle !== "" && tagTitle !== prevTagTitle) {
+          state.tagSlug = pinyin.isSupported()
+            ? pinyin.convertToPinyin(state.tagTitle, "-", true)
+            : "对不住，换个浏览器试试吧";
+        }
+      }
+    );
+
     const store = useStore();
     const router = useRouter();
     // 默认渲染的所有标签
@@ -316,6 +446,30 @@ export default {
             toast.success("删除标签成功", { timeout: 2000 });
             store.dispatch("deleteDeleteTag");
             state.showDelModal = !state.showDelModal;
+            router.push({ name: "home" });
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      },
+      tolggleDeleteCate: (cate) => {
+        // 存储要删除的分类的id,删除后需要删除存储id并跳转页面
+        store.dispatch("storeDelCata", cate.id);
+        state.showDelCateModal = !state.showDelCateModal;
+      },
+      deleteCate: () => {
+        axios
+          .delete(`/api/category/${state.delCate}`, {
+            headers: {
+              "Content-Type": "Application/json",
+              "X-CSRFTOKEN": Cookies.get("csrftoken"),
+              Authorization: state.isLoggedIn,
+            },
+          })
+          .then(() => {
+            toast.success(`删除分类成功`, { timeout: 2000 });
+            store.dispatch("deleteDeleteCata");
+            state.showDelCateModal = !state.showDelCateModal;
             router.push({ name: "home" });
           })
           .catch((e) => {
@@ -464,6 +618,56 @@ export default {
                 : "";
               if (state.Rcate) {
                 toast.error(state.Rcate, { timeout: 2000 });
+              }
+              if (e.response.data.detail) {
+                toast.error(e.response.data.detail, { timeout: 2000 });
+              }
+            } else if (e.request) {
+              console.log(e.request);
+            } else {
+              console.log(e.message);
+            }
+          });
+      },
+      handleCreateTag: () => {
+        axios
+          .post(
+            "/api/tag/",
+            {
+              name: state.tagTitle,
+              slug: state.tagSlug,
+            },
+            {
+              headers: {
+                "content-type": "application/json",
+                "X-CSRFTOKEN": Cookies.get("csrftoken"),
+                Authorization: "Token " + state.isLoggedIn,
+              },
+            }
+          )
+          .then((resp) => {
+            if (resp.data.name) {
+              toast.success(`标签${resp.data.name}创建成功`, { timeout: 2000 });
+            }
+            // 关闭modal
+            state.showModal = !state.showModal;
+            router.push({ name: "home" });
+          })
+          .catch((e) => {
+            if (e.response) {
+              state.RtagTitle = e.response.data.name
+                ? e.response.data.name[0]
+                : "";
+              state.RtagSlug = e.response.data.slug
+                ? e.response.data.slug[0]
+                : "";
+              if (state.RtagTitle) {
+                toast.error("标签, " + state.RtagTitle, { timeout: 2000 });
+              }
+              if (state.RtagSlug) {
+                toast.error("标签唯一标识, " + state.RtagSlug, {
+                  timeout: 2000,
+                });
               }
               if (e.response.data.detail) {
                 toast.error(e.response.data.detail, { timeout: 2000 });

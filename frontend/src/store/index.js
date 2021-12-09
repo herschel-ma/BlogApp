@@ -14,6 +14,7 @@ const store = createStore({
       categorys: [],
       tags: [],
       delTag: 0,
+      delCata: 0,
     };
   },
   mutations: {
@@ -44,6 +45,12 @@ const store = createStore({
     },
     [types.D_DEL_TAG](state) {
       state.delTag = 0;
+    },
+    [types.S_DEL_CATA](state, delCata) {
+      state.delCata = delCata;
+    },
+    [types.D_DEL_CATA](state) {
+      state.delCata = 0;
     },
   },
   actions: {
@@ -109,12 +116,19 @@ const store = createStore({
     deleteDeleteTag({ commit }) {
       commit(types.S_DEL_TAG);
     },
+    storeDelCata({ commit }, cata) {
+      commit(types.S_DEL_CATA, cata);
+    },
+    deleteDeleteCata({ commit }) {
+      commit(types.S_DEL_CATA);
+    },
   },
   getters: {
     isLoggedIn: (state) => state.isLoggedIn,
     categorys: (state) => state.categorys,
     tags: (state) => state.tags,
     delTag: (state) => state.delTag,
+    delCate: (state) => state.delCata,
   },
 });
 

@@ -178,6 +178,7 @@ class BlogSimilarSerializer(serializers.ModelSerializer):
         fields = [
             "url",
             "slug",
+            "summery",
             "tags",
             "title",
             "author",
