@@ -34,6 +34,48 @@
             />
           </div>
         </div>
+        <div
+          v-show="show"
+          @click="clickTopHandle"
+          class="fixed right-20 bottom-20
+      w-8 h-8 md:h-16 md:w-16 rounded-full 
+      flex justify-center items-center  
+      bg-blue-400 opacity-60 
+      hover:bg-gray-400 transition duration-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 md:h-10 md:w-10"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"
+            />
+          </svg>
+        </div>
+        <a
+          href="#comment-form"
+          v-show="show"
+          class="fixed md:right-36 right-28 bottom-20
+      w-8 h-8 md:h-16 md:w-16 rounded-full 
+      flex justify-center items-center  
+      bg-indigo-400 opacity-60 
+      hover:bg-gray-400 transition duration-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 md:h-10 md:w-10"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
       </article>
 
       <div class="w-full flex pt-6">
@@ -59,6 +101,8 @@
         </a>
       </div>
 
+      <!-- comments here -->
+      <Comments :article="article" />
       <div
         class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6"
       >
@@ -162,9 +206,10 @@
         >
           <i class="fab fa-instagram"></i> Follow @dgrzyb
         </a>
-        <div id="boxFixed"><br /></div>
+        <div id="boxFixed"></div>
       </div>
       <div
+        v-if="catalogList.length > 0"
         class="bg-white mt-4 p-2 xs:hidden 
         sm:hidden md:block lg:block boxFixed
         shadow"
@@ -205,6 +250,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import MdEditor from "md-editor-v3";
 import "md-editor-v3/lib/style.css";
+import Comments from "@/components/Comments";
 export default {
   props: {
     slug: {
@@ -212,7 +258,7 @@ export default {
       required: true,
     },
   },
-  components: { MdEditor },
+  components: { MdEditor, Comments },
   watch: {
     // 监听路由变化获取上一章|下一章内容
     $route(to) {
@@ -239,6 +285,7 @@ export default {
       offsetTop: 0,
       scrollTop: 0,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
+      show: false,
     });
     const getArticle = (slug = props.slug) => {
       fetch(`/api/blog/${slug}/`, {
@@ -335,6 +382,10 @@ export default {
         }
       }
       state.isFixed = scrollTop > state.offsetTop + offset ? true : false;
+      // top function
+      const winHeight = document.documentElement.clientHeight;
+      let scrollHeight = document.documentElement.scrollTop;
+      state.show = winHeight < scrollHeight ? true : false;
     };
     onMounted(() => {
       window.addEventListener("scroll", initHeight);
@@ -346,6 +397,9 @@ export default {
     onUnmounted(() => {
       window.removeEventListener("scroll", initHeight);
     });
+    const clickTopHandle = () => {
+      document.documentElement.scrollTop = 0;
+    };
     getArticle();
     getPrevNext();
 
@@ -368,6 +422,7 @@ export default {
         });
       },
       initHeight,
+      clickTopHandle,
     };
   },
 };

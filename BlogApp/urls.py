@@ -24,12 +24,11 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('', TemplateView.as_view(template_name='index.html'), name="index"),
     path('api/', include('users.urls')),
     path('api/', include('blog.urls')),
+    path('api/', include('comments.urls')),
     path('mdeditor/', include('mdeditor.urls')),
-
     path('auth/', include('rest_framework.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/', include('backend_res.urls')),

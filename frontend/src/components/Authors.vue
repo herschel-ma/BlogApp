@@ -34,17 +34,20 @@
 <script>
 import axios from "axios";
 import { onMounted, reactive, toRefs } from "vue";
+import { useStore } from "vuex";
 
 export default {
   setup() {
     const state = reactive({
       authors: [],
     });
+    const store = useStore();
     onMounted(() => {
       axios
         .get("/api/users/")
         .then((res) => {
           state.authors.push(...res.data);
+          store.dispatch("storeUsers", res.data);
         })
         .catch((error) => {
           console.log(error.message.data);

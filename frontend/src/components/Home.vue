@@ -8,10 +8,16 @@
           <h1 class="text-xl font-bold text-gray-700 md:text-2xl">博文</h1>
           <div>
             <select
+              @change="handleFilterBlogByUsername($event)"
               class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
-              <option>Latest</option>
-              <option>Last Week</option>
+              <option value="all">查看所有人</option>
+              <option
+                v-for="(user, i) in usersInfo"
+                :key="i"
+                :value="user.id"
+                >{{ user.username }}</option
+              >
             </select>
           </div>
         </div>
@@ -210,7 +216,7 @@
 <script>
 import Cookies from "js-cookie";
 import axios from "axios";
-import { onMounted, toRefs, reactive, computed } from "vue";
+import { onMounted, toRefs, reactive, computed, watch } from "vue";
 import Authors from "@/components/Authors";
 import Category from "@/components/Category";
 import RecentPost from "@/components/RecentPost";
@@ -241,7 +247,19 @@ export default {
       height: 500,
       radius: 200,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
+      usersInfo: computed(() => store.getters.usersInfo),
+      searchWord: computed(() => store.getters.searchWord),
     });
+    watch(
+      // 监听搜索内容
+      () => state.searchWord,
+      (searchWord) => {
+        if (searchWord !== "") {
+          const url = `/api/blog/?search=${searchWord}`;
+          getAllArticles(url);
+        }
+      }
+    );
     const randomColor = (i) => {
       const colors = [
         "red",
@@ -367,6 +385,13 @@ export default {
         state.radius = 25;
       }
     };
+    const handleFilterBlogByUsername = (e) => {
+      let url = "/api/blog/";
+      if (e.target.value !== "all") {
+        url = `${url}?author=${e.target.value}`;
+      }
+      getAllArticles(url);
+    };
     onMounted(() => {
       getAllArticles();
       askMediaScreen();
@@ -380,6 +405,7 @@ export default {
       updateHandler,
       askMediaScreen,
       randomColor,
+      handleFilterBlogByUsername,
     };
   },
 };

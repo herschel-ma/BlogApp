@@ -3,6 +3,7 @@ from users.serializer import UserSerializer
 from .models import Blog, Category
 from taggit.serializers import (TagListSerializerField, TaggitSerializer)
 from taggit.models import Tag
+from comments.serializers import CommentSerializer
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -16,6 +17,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
+    """博文详情"""
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
     slug = serializers.SlugField(read_only=True)
@@ -26,6 +28,7 @@ class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
                                            required=False)
 
     tags = TagListSerializerField(allow_null=True, required=False)
+    comments = CommentSerializer(read_only=True, many=True)
 
     def validate_title(self, value):
         if self.context.get('request').method == 'POST':
@@ -52,6 +55,7 @@ class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
             "author",
             "content",
             "tags",
+            "comments",
             "category",
             "category_id",
             "created_time",

@@ -18,7 +18,6 @@ from rest_framework.serializers import DateField
 from rest_framework import status
 from rest_framework.response import Response
 from taggit.models import Tag
-from .pagination import CustomPageNumber
 # Create your views here.
 
 
@@ -30,7 +29,8 @@ class BlogViewSet(viewsets.ModelViewSet):
     serializer_class = BlogSerializer
     permission_classes = [IsAuthenticated, IsAuthor]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['category']
+    filterset_fields = ['category', 'author']
+    search_fields = ['title', 'summery']
     ordering = ('-created_time')
 
     @action(methods=['GET'],

@@ -198,7 +198,6 @@ export default {
   watch: {
     // 监听路由变化获取标签文章
     $route(to) {
-      console.log(to);
       if (to.fullPath.startsWith("/tags")) {
         this.getArticles("", to.query);
       }
@@ -246,11 +245,9 @@ export default {
       state.articles = [];
       if (url == "") {
         url = `/api/blog/archive/tags/?tag_name=${query.tag}`;
-        state.page = 1; // 分页组件默认激活第一页
       }
       axios.get(url).then((res) => {
         state.articles.push(...res.data);
-        state.totalPages = res.data.total_pages;
       });
     };
     getArticles();

@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'taggit',
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
+    'comments.apps.CommentsConfig',
     'backend_res.apps.BackendResConfig',
 ]
 

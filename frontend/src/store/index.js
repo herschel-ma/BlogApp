@@ -15,6 +15,8 @@ const store = createStore({
       tags: [],
       delTag: 0,
       delCata: 0,
+      usersInfo: [],
+      searchWord: "",
     };
   },
   mutations: {
@@ -51,6 +53,12 @@ const store = createStore({
     },
     [types.D_DEL_CATA](state) {
       state.delCata = 0;
+    },
+    [types.S_USERS](state, usersInfo) {
+      state.usersInfo = usersInfo;
+    },
+    [types.S_SEARCH_WORD](state, word) {
+      state.searchWord = word;
     },
   },
   actions: {
@@ -122,6 +130,12 @@ const store = createStore({
     deleteDeleteCata({ commit }) {
       commit(types.S_DEL_CATA);
     },
+    storeUsers({ commit }, usersInfo) {
+      commit(types.S_USERS, usersInfo);
+    },
+    storeSearchWord({ commit }, word) {
+      commit(types.S_SEARCH_WORD, word);
+    },
   },
   getters: {
     isLoggedIn: (state) => state.isLoggedIn,
@@ -129,6 +143,8 @@ const store = createStore({
     tags: (state) => state.tags,
     delTag: (state) => state.delTag,
     delCate: (state) => state.delCata,
+    usersInfo: (state) => state.usersInfo,
+    searchWord: (state) => state.searchWord,
   },
 });
 

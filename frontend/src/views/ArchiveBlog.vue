@@ -41,18 +41,29 @@
     <div v-for="article in articles" :key="article.slug" class="relative z-10">
       <img
         v-if="article.author.user"
-        class="timeline-img"
+        class="h-24 w-24 object-cover 
+        rounded-full shadow-md
+        border-4 border-white xs:absolute 
+        md:mx-auto md:left-0 md:right-0"
         :src="article.author.user.avatar_url"
         alt="头像"
       />
       <img
         v-else
-        class="timeline-img"
+        class="h-24 w-24 object-cover 
+        rounded-full shadow-md 
+        border-4 border-white xs:absolute 
+        md:mx-auto"
         src="https://img.paulzzh.com/touhou/random"
         alt="头像"
       />
-      <div class="timeline-container">
-        <div class="timeline-pointer" aria-hidden="true"></div>
+      <div class="relative pt-2 xs:pl-28 xs:pt-0">
+        <div
+          class="absolute inset-0 left-10 h-4 w-4 
+        transform rotate-45 bg-gray-400 
+        xs:top-11 xs:left-26"
+          aria-hidden="true"
+        ></div>
         <div class="bg-gray-400 p-6 rounded-md shadow-md">
           <span class="font-bold text-indigo-600 text-sm tracking-wide">
             {{ article.created_time }}
