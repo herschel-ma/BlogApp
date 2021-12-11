@@ -44,7 +44,7 @@
         class="h-24 w-24 object-cover 
         rounded-full shadow-md
         border-4 border-white xs:absolute 
-        md:mx-auto md:left-0 md:right-0"
+        md:mx-auto"
         :src="article.author.user.avatar_url"
         alt="头像"
       />

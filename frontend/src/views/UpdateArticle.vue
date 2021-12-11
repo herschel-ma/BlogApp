@@ -170,6 +170,8 @@
         :preview-theme="theme"
         :theme="mdtheme"
         class="mb-5"
+        :onSave="handleCreate"
+        @onUploadImg="handleUploadImg"
       />
 
       <button
@@ -678,6 +680,35 @@ export default {
               console.log(e.message);
             }
           });
+      },
+      handleUploadImg: async (files, callback) => {
+        const res = await Promise.all(
+          Array.from(files).map((file) => {
+            return new Promise((rev, rej) => {
+              const form = new FormData();
+              form.append("file", file);
+              axios
+                .post(`/api/blog/img/uploads/`, form, {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                    "X-CSRFTOKEN": Cookies.get("csrftoken"),
+                    Authorization: "Token " + state.isLoggedIn,
+                  },
+                })
+                .then((res) => rev(res))
+                .catch((error) => rej(error));
+            });
+          })
+        );
+
+        callback(
+          res.map((item) => {
+            if (item.data.code === "0000") {
+              toast.error("图片上传失败，请重试", { timeout: 2000 });
+            }
+            return item.data.url;
+          })
+        );
       },
     };
   },

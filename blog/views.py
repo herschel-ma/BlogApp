@@ -1,5 +1,7 @@
 from django.db.models import Count
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from .models import Blog, Category
@@ -13,11 +15,13 @@ from rest_framework.authentication import TokenAuthentication,\
 from .permissions import IsAuthor
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.decorators import action
+from rest_framework.decorators import action, parser_classes
 from rest_framework.serializers import DateField
 from rest_framework import status
 from rest_framework.response import Response
 from taggit.models import Tag
+from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser, FormParser
 # Create your views here.
 
 
@@ -160,3 +164,31 @@ class TagViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Tag.objects.all()
         return queryset
+
+
+class BlogUploadView(APIView):
+    parser_classes = [MultiPartParser, FormParser]
+
+    @csrf_exempt
+    def post(self, request):
+        try:
+            import time
+            Time = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
+            pic = request.FILES['file']
+            save_path = f"{settings.MEDIA_ROOT}/{Time}_{pic.name}"
+            access_path = f"{settings.MEDIA_URL}{Time}_{pic.name}"
+            with open(save_path, "wb") as f:
+                for content in pic.chunks():
+                    f.write(content)
+
+            return Response({
+                "url": access_path,
+                "code": "200"
+            },
+                            status=status.HTTP_200_OK)
+        except:
+            return Response({
+                "url": "",
+                "code": "0000"
+            },
+                            status=status.HTTP_400_BAD_REQUEST)

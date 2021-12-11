@@ -1,5 +1,31 @@
 <template>
-  <div class="container mx-auto flex flex-wrap py-6">
+  <div class="w-full" :class="{ is_fixed: isProcessFixed }">
+    <div
+      id="processBar"
+      class="overflow-hidden h-1 text-xs flex rounded bg-purple-200"
+    >
+      <div
+        :style="{ width: progressWidth }"
+        class="
+        shadow-none
+        flex flex-col
+        text-center
+        whitespace-nowrap
+        text-white
+        justify-center
+        bg-purple-500
+      "
+      ></div>
+    </div>
+    <div class="flex items-center justify-between">
+      <div class="text-right">
+        <span class="text-xs font-semibold inline-block text-purple-600">
+          {{ progressWidth }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="container mx-auto flex flex-wrap">
     <!-- Post Section -->
     <section class="w-full md:w-2/3 flex flex-col px-3 ">
       <article class="flex flex-col shadow my-4">
@@ -12,19 +38,73 @@
             v-if="article.category"
             class="text-blue-700 text-sm font-bold uppercase pb-4"
           >
-            {{ article.category.title }}</a
-          >
-          <a class="text-3xl font-bold hover:text-gray-700 pb-4">{{
-            article.title
-          }}</a>
+            <span
+              class="text-sm font-semibold inline-block
+              py-1 px-2 uppercase rounded-full
+              text-purple-600 bg-purple-200"
+            >
+              {{ article.category.title }}
+            </span>
+          </a>
+          <a class="text-3xl font-bold hover:text-gray-700 pb-4"
+            >{{ article.title }}
+
+            <div
+              class="
+                  relative
+                  inline-block
+                  w-10
+                  mr-2
+                  align-middle
+                  select-none
+                  transition
+                  duration-200
+                  ease-in
+                "
+            >
+              <input
+                type="checkbox"
+                name="toggle"
+                id="toggle"
+                @change="handleChanged($event)"
+                class="
+                  toggle-checkbox
+                  absolute
+                  block
+                  w-6
+                  h-6
+                  rounded-full
+                  bg-white
+                  border-4
+                  appearance-none
+                  cursor-pointer
+                  "
+              />
+              <label
+                for="toggle"
+                class="
+                  toggle-label
+                  block
+                  overflow-hidden
+                  h-6
+                  rounded-full
+                  bg-gray-300
+                  cursor-pointer
+                  "
+              ></label>
+            </div>
+            <label for="toggle" class="text-xs text-gray-700"
+              >切换预览主题</label
+            >
+          </a>
+
           <p class="text-sm pb-8">
-            By
+            作者：
             <a class="font-semibold hover:text-gray-800">{{
               article.author
             }}</a>
-            , Published on {{ article.created_time }}
+            , 发布于 {{ article.created_time }}
           </p>
-          <!-- <h1 class="text-2xl font-bold pb-3">Introduction</h1> -->
           <div class="md-e">
             <md-editor
               v-model="article.content"
@@ -282,7 +362,10 @@ export default {
       catalogList: [],
       catalogHtmlTitle: [],
       isFixed: false,
+      isProcessFixed: false,
+      progressWidth: null,
       offsetTop: 0,
+      offsetProcessBarTop: 0,
       scrollTop: 0,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
       show: false,
@@ -381,7 +464,25 @@ export default {
           offset = 706;
         }
       }
+      // 页面总高度
+      let pageHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      // 浏览器视口高度
+      let windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      // 可滚动的高度
+      let scrollAvail = pageHeight - windowHeight;
+      // 滚动占比值取两位
+      let scrollPercent = Number(
+        (scrollTop / scrollAvail).toString().match(/^\d+(?:\.\d{0,2})?/)
+      );
+      // let scrollPercent = (scrollTop / scrollAvail).toFixed(2);
+      state.progressWidth = scrollPercent * 100 + "%";
+      // catalog
       state.isFixed = scrollTop > state.offsetTop + offset ? true : false;
+      // progress bar
+      state.isProcessFixed =
+        scrollTop > state.offsetProcessBarTop ? true : false;
       // top function
       const winHeight = document.documentElement.clientHeight;
       let scrollHeight = document.documentElement.scrollTop;
@@ -392,6 +493,9 @@ export default {
       nextTick(() => {
         //获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置
         state.offsetTop = document.querySelector("#boxFixed").offsetTop;
+        state.offsetProcessBarTop = document.querySelector(
+          "#processBar"
+        ).offsetTop;
       });
     });
     onUnmounted(() => {
@@ -399,6 +503,15 @@ export default {
     });
     const clickTopHandle = () => {
       document.documentElement.scrollTop = 0;
+    };
+    const handleChanged = () => {
+      if (state.theme === "default") {
+        state.theme = "github";
+      } else if (state.theme === "vuepress") {
+        state.theme = "github";
+      } else if (state.theme === "github") {
+        state.theme = "vuepress";
+      }
     };
     getArticle();
     getPrevNext();
@@ -423,6 +536,7 @@ export default {
       },
       initHeight,
       clickTopHandle,
+      handleChanged,
     };
   },
 };
@@ -483,5 +597,14 @@ h6 {
   margin-left: 5em;
   font-size: 14px;
   color: rgb(153, 119, 185);
+}
+/* CHECKBOX TOGGLE SWITCH */
+/* @apply rules for documentation, these do not work as inline style */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #68d391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #68d391;
 }
 </style>

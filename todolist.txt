@@ -33,3 +33,7 @@
 28. 分享文章 realy_todo?
 29. 首页过滤文章 done
 30. 首页搜索文章 done
+31. editor上传图片功能 done
+    保存功能 done
+32. 文章详情可以更改预览主题 done
+33. 文章详情进度条 done
