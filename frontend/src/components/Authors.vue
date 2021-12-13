@@ -5,15 +5,7 @@
       <ul class="-mx-4">
         <li class="flex items-center" v-for="user in authors" :key="user">
           <img
-            v-if="user.user"
-            :src="user.user.avatar_url"
-            alt="avatar"
-            class="object-cover w-10 h-10
-          mx-4 rounded-full"
-          />
-          <img
-            v-else
-            src="https://img.paulzzh.com/touhou/random"
+            :src="getAvatar(user)"
             alt="avatar"
             class="object-cover w-10 h-10
           mx-4 rounded-full"
@@ -53,8 +45,18 @@ export default {
           console.log(error.message.data);
         });
     });
+    const getAvatar = (user) => {
+      if (user.user !== null) {
+        return user.user.avatar_url;
+      } else if (user.avatar !== null) {
+        return user.avatar.content;
+      } else {
+        return "https://img.paulzzh.com/touhou/random";
+      }
+    };
     return {
       ...toRefs(state),
+      getAvatar,
     };
   },
 };

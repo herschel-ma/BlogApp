@@ -175,6 +175,7 @@ export default {
       Rtags: [],
       showModal: false,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
+      authorId: computed(() => store.getters.userId),
     });
     const store = useStore();
     const router = useRouter();
@@ -202,6 +203,7 @@ export default {
                 : 0,
               summery: state.summery,
               tags: state.tags ? state.tags.split(",") : null,
+              author: state.authorId,
             },
             {
               headers: {

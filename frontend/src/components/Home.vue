@@ -50,11 +50,9 @@
                 </router-link>
               </div>
               <div class="mt-2">
-                <a
-                  href="#"
-                  class="text-2xl font-bold text-gray-700 hover:underline"
-                  >{{ article.title }}</a
-                >
+                <a class="text-2xl font-bold text-gray-700 hover:underline">{{
+                  article.title
+                }}</a>
                 <p
                   v-if="article.content"
                   v-html="article.content"
@@ -117,14 +115,7 @@
                 <div>
                   <a class="flex items-center">
                     <img
-                      v-if="article.author.user"
-                      :src="article.author.user.avatar_url"
-                      alt="avatar"
-                      class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
-                    />
-                    <img
-                      v-else
-                      src="https://img.paulzzh.com/touhou/random"
+                      :src="getAvatar(article)"
                       alt="avatar"
                       class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
                     />
@@ -392,6 +383,15 @@ export default {
       }
       getAllArticles(url);
     };
+    const getAvatar = (article) => {
+      if (article.author.user !== null) {
+        return article.author.user.avatar_url;
+      } else if (article.author.avatar !== null) {
+        return article.author.avatar.content;
+      } else {
+        return "https://img.paulzzh.com/touhou/random";
+      }
+    };
     onMounted(() => {
       getAllArticles();
       askMediaScreen();
@@ -406,6 +406,7 @@ export default {
       askMediaScreen,
       randomColor,
       handleFilterBlogByUsername,
+      getAvatar,
     };
   },
 };

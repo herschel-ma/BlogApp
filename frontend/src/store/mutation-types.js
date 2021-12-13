@@ -3,6 +3,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT = "LOGOUT";
 export const GITHUB_LOGGEDIN = "GITHUB_LOGGEDIN";
 export const S_USERNAME = "S_USERNAME";
+export const S_USERID = "S_USERID";
 export const S_USERS = "S_USERS";
 export const S_CATEGORIES = "S_CATEGORIES";
 export const S_TAGS = "S_TAGS";

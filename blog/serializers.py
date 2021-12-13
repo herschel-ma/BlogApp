@@ -21,7 +21,7 @@ class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
     slug = serializers.SlugField(read_only=True)
-    author = serializers.StringRelatedField()
+    #author = serializers.StringRelatedField()
     category = CategorySerializer(read_only=True)
     category_id = serializers.IntegerField(write_only=True,
                                            allow_null=True,
@@ -43,6 +43,18 @@ class BlogSerializer(TaggitSerializer, serializers.ModelSerializer):
         if value == 0 or not isinstance(value, int):
             raise serializers.ValidationError("请选择一个分类")
         return value
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        request = self.context.get('request')
+        # 序列化author的详细信息，否则只会序列化出id
+        rep['author'] = UserSerializer(instance.author,
+                                       read_only=True,
+                                       required=False,
+                                       context={
+                                           'request': request
+                                       }).data
+        return rep
 
     class Meta:
         model = Blog
@@ -94,17 +106,19 @@ class BlogListSerializer(TaggitSerializer, serializers.ModelSerializer):
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
+        request = self.context.get('request')
         # 序列化author的详细信息，否则只会序列化出id
-        rep['author'] = UserSerializer(
-            instance.author,
-            read_only=True,
-            required=False,
-        ).data
+        rep['author'] = UserSerializer(instance.author,
+                                       read_only=True,
+                                       required=False,
+                                       context={
+                                           'request': request
+                                       }).data
         return rep
 
 
 class BlogCategoryDetailSerializer(serializers.ModelSerializer):
-    """給文章詳情的嵌套序列化器"""
+    """給分类文章詳情的嵌套序列化器"""
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
 
@@ -128,9 +142,13 @@ class BlogCategoryDetailSerializer(serializers.ModelSerializer):
         ]
 
     def to_representation(self, instance):
+        request = self.context.get('request')
         rep = super().to_representation(instance)
         # 序列化author的详细信息，否则只会序列化出id
-        rep['author'] = UserSerializer(instance.author).data
+        rep['author'] = UserSerializer(instance.author,
+                                       context={
+                                           'request': request
+                                       }).data
         return rep
 
 
@@ -153,7 +171,7 @@ class BlogRecentSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
     slug = serializers.SlugField(read_only=True)
-    author = serializers.StringRelatedField()
+    #author = serializers.StringRelatedField()
     category = CategorySerializer(read_only=True)
 
     class Meta:
@@ -167,13 +185,23 @@ class BlogRecentSerializer(serializers.ModelSerializer):
             "last_updated_time",
         ]
 
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        rep = super().to_representation(instance)
+        # 序列化author的详细信息，否则只会序列化出id
+        rep['author'] = UserSerializer(instance.author,
+                                       context={
+                                           'request': request
+                                       }).data
+        return rep
+
 
 class BlogSimilarSerializer(serializers.ModelSerializer):
     """相似博文"""
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
     slug = serializers.SlugField(read_only=True)
-    author = serializers.StringRelatedField()
+    #author = serializers.StringRelatedField()
     tags = TagListSerializerField(allow_null=True, required=False)
     category = CategorySerializer(read_only=True)
 
@@ -190,13 +218,24 @@ class BlogSimilarSerializer(serializers.ModelSerializer):
             "created_time",
         ]
 
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        rep = super().to_representation(instance)
+        # 序列化author的详细信息，否则只会序列化出id
+        rep['author'] = UserSerializer(instance.author,
+                                       context={
+                                           'request': request
+                                       }).data
+        return rep
+
 
 class BlogArchiveSerializer(serializers.ModelSerializer):
     """归档博文"""
     url = serializers.HyperlinkedIdentityField(view_name="blog-detail",
                                                lookup_field="slug")
     slug = serializers.SlugField(read_only=True)
-    author = serializers.StringRelatedField()
+
+    #author = serializers.StringRelatedField()
 
     class Meta:
         model = Blog
@@ -212,7 +251,10 @@ class BlogArchiveSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         # 序列化author的详细信息，否则只会序列化出id
-        rep['author'] = UserSerializer(instance.author).data
+        rep['author'] = UserSerializer(instance.author,
+                                       context={
+                                           'request': self.context['request']
+                                       }).data
         return rep
 
 

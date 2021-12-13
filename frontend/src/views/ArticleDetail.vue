@@ -101,7 +101,7 @@
           <p class="text-sm pb-8">
             作者：
             <a class="font-semibold hover:text-gray-800">{{
-              article.author
+              article.author ? article.author.username : ""
             }}</a>
             , 发布于 {{ article.created_time }}
           </p>
@@ -184,36 +184,22 @@
       <!-- comments here -->
       <Comments :article="article" />
       <div
-        class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6"
+        v-if="article.author && article.author.description"
+        class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6 pb-3"
       >
         <div class="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
           <img
-            src="https://img.paulzzh.com/touhou/random"
+            :src="getAvatar(article)"
             class="rounded-full shadow h-32 w-32"
           />
         </div>
-        <div class="flex-1 flex flex-col justify-center md:justify-start">
-          <p class="font-semibold text-2xl">David</p>
+        <div
+          class="flex-1 flex flex-col justify-center md:justify-start md:pl-10"
+        >
+          <p class="font-semibold text-2xl">{{ article.author.username }}</p>
           <p class="pt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            vel neque non libero suscipit suscipit eu eu urna.
+            {{ article.author.description }}
           </p>
-          <div
-            class="flex items-center justify-center md:justify-start text-2xl no-underline text-blue-800 pt-4"
-          >
-            <a class href="#">
-              <i class="fab fa-facebook"></i>
-            </a>
-            <a class="pl-4" href="#">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a class="pl-4" href="#">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a class="pl-4" href="#">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -257,12 +243,12 @@
           >
             <div class="flex items-center align-center md:mt-2 lg:mt-0">
               <img
-                src="https://img.paulzzh.com/touhou/random"
+                :src="getAvatar(a)"
                 alt="avatar"
                 class="object-cover w-8 h-8 rounded-full"
               />
               <a class="mx-3 text-sm text-gray-700 hover:underline">{{
-                a.author
+                a.author.username
               }}</a>
             </div>
             <span class="text-sm font-light text-gray-600">{{
@@ -371,18 +357,16 @@ export default {
       show: false,
     });
     const getArticle = (slug = props.slug) => {
-      fetch(`/api/blog/${slug}/`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "Application/json",
-          "X-CSRFTOKEN": Cookies.get("csrftoken"),
-          Authorization: "Token " + state.isLoggedIn,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log(data);
-          state.article = data;
+      axios
+        .get(`/api/blog/${slug}/`, {
+          headers: {
+            "Content-Type": "Application/json",
+            "X-CSRFTOKEN": Cookies.get("csrftoken"),
+            Authorization: "Token " + state.isLoggedIn,
+          },
+        })
+        .then((res) => {
+          state.article = res.data;
         })
         .catch((error) => console.log(error));
     };
@@ -513,6 +497,15 @@ export default {
         state.theme = "vuepress";
       }
     };
+    const getAvatar = (article) => {
+      if (article.author.user !== null) {
+        return article.author.user.avatar_url;
+      } else if (article.author.avatar !== null) {
+        return article.author.avatar.content;
+      } else {
+        return "https://img.paulzzh.com/touhou/random";
+      }
+    };
     getArticle();
     getPrevNext();
 
@@ -537,6 +530,7 @@ export default {
       initHeight,
       clickTopHandle,
       handleChanged,
+      getAvatar,
     };
   },
 };

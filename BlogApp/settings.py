@@ -27,7 +27,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -203,3 +203,7 @@ GITHUB_CLIENT_SECRET = env("GITHUB_CLIENT_SECRET")
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 # custom pagenation size
 PAGE_SIZE = env("PAGE_SIZE")
+# rest_auth修改密码
+OLD_PASSWORD_FIELD_ENABLED = True
+LOGOUT_ON_PASSWORD_CHANGE = False
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

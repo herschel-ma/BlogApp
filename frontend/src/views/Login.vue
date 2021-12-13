@@ -6,8 +6,9 @@
     <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
     <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
       <div class="text-center">
-        <h2 class="mt-6 text-3xl font-bold text-gray-900">Welcom Back!</h2>
-        <p class="mt-2 text-sm text-gray-600">Please sign in to your account</p>
+        <h2 class="mt-6 text-3xl font-bold text-gray-900">欢迎回来~</h2>
+        <p class="mt-2 text-sm text-gray-600">请登录你的账户</p>
+        <p class="mt-2 text-sm text-red-300">当前仅支持github授权登录</p>
       </div>
       <div class="flex flex-row justify-center items-center space-x-3">
         <span
@@ -44,7 +45,7 @@
       </div>
       <div class="flex items-center justify-center space-x-2">
         <span class="h-px w-16 bg-gray-300"></span>
-        <span class="text-gray-500 font-normal">OR</span>
+        <span class="text-gray-500 font-normal">或者</span>
         <span class="h-px w-16 bg-gray-300"></span>
       </div>
       <form class="mt-8 space-y-6" method="POST" @submit.prevent="handleSignIn">
@@ -66,23 +67,23 @@
             </svg>
           </div>
           <label class="text-sm font-bold text-gray-700 tracking-wide"
-            >Username</label
+            >您的昵称</label
           >
           <input
             class="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
             type
-            placeholder="Enter your Username"
+            placeholder="写下您的昵称"
             v-model="user.username"
           />
         </div>
         <div class="mt-8 content-center">
           <label class="text-sm font-bold text-gray-700 tracking-wide"
-            >Password</label
+            >您的密码</label
           >
           <input
             class="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-            type
-            placeholder="Enter your password"
+            type="password"
+            placeholder="写下您的密码"
             v-model="user.password"
           />
         </div>
@@ -95,14 +96,14 @@
               class="h-4 w-4 bg-indigo-500 focus:ring-indigo-400 border-gray-300 rounded"
             />
             <label for="remember_me" class="ml-2 block text-sm text-gray-900"
-              >Remember me</label
+              >记住我</label
             >
           </div>
           <div class="text-sm">
             <a
-              href="#"
+              @click="toggleModal"
               class="font-medium text-indigo-500 hover:text-indigo-500"
-              >Forgot your password?</a
+              >忘记密码?</a
             >
           </div>
         </div>
@@ -111,45 +112,140 @@
             type="submit"
             class="w-full flex justify-center bg-indigo-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
           >
-            Sign in
+            登录
           </button>
         </div>
         <p
           class="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500"
         >
-          <span>Don't have an account?</span>
+          <span>没有账号吗?</span>
           <router-link
             to="/signup"
-            href="#"
             class="text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300"
-            >Sign up</router-link
+            >去注册</router-link
           >
         </p>
       </form>
     </div>
   </div>
+  <ModalDialog :show="showModal" @close="showModal = false" class="z-50">
+    <template v-slot:innerForm>
+      <div
+        class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <div class="modal-content py-4 text-left px-6">
+          <div class="flex justify-center items-center pb-3">
+            <p class="text-2xl font-bold text-center">重置密码</p>
+          </div>
+
+          <form class="mt-6" method="POST" @submit.prevent="handleSubmitEmail">
+            <div>
+              <label
+                for="old_password"
+                class="block text-sm text-gray-800 dark:text-gray-200"
+                >您注册的邮箱：</label
+              >
+              <input
+                id="email"
+                type="email"
+                v-model="email"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+              />
+              <p v-show="Remail" class="text-sm text-red-400">
+                {{ Remail }}
+              </p>
+            </div>
+            <div class="mt-6">
+              <button
+                type="submit"
+                class="flex items-center justify-center w-full px-6 py-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
+              >
+                <span class="m-2 text-white">
+                  发送邮件
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </template>
+  </ModalDialog>
 </template>
 <script>
-import { reactive } from "vue";
+import { reactive, toRefs, computed } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useToast } from "vue-toastification";
+import axios from "axios";
+import Cookies from "js-cookie";
+import ModalDialog from "@/components/ModalDialog";
 export default {
   name: "Login",
+  components: { ModalDialog },
   setup() {
     const user = reactive({
       username: "",
       password: "",
     });
+    const state = reactive({
+      email: "",
+      Remail: "",
+      showModal: false,
+      detail: "",
+      isLoggedIn: computed(() => store.getters.isLoggedIn),
+    });
     const store = useStore();
     const router = useRouter();
+    const toast = useToast();
     // 使用actions
     const getGithubCode = () => {
       router.replace({ name: "github" });
     };
+    const toggleModal = () => {
+      state.showModal = !state.showModal;
+    };
+    const handleSubmitEmail = () => {
+      axios
+        .post(
+          `/rest-auth/password/reset/`,
+          {
+            email: state.email,
+          },
+          {
+            headers: {
+              "Content-Type": "Application/json",
+              "X-CSRFTOKEN": Cookies.get("csrftoken"),
+              Authorization: "Token " + state.isLoggedIn,
+            },
+          }
+        )
+        .then((response) => {
+          toast.success(response.data.detail, { timeout: 2000 });
+          state.showModal = !state.showModal;
+        })
+        .catch((e) => {
+          if (e.response) {
+            state.Remail = e.response.data.email
+              ? e.response.data.email[0]
+              : "";
+            if (e.response.data.detail) {
+              state.detail = e.response.data.detail;
+            } else if (e.response.data.non_field_errors) {
+              state.detail = e.response.data.non_field_errors[0];
+            }
+            if (state.detail) {
+              toast.error(state.detail, { timeout: 2000 });
+            }
+          }
+        });
+    };
     return {
+      ...toRefs(state),
       handleSignIn: () => store.dispatch("login", user),
       user,
       getGithubCode,
+      toggleModal,
+      handleSubmitEmail,
     };
   },
 };

@@ -107,19 +107,12 @@
                 <div>
                   <a class="flex items-center">
                     <img
-                      v-if="article.author.user"
-                      :src="article.author.user.avatar_url"
-                      alt="avatar"
-                      class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
-                    />
-                    <img
-                      v-else
-                      src="https://img.paulzzh.com/touhou/random"
+                      :src="getAvatar(article)"
                       alt="avatar"
                       class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
                     />
                     <h1 class="font-bold text-gray-700 hover:underline">
-                      {{ article.author }}
+                      {{ article.author.username }}
                     </h1>
                   </a>
                 </div>
@@ -286,7 +279,15 @@ export default {
           }
         });
     };
-
+    const getAvatar = (article) => {
+      if (article.author.user !== null) {
+        return article.author.user.avatar_url;
+      } else if (article.author.avatar !== null) {
+        return article.author.avatar.content;
+      } else {
+        return "https://img.paulzzh.com/touhou/random";
+      }
+    };
     return {
       toast,
       store,
@@ -295,6 +296,7 @@ export default {
       handleDelete,
       getArticles,
       randomColor,
+      getAvatar,
     };
   },
 };

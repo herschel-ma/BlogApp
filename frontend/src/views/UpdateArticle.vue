@@ -380,6 +380,7 @@ export default {
       tagSlug: "",
       RtagSlug: "",
       selectedTag: [],
+      authorId: computed(() => store.getters.userId),
     });
     watch(
       () => state.tagTitle,
@@ -491,6 +492,7 @@ export default {
                 : 0,
               // 提交的标签
               tags: state.selectedTag,
+              author: state.authorId,
             },
             {
               headers: {

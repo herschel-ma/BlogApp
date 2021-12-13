@@ -1,9 +1,11 @@
 import { createStore } from "vuex";
 import * as types from "./mutation-types";
 import axios from "axios";
+import { useToast } from "vue-toastification";
 import Cookies from "js-cookie";
-import router from "@/routers";
+// import router from "@/routers";
 
+const toast = useToast();
 const store = createStore({
   state() {
     return {
@@ -17,6 +19,7 @@ const store = createStore({
       delCata: 0,
       usersInfo: [],
       searchWord: "",
+      userId: 0,
     };
   },
   mutations: {
@@ -60,10 +63,21 @@ const store = createStore({
     [types.S_SEARCH_WORD](state, word) {
       state.searchWord = word;
     },
+    [types.S_USERID](state, id) {
+      state.userId = id;
+    },
   },
   actions: {
     login({ commit }, user) {
       commit(types.LOGIN);
+      if (user.username === undefined || user.username === "") {
+        toast.error("用户名不能为空", { timeout: 2000 });
+        return;
+      }
+      if (user.password === undefined || user.password === "") {
+        toast.error("密码不能为空", { timeout: 2000 });
+        return;
+      }
       axios
         .post(
           "/rest-auth/login/",
@@ -82,12 +96,21 @@ const store = createStore({
         .then((response) => {
           localStorage.setItem("token", response.data.key);
           commit(types.LOGIN_SUCCESS);
-          console.log("backend auth sussessful. ");
-          router.push({ name: "home" });
+          toast.success("登录成功", { timeout: 2000 });
+          window.location.href = "/";
         })
         .catch((response) => {
+          if (response.response.data.non_field_errors) {
+            toast.error(response.response.data.non_field_errors[0], {
+              timeout: 2000,
+            });
+          } else if (response.response.data.username) {
+            toast.error("昵称有误，请重试", { timeout: 2000 });
+          } else if (response.response.data.password) {
+            toast.error("密码有误，请重试", { timeout: 2000 });
+          }
           if (response.status === 400) {
-            console.log("No authorized.");
+            console.log("Authentication failed");
           } else if (response.status === 403) {
             console.log(
               "You are not suposed to see this message. Contact Administrater please"
@@ -136,6 +159,9 @@ const store = createStore({
     storeSearchWord({ commit }, word) {
       commit(types.S_SEARCH_WORD, word);
     },
+    storeUserId({ commit }, id) {
+      commit(types.S_USERID, id);
+    },
   },
   getters: {
     isLoggedIn: (state) => state.isLoggedIn,
@@ -145,6 +171,7 @@ const store = createStore({
     delCate: (state) => state.delCata,
     usersInfo: (state) => state.usersInfo,
     searchWord: (state) => state.searchWord,
+    userId: (state) => state.userId,
   },
 });
 

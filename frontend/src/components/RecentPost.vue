@@ -29,12 +29,12 @@
       >
         <div class="flex items-center align-center md:mt-2 lg:mt-0">
           <img
-            src="https://img.paulzzh.com/touhou/random"
+            :src="getAvatar(article)"
             alt="avatar"
             class="object-cover w-8 h-8 rounded-full"
           />
-          <a href="#" class="mx-3 text-sm text-gray-700 hover:underline">{{
-            article.author
+          <a class="mx-3 text-sm text-gray-700 hover:underline">{{
+            article.author.username
           }}</a>
         </div>
         <span class="text-sm font-light text-gray-600">{{
@@ -86,7 +86,15 @@ export default {
         })
         .catch((error) => console.log(error));
     };
-
+    const getAvatar = (article) => {
+      if (article.author.user !== null) {
+        return article.author.user.avatar_url;
+      } else if (article.author.avatar !== null) {
+        return article.author.avatar.content;
+      } else {
+        return "https://img.paulzzh.com/touhou/random";
+      }
+    };
     onMounted(() => {
       getAllArticles();
     });
@@ -94,6 +102,7 @@ export default {
       store,
       ...toRefs(state),
       getAllArticles,
+      getAvatar,
     };
   },
 };

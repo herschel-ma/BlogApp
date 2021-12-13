@@ -7,9 +7,9 @@
     <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
       <div class="text-center">
         <h2 class="mt-6 text-3xl font-bold text-gray-900">
-          Register an account!
+          注册
         </h2>
-        <p class="mt-2 text-sm text-gray-600">Please sign up to your account</p>
+        <p class="mt-2 text-sm text-gray-600">注册一个属于你自己的账号</p>
       </div>
       <div class="flex items-center justify-center space-x-2"></div>
       <form class="mt-8 space-y-6" method="POST" @submit.prevent="handleSignup">
@@ -31,36 +31,36 @@
             </svg>
           </div>
           <label class="text-sm font-bold text-gray-700 tracking-wide"
-            >Username</label
+            >您的昵称</label
           >
           <input
             class="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
             type
-            placeholder="Enter your Username"
+            placeholder="想一个昵称吧"
             v-model="username"
           />
           <p v-show="Rusername" class="text-sm text-red-400">{{ Rusername }}</p>
         </div>
         <div class="mt-8 content-center">
           <label class="text-sm font-bold text-gray-700 tracking-wide"
-            >Email</label
+            >您的邮箱</label
           >
           <input
             class="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
             type
-            placeholder="Enter your e-mail"
+            placeholder="输入你的邮箱"
             v-model="email"
           />
           <p v-show="Remail" class="text-sm text-red-400">{{ Remail }}</p>
         </div>
         <div class="mt-8 content-center">
-          <label class="text-sm font-bold text-gray-700 tracking-wide"
-            >Password1</label
-          >
+          <label class="text-sm font-bold text-gray-700 tracking-wide">
+            您的密码
+          </label>
           <input
             class="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
             type="password"
-            placeholder="Enter your password"
+            placeholder="非礼勿视"
             v-model="password1"
           />
           <p v-show="Rpassword1" class="text-sm text-red-400">
@@ -69,12 +69,12 @@
         </div>
         <div class="mt-8 content-center">
           <label class="text-sm font-bold text-gray-700 tracking-wide"
-            >Password2</label
+            >确认密码</label
           >
           <input
             class="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
             type="password"
-            placeholder="Enter your password again"
+            placeholder="非礼勿视"
             v-model="password2"
           />
           <p v-show="Rpassword2" class="text-sm text-red-400">
@@ -87,18 +87,18 @@
             type="submit"
             class="w-full flex justify-center bg-indigo-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
           >
-            Sign up
+            注册
           </button>
         </div>
         <p
           class="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500"
         >
-          <span>Already had an account?</span>
+          <span>已有账号?</span>
           <router-link
             to="/login"
             href="#"
             class="text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300"
-            >Sign in</router-link
+            >去登陆</router-link
           >
         </p>
       </form>

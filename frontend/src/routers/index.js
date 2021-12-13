@@ -69,10 +69,14 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== "login" && to.name !== "github" && !store.state.isLoggedIn) {
-    next({ name: "login" });
-  }
   if (
+    to.name !== "login" &&
+    to.name !== "github" &&
+    to.name !== "signup" &&
+    !store.state.isLoggedIn
+  ) {
+    next({ name: "login" });
+  } else if (
     to.name === "update" &&
     store.state.isLoggedIn &&
     to.params.author &&

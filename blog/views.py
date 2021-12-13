@@ -98,6 +98,7 @@ class BlogViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     """分类视图集"""
     queryset = Category.objects.all()
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticated]
     pagination_class = None
@@ -136,12 +137,14 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
 class BlogRecentView(ListAPIView):
     queryset = Blog.objects.order_by('-last_updated_time')[:3]
     permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
     serializer_class = BlogRecentSerializer
     pagination_class = None
 
 
 class BlogArchiveView(ListAPIView):
     """归档博文视图集"""
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
     serializer_class = BlogArchiveSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = None
@@ -157,6 +160,7 @@ class BlogArchiveView(ListAPIView):
 
 class TagViewSet(viewsets.ModelViewSet):
     """标签视图集"""
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
     serializer_class = TagsSerializer
     pagination_class = None
     permission_classes = [IsAuthenticated]
@@ -167,6 +171,7 @@ class TagViewSet(viewsets.ModelViewSet):
 
 
 class BlogUploadView(APIView):
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
     parser_classes = [MultiPartParser, FormParser]
 
     @csrf_exempt

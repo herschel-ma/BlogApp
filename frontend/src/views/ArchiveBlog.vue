@@ -40,21 +40,11 @@
     </div>
     <div v-for="article in articles" :key="article.slug" class="relative z-10">
       <img
-        v-if="article.author.user"
         class="h-24 w-24 object-cover 
         rounded-full shadow-md
         border-4 border-white xs:absolute 
         md:mx-auto"
-        :src="article.author.user.avatar_url"
-        alt="头像"
-      />
-      <img
-        v-else
-        class="h-24 w-24 object-cover 
-        rounded-full shadow-md 
-        border-4 border-white xs:absolute 
-        md:mx-auto"
-        src="https://img.paulzzh.com/touhou/random"
+        :src="getAvatar(article)"
         alt="头像"
       />
       <div class="relative pt-2 xs:pl-28 xs:pt-0">
@@ -139,7 +129,15 @@ export default {
         })
         .catch((e) => console.log(e));
     };
-
+    const getAvatar = (article) => {
+      if (article.author.user !== null) {
+        return article.author.user.avatar_url;
+      } else if (article.author.avatar !== null) {
+        return article.author.avatar.content;
+      } else {
+        return "https://img.paulzzh.com/touhou/random";
+      }
+    };
     onMounted(() => {
       getArchiveArticles();
     });
@@ -148,6 +146,7 @@ export default {
       getArchiveArticles,
       selectArchiveArticles,
       store,
+      getAvatar,
     };
   },
 };

@@ -8,7 +8,7 @@ from comments.permissions import IsAuthorOrReadOnly
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_class = [IsAuthorOrReadOnly]
+    permission_classes = [IsAuthorOrReadOnly]
     pagination_class = None
 
     def perform_create(self, serializer):

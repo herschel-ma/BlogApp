@@ -189,8 +189,10 @@ export default {
       if (comment.parent) return `#comment-${comment.parent.id}`;
     };
     const getAvatar = (comment) => {
-      if (comment.author.user) {
+      if (comment.author.user !== null) {
         return comment.author.user.avatar_url;
+      } else if (comment.author.avatar !== null) {
+        return comment.author.avatar.content;
       }
       return "https://img.paulzzh.com/touhou/random";
     };
