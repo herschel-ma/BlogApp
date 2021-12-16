@@ -190,7 +190,7 @@
         <div class="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
           <img
             :src="getAvatar(article)"
-            class="rounded-full shadow h-32 w-32"
+            class="rounded-full object-cover shadow h-32 w-32"
           />
         </div>
         <div

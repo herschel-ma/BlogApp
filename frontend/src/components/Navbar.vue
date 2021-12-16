@@ -1,13 +1,12 @@
 <template>
   <!-- navbar goes here -->
   <nav class="bg-gray-400">
-    <div class="max-w-7xl mx-auto px-2">
-      <div class="flex justify-between">
+    <div class="mx-auto px-2">
+      <div class="flex justify-between items-center">
         <div class="flex space-x-3">
           <!-- logo -->
           <div>
             <a
-              href="#"
               class="flex items-center py-5 px-3 text-gray-600 hover:text-blue-500"
             >
               <svg
@@ -26,25 +25,20 @@
             </a>
           </div>
           <!-- primary nav -->
-          <div class="hidden md:flex space-x-5 items-center">
+          <div v-if="loggedIn" class="hidden md:flex space-x-5 items-center">
             <router-link
-              v-if="loggedIn"
-              :to="{ name: 'create' }"
+              :to="{ name: 'history' }"
               class="py-5 text-gray-700 hover:text-blue-500"
-              >新建博文</router-link
+              >历史上的今天</router-link
             >
-
             <router-link
               :to="{ name: 'archive' }"
               class="py-5 text-gray-700 hover:text-blue-500"
               >归档</router-link
             >
-            <router-link
-              to="/post"
-              class="py-5 text-gray-700 hover:text-blue-500"
+            <router-link to="/" class="py-5 text-gray-700 hover:text-blue-500"
               >友链</router-link
             >
-            <div class="text-indigo-700">{{ date }}</div>
           </div>
         </div>
         <!-- secordary nav -->
@@ -129,6 +123,12 @@
                 >
                   修改资料
                 </a>
+                <router-link
+                  :to="{ name: 'create' }"
+                  @click="showDropDown = false"
+                  class="block cursor-pointer px-2 py-1 text-sm  text-gray-700 hover:bg-gray-400 hover:text-white"
+                  >新建博文</router-link
+                >
               </div>
             </div>
           </a>
@@ -179,10 +179,10 @@
               />
             </div>
             <router-link
-              :to="{ name: 'create' }"
+              :to="{ name: 'history' }"
               @click="showMobileMenu"
               class="block py-2 px-4 text-sm hover:bg-gray-200"
-              >新建博文</router-link
+              >历史上的今天</router-link
             >
             <router-link
               :to="{ name: 'archive' }"
@@ -191,7 +191,7 @@
               >归档</router-link
             >
             <router-link
-              to="/post"
+              to="/"
               @click="showMobileMenu"
               class="block py-2 px-4 text-sm hover:bg-gray-200"
               >友链</router-link
@@ -218,6 +218,12 @@
               >
                 修改资料
               </li>
+              <router-link
+                :to="{ name: 'create' }"
+                @click="showMobileMenu"
+                class="block cursor-pointer px-2 py-1 text-sm  text-gray-700 hover:bg-gray-400 hover:text-white"
+                >新建博文</router-link
+              >
               <li
                 @click="handleLogOut"
                 class="block cursor-pointer px-2 py-1 text-sm  text-gray-700 hover:bg-gray-400 hover:text-white"
@@ -231,7 +237,14 @@
     </div>
   </nav>
   <!--content goes here-->
-  <ModalDialog :show="showModal" @close="showModal = false" class="z-50">
+  <ModalDialog
+    :show="showModal"
+    @close="
+      showModal = false;
+      showDropDown = false;
+    "
+    class="z-50"
+  >
     <template v-slot:innerForm>
       <div
         class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
@@ -311,7 +324,10 @@
   </ModalDialog>
   <ModalDialog
     :show="showChangeInfoModal"
-    @close="showChangeInfoModal = false"
+    @close="
+      showChangeInfoModal = false;
+      showDropDown = false;
+    "
     class="z-50"
   >
     <template v-slot:innerForm>
@@ -382,7 +398,7 @@
 
 <script>
 import axios from "axios";
-import { reactive, computed, onMounted, toRefs, onUnmounted } from "vue";
+import { reactive, computed, onMounted, toRefs } from "vue";
 import { useStore } from "vuex";
 import { useToast } from "vue-toastification";
 import Cookies from "js-cookie";
@@ -408,13 +424,8 @@ export default {
     onMounted(() => {
       store.dispatch("githubLoggedIn");
       getUserInfo();
-      createDateTimer();
     });
-    onUnmounted(() => {
-      if (data.timer) {
-        clearInterval(data.timer);
-      }
-    });
+
     const data = reactive({
       hidden: "hidden",
       userName: "",
@@ -552,18 +563,6 @@ export default {
             toast.error(error.response.data.detail, { timeout: 2000 });
           }
         });
-    };
-    const createDateTimer = () => {
-      const options = {
-        weekday: "long",
-        hour: "numeric",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      };
-      data.timer = setInterval(() => {
-        data.date = new Date().toLocaleDateString("zh-hans", options);
-      }, 1000);
     };
     return {
       ...toRefs(data),

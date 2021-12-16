@@ -6,6 +6,7 @@
       <div class="w-full lg:w-8/12">
         <div class="flex items-center justify-between">
           <h1 class="text-xl font-bold text-gray-700 md:text-2xl">博文</h1>
+          <div class="text-indigo-700">{{ date }}</div>
           <div>
             <select
               @change="handleFilterBlogByUsername($event)"
@@ -44,7 +45,7 @@
                       id: article.category.id,
                     },
                   }"
-                  class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500"
+                  class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500 whitespace-nowrap"
                 >
                   {{ article.category.title }}
                 </router-link>
@@ -207,7 +208,7 @@
 <script>
 import Cookies from "js-cookie";
 import axios from "axios";
-import { onMounted, toRefs, reactive, computed, watch } from "vue";
+import { onMounted, toRefs, reactive, computed, watch, onUnmounted } from "vue";
 import Authors from "@/components/Authors";
 import Category from "@/components/Category";
 import RecentPost from "@/components/RecentPost";
@@ -240,6 +241,8 @@ export default {
       isLoggedIn: computed(() => store.getters.isLoggedIn),
       usersInfo: computed(() => store.getters.usersInfo),
       searchWord: computed(() => store.getters.searchWord),
+      timer: null,
+      date: null,
     });
     watch(
       // 监听搜索内容
@@ -395,7 +398,25 @@ export default {
     onMounted(() => {
       getAllArticles();
       askMediaScreen();
+      createDateTimer();
     });
+    onUnmounted(() => {
+      if (state.timer) {
+        clearInterval(state.timer);
+      }
+    });
+    const createDateTimer = () => {
+      const options = {
+        weekday: "short",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      };
+      state.timer = setInterval(() => {
+        state.date = new Date().toLocaleDateString("zh-hans", options);
+      }, 1000);
+    };
     return {
       toast,
       store,

@@ -9,9 +9,9 @@ const routes = [
     component: () => import("@/components/Home"),
   },
   {
-    path: "/post",
-    name: "post",
-    component: () => import("@/views/Blog"),
+    path: "/history/today",
+    name: "history",
+    component: () => import("@/views/HistoryToady"),
   },
   {
     path: "/details/:slug",
