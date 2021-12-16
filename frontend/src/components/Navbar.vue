@@ -44,6 +44,7 @@
               class="py-5 text-gray-700 hover:text-blue-500"
               >友链</router-link
             >
+            <div class="text-indigo-700">{{ date }}</div>
           </div>
         </div>
         <!-- secordary nav -->
@@ -381,7 +382,7 @@
 
 <script>
 import axios from "axios";
-import { reactive, computed, onMounted, toRefs } from "vue";
+import { reactive, computed, onMounted, toRefs, onUnmounted } from "vue";
 import { useStore } from "vuex";
 import { useToast } from "vue-toastification";
 import Cookies from "js-cookie";
@@ -407,8 +408,13 @@ export default {
     onMounted(() => {
       store.dispatch("githubLoggedIn");
       getUserInfo();
+      createDateTimer();
     });
-
+    onUnmounted(() => {
+      if (data.timer) {
+        clearInterval(data.timer);
+      }
+    });
     const data = reactive({
       hidden: "hidden",
       userName: "",
@@ -429,6 +435,8 @@ export default {
       Rdescription: "",
       showSubMenu: false,
       searchPlaceholder: "搜索",
+      timer: null,
+      date: null,
     });
     const getUserInfo = () => {
       axios.get("/api/user/").then((response) => {
@@ -544,6 +552,18 @@ export default {
             toast.error(error.response.data.detail, { timeout: 2000 });
           }
         });
+    };
+    const createDateTimer = () => {
+      const options = {
+        weekday: "long",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      };
+      data.timer = setInterval(() => {
+        data.date = new Date().toLocaleDateString("zh-hans", options);
+      }, 1000);
     };
     return {
       ...toRefs(data),

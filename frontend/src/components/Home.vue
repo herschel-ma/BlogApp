@@ -330,7 +330,7 @@ export default {
             },
           })
           .then((res) => {
-            if (res.stauts === "204" || res.status === 204) {
+            if (res.status === "204" || res.status === 204) {
               toast.success(`删除${slug}成功`, {
                 timeout: 2000,
               });
