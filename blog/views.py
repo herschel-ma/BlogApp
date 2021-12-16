@@ -44,8 +44,11 @@ class BlogViewSet(viewsets.ModelViewSet):
     def list_archive_dates(self, request, *args, **kwargs):
         """返回博客的归档日期"""
         dates = Blog.objects.dates("created_time", "month", order="DESC")
-        date_field = DateField()
-        data = [date_field.to_representation(date) for date in dates]
+        if (list(dates) != [None]):
+            date_field = DateField()
+            data = [date_field.to_representation(date) for date in dates]
+        else:
+            data = Blog.objects.distinct_date()
         return Response(data=data, status=status.HTTP_200_OK)
 
     @action(methods=['GET'],
@@ -155,6 +158,9 @@ class BlogArchiveView(ListAPIView):
         queryset = Blog.objects.filter(
             created_time__year=year,
             created_time__month=month).order_by('-created_time')
+        if not queryset.exists():
+            queryset = Blog.objects.filter(created_time__icontains=year + '-' +
+                                           month)
         return queryset
 
 
@@ -178,10 +184,19 @@ class BlogUploadView(APIView):
     def post(self, request):
         try:
             import time
+            import os
             Time = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
+            file_path_li = Time.split("_")[0]
+            file_path_li = file_path_li.split("-")
+            file_path_year = file_path_li[0]
+            file_path_month = file_path_li[1]
+            file_path_day = file_path_li[2]
             pic = request.FILES['file']
-            save_path = f"{settings.MEDIA_ROOT}/{Time}_{pic.name}"
-            access_path = f"{settings.MEDIA_URL}{Time}_{pic.name}"
+            path = f"{settings.MEDIA_ROOT}/{file_path_year}/{file_path_month}/{file_path_day}/"
+            save_path = f"{settings.MEDIA_ROOT}/{file_path_year}/{file_path_month}/{file_path_day}/{Time}_{pic.name}"
+            access_path = f"{settings.MEDIA_URL}/{file_path_year}/{file_path_month}/{file_path_day}/{Time}_{pic.name}"
+            if not os.path.exists(path):
+                os.makedirs(path)
             with open(save_path, "wb") as f:
                 for content in pic.chunks():
                     f.write(content)

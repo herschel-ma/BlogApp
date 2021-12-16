@@ -245,10 +245,8 @@ export default {
       // 监听搜索内容
       () => state.searchWord,
       (searchWord) => {
-        if (searchWord !== "") {
-          const url = `/api/blog/?search=${searchWord}`;
-          getAllArticles(url);
-        }
+        const url = `/api/blog/?search=${searchWord}`;
+        getAllArticles(url);
       }
     );
     const randomColor = (i) => {
@@ -322,38 +320,40 @@ export default {
     };
     const handleDelete = (event, slug) => {
       event.preventDefault();
-      axios
-        .delete(`/api/blog/${slug}/`, {
-          headers: {
-            "Content-Type": "Application/json",
-            "X-CSRFTOKEN": Cookies.get("csrftoken"),
-            Authorization: "Token " + state.isLoggedIn,
-          },
-        })
-        .then((res) => {
-          if (res.stauts === "204" || res.status === 204) {
-            toast.success(`删除${slug}成功`, {
-              timeout: 2000,
-            });
-            setTimeout(() => {
-              window.location.href = "/";
-            }, 1000);
-          }
-        })
-
-        .catch((e) => {
-          if (e.response) {
-            if (e.response.data.detail) {
-              toast.error(e.response.data.detail, {
+      if (window.confirm("确定要删除吗？")) {
+        axios
+          .delete(`/api/blog/${slug}/`, {
+            headers: {
+              "Content-Type": "Application/json",
+              "X-CSRFTOKEN": Cookies.get("csrftoken"),
+              Authorization: "Token " + state.isLoggedIn,
+            },
+          })
+          .then((res) => {
+            if (res.stauts === "204" || res.status === 204) {
+              toast.success(`删除${slug}成功`, {
                 timeout: 2000,
               });
-            } else {
-              toast.error(`删除${slug}失败，请重试`, {
-                timeout: 2000,
-              });
+              setTimeout(() => {
+                window.location.href = "/";
+              }, 1000);
             }
-          }
-        });
+          })
+
+          .catch((e) => {
+            if (e.response) {
+              if (e.response.data.detail) {
+                toast.error(e.response.data.detail, {
+                  timeout: 2000,
+                });
+              } else {
+                toast.error(`删除${slug}失败，请重试`, {
+                  timeout: 2000,
+                });
+              }
+            }
+          });
+      }
     };
     const updateHandler = (number) => {
       let url = `/api/blog?page=${number}`;

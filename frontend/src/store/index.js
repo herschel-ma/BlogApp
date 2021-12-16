@@ -63,6 +63,9 @@ const store = createStore({
     [types.S_SEARCH_WORD](state, word) {
       state.searchWord = word;
     },
+    [types.D_SEARCH_WORD](state) {
+      state.searchWord = "";
+    },
     [types.S_USERID](state, id) {
       state.userId = id;
     },
@@ -158,6 +161,9 @@ const store = createStore({
     },
     storeSearchWord({ commit }, word) {
       commit(types.S_SEARCH_WORD, word);
+    },
+    deleteSearchWord({ commit }) {
+      commit(types.D_SEARCH_WORD);
     },
     storeUserId({ commit }, id) {
       commit(types.S_USERID, id);

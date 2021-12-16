@@ -80,7 +80,7 @@
             </svg>
             <input
               type="text"
-              placeholder="搜索"
+              :placeholder="searchPlaceholder"
               @keyup.enter="search($event)"
               class="w-32 py-2 bg-gray-200 border-b-2 rounded-full border-gray-400 focus:border-yellow-400 outline-none"
             />
@@ -170,25 +170,11 @@
           </div>
           <div v-else>
             <div class="relative flex items-center ml-3 p-0 m-0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="absolute left-16 w-6 h-6 mr-2 text-yellow-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
               <input
                 type="text"
-                placeholder="搜索"
+                :placeholder="searchPlaceholder"
                 @keyup.enter="search($event)"
-                class="w-24 p-1 px-2 m-0 bg-gray-200 border-b-2 rounded-full border-gray-400 focus:border-yellow-400 outline-none"
+                class="w-full p-0 px-3 m-0 border-gray-500 border-b-2 rounded-md bg-gray-400 outline-none"
               />
             </div>
             <router-link
@@ -411,6 +397,9 @@ export default {
     });
     const search = (event) => {
       store.dispatch("storeSearchWord", event.target.value);
+      event.target.value = "";
+      data.searchPlaceholder = "搜索";
+      data.hidden = "hidden";
     };
     const toggleProfile = () => {
       data.showDropDown = !data.showDropDown;
@@ -439,6 +428,7 @@ export default {
       description: "",
       Rdescription: "",
       showSubMenu: false,
+      searchPlaceholder: "搜索",
     });
     const getUserInfo = () => {
       axios.get("/api/user/").then((response) => {
@@ -546,7 +536,7 @@ export default {
           getUserInfo();
           data.showChangeInfoModal = false;
           data.showDropDown = false;
-          data.hidden = data.hidden == "" ? "hidden" : "";
+          data.hidden = "hidden";
           toast.success(res.data.detail, { timeout: 2000 });
         })
         .catch((error) => {

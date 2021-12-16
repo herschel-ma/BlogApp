@@ -279,7 +279,11 @@
             <p class="text-2xl font-bold text-center">创建标签</p>
           </div>
 
-          <form class="mt-6" method="POST" @submit.prevent="handleCreateTag">
+          <form
+            class="mt-6"
+            method="POST"
+            @submit.prevent="handleCreateTag($event)"
+          >
             <div>
               <label
                 for="tag"
@@ -633,7 +637,8 @@ export default {
             }
           });
       },
-      handleCreateTag: () => {
+      handleCreateTag: (event) => {
+        event.preventDefault();
         axios
           .post(
             "/api/tag/",

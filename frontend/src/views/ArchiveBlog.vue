@@ -119,13 +119,15 @@ export default {
           },
         })
         .then((res) => {
-          state.archiveDates.push(
-            ...res.data.map((v) => v.split("-")[0] + "-" + v.split("-")[1])
-          );
-          if (state.archiveDates.length > 0) {
-            selectArchiveArticles(state.archiveDates[0]);
+          if (res.data.length > 0 && res.data[0] !== null) {
+            state.archiveDates.push(
+              ...res.data.map((v) => v.split("-")[0] + "-" + v.split("-")[1])
+            );
+            if (state.archiveDates.length > 0) {
+              selectArchiveArticles(state.archiveDates[0]);
+            }
+            // console.log(state);
           }
-          // console.log(state);
         })
         .catch((e) => console.log(e));
     };

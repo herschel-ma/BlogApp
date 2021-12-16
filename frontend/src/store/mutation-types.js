@@ -12,3 +12,4 @@ export const D_DEL_TAG = "D_DEL_TAG";
 export const S_DEL_CATA = "S_DEL_CATA";
 export const D_DEL_CATA = "D_DEL_CATA";
 export const S_SEARCH_WORD = "S_SEARCH_WORD";
+export const D_SEARCH_WORD = "D_SEARCH_WORD";

@@ -93,6 +93,8 @@ router.beforeEach((to, from, next) => {
     );
   } else {
     next();
+    // 路由跳转之后清空搜索词
+    store.dispatch("deleteSearchWord");
   }
 });
 export default router;
