@@ -220,7 +220,7 @@ CACHES = {
     }
 }
 
-if not DEBUG:  # 修改项。允许所有的IP访问网络服务
+if DEBUG == False or DEBUG == "False":  # 修改项。允许所有的IP访问网络服务
     ALLOWED_HOSTS = ['*']
 
     # 修改项。指定需要收集的静态文件的位置
