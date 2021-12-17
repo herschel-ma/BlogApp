@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'django_filters',
     'taggit',
+    'drf_yasg',  #文档
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
@@ -170,8 +171,12 @@ LOGOUT_REDIRECT_URL = '/'
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y/%m/%d %H:%M:%S",
     'DEFAULT_PAGINATION_CLASS': 'blog.pagination.CustomPageNumber',
-    'PAGE_SIZE': 20,
+    #'PAGE_SIZE': 20,
     # 'EXCEPTION_HANDLER': 'blog.exception.exception_handler'
+    'DEFAULT_THROTTLE_CLASSES': ['rest_framework.throttling.UserRateThrottle'],
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '20/min',
+    }
 }
 
 WEBPACK_LOADER = {
@@ -206,4 +211,21 @@ PAGE_SIZE = env("PAGE_SIZE")
 # rest_auth修改密码
 OLD_PASSWORD_FIELD_ENABLED = True
 LOGOUT_ON_PASSWORD_CHANGE = False
+# 上线前更改为smp
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# 配置默认缓存/上线考虑换成redis
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
+
+if not DEBUG:  # 修改项。允许所有的IP访问网络服务
+    ALLOWED_HOSTS = ['*']
+
+    # 修改项。指定需要收集的静态文件的位置
+    # 即前端打包文件所在位置
+    STATICFILES_DIRS = [BASE_DIR.joinpath("frontend/dist/")]
+
+    # 新增项。静态文件收集目录
+    STATIC_ROOT = BASE_DIR / 'collected_static'

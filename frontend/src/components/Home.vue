@@ -319,7 +319,17 @@ export default {
             })
           );
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error.response);
+          if (error.response.status == 429) {
+            const number = /\d+/g.exec(error.response.data.detail);
+            const content = /.*。/g.exec(error.response.data.detail);
+            toast.error(`${content}${number}s之后才能访问！`, {
+              timeout: 2000,
+            });
+          }
+          console.log(error);
+        });
     };
     const handleDelete = (event, slug) => {
       event.preventDefault();

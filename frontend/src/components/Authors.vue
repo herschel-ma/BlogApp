@@ -42,7 +42,7 @@ export default {
           store.dispatch("storeUsers", res.data);
         })
         .catch((error) => {
-          console.log(error.message.data);
+          console.log(error);
         });
     });
     const getAvatar = (user) => {

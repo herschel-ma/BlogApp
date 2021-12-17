@@ -31,7 +31,13 @@
       <article class="flex flex-col shadow my-4">
         <!-- Article Image -->
         <a class="hover:opacity-75">
-          <img src="https://img.paulzzh.com/touhou/random" />
+          <img
+            :src="
+              musicPicurl
+                ? musicPicurl
+                : 'https://img.paulzzh.com/touhou/random'
+            "
+          />
         </a>
         <div class="bg-white flex flex-col justify-center p-6">
           <a
@@ -97,7 +103,20 @@
               >切换预览主题</label
             >
           </a>
-
+          <div
+            v-if="musicUrl"
+            class="flex xs:flex-row items-center md:justify-between lg:justify-start mb-3 px-1 pt-2"
+          >
+            <div
+              class="flex flex-col space-y-1 max-w-max whitespace-nowrap mr-2"
+            >
+              <div class="text-xs m-0 p-0">{{ musicName }}</div>
+              <div class="text-xs m-0 p-0">{{ musicArtistsname }}</div>
+            </div>
+            <audio :src="musicUrl" controls>
+              您的浏览器不支持播放音乐...
+            </audio>
+          </div>
           <p class="text-sm pb-8">
             作者：
             <a class="font-semibold hover:text-gray-800">{{
@@ -272,13 +291,13 @@
         >
           <i class="fab fa-instagram"></i> Follow @dgrzyb
         </a>
-        <div id="boxFixed"></div>
+        <div id="boxFixed" ref="box"></div>
       </div>
       <div
         v-if="catalogList.length > 0"
-        class="bg-white mt-4 p-2 xs:hidden 
-        sm:hidden md:block lg:block boxFixed
-        shadow"
+        class="bg-white mt-4 p-2 xxs:hidden 
+        sm:hidden md:block lg:block
+        shadow boxFiexd"
         :class="{ is_fixed: isFixed }"
       >
         <button
@@ -311,6 +330,7 @@ import {
   onMounted,
   nextTick,
   onUnmounted,
+  ref,
 } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -337,6 +357,7 @@ export default {
   setup(props) {
     const store = useStore();
     const router = useRouter();
+    let box = ref(null);
     const state = reactive({
       article: {},
       articles: [],
@@ -351,10 +372,15 @@ export default {
       isProcessFixed: false,
       progressWidth: null,
       offsetTop: 0,
+      offsetHeight: 0,
       offsetProcessBarTop: 0,
       scrollTop: 0,
       isLoggedIn: computed(() => store.getters.isLoggedIn),
       show: false,
+      musicName: "",
+      musicUrl: "",
+      musicPicurl: "",
+      musicArtistsname: "",
     });
     const getArticle = (slug = props.slug) => {
       axios
@@ -460,7 +486,6 @@ export default {
       let scrollPercent = Number(
         (scrollTop / scrollAvail).toString().match(/^\d+(?:\.\d{0,2})?/)
       );
-      // let scrollPercent = (scrollTop / scrollAvail).toFixed(2);
       state.progressWidth = scrollPercent * 100 + "%";
       // catalog
       state.isFixed = scrollTop > state.offsetTop + offset ? true : false;
@@ -472,6 +497,23 @@ export default {
       let scrollHeight = document.documentElement.scrollTop;
       state.show = winHeight < scrollHeight ? true : false;
     };
+    const getMusicInfo = () => {
+      const url = "https://api.uomg.com/api/rand.music?sort=热歌榜&format=json";
+      axios
+        .get(url)
+        .then((res) => {
+          if (res.data.code === 1) {
+            state.musicName = res.data.data.name;
+            state.musicUrl = res.data.data.url;
+            state.musicPicurl = res.data.data.picurl;
+            state.musicArtistsname = res.data.data.artistsname;
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    };
+
     onMounted(() => {
       window.addEventListener("scroll", initHeight);
       nextTick(() => {
@@ -481,6 +523,7 @@ export default {
           "#processBar"
         ).offsetTop;
       });
+      getMusicInfo();
     });
     onUnmounted(() => {
       window.removeEventListener("scroll", initHeight);
@@ -531,6 +574,7 @@ export default {
       clickTopHandle,
       handleChanged,
       getAvatar,
+      box,
     };
   },
 };
