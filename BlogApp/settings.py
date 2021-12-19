@@ -152,7 +152,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR / 'upload'
 MEDIA_URL = '/media/'
-
+STATICFILES_DIRS = [BASE_DIR.joinpath("static")]
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -178,8 +179,7 @@ REST_FRAMEWORK = {
         'user': '20/min',
     }
 }
-
-WEBPACK_LOADER = {
+""" WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,
         'BUNDLE_DIR_NAME': 'dist/',
@@ -187,7 +187,7 @@ WEBPACK_LOADER = {
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
-}
+} """
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -219,13 +219,3 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
-
-if DEBUG == False or DEBUG == "False":  # 修改项。允许所有的IP访问网络服务
-    ALLOWED_HOSTS = ['*']
-
-    # 修改项。指定需要收集的静态文件的位置
-    # 即前端打包文件所在位置
-    STATICFILES_DIRS = [BASE_DIR.joinpath("frontend/dist/")]
-
-    # 新增项。静态文件收集目录
-    STATIC_ROOT = BASE_DIR / 'collected_static'

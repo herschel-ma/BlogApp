@@ -1,149 +1,96 @@
 {
   "status": "done",
   "assets": {
-    "css/app.c04055bc.css": {
-      "name": "css/app.c04055bc.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/app.c04055bc.css"
+    "js/0.js": {
+      "name": "js/0.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/0.js",
+      "publicPath": "http://127.0.0.1:8080/js/0.js"
+    },
+    "js/1.js": {
+      "name": "js/1.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/1.js",
+      "publicPath": "http://127.0.0.1:8080/js/1.js"
+    },
+    "js/2.js": {
+      "name": "js/2.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/2.js",
+      "publicPath": "http://127.0.0.1:8080/js/2.js"
+    },
+    "js/3.js": {
+      "name": "js/3.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/3.js",
+      "publicPath": "http://127.0.0.1:8080/js/3.js"
+    },
+    "js/4.js": {
+      "name": "js/4.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/4.js",
+      "publicPath": "http://127.0.0.1:8080/js/4.js"
+    },
+    "js/5.js": {
+      "name": "js/5.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/5.js",
+      "publicPath": "http://127.0.0.1:8080/js/5.js"
+    },
+    "js/6.js": {
+      "name": "js/6.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/6.js",
+      "publicPath": "http://127.0.0.1:8080/js/6.js"
+    },
+    "js/7.js": {
+      "name": "js/7.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/7.js",
+      "publicPath": "http://127.0.0.1:8080/js/7.js"
+    },
+    "js/8.js": {
+      "name": "js/8.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/8.js",
+      "publicPath": "http://127.0.0.1:8080/js/8.js"
+    },
+    "js/9.js": {
+      "name": "js/9.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/9.js",
+      "publicPath": "http://127.0.0.1:8080/js/9.js"
+    },
+    "js/10.js": {
+      "name": "js/10.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/10.js",
+      "publicPath": "http://127.0.0.1:8080/js/10.js"
     },
     "bundle.js": {
       "name": "bundle.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/bundle.js"
-    },
-    "css/chunk-065f3703.158a7fff.css": {
-      "name": "css/chunk-065f3703.158a7fff.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/chunk-065f3703.158a7fff.css"
-    },
-    "js/chunk-065f3703.8aeac008.js": {
-      "name": "js/chunk-065f3703.8aeac008.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-065f3703.8aeac008.js"
-    },
-    "css/chunk-1b8d33d6.158a7fff.css": {
-      "name": "css/chunk-1b8d33d6.158a7fff.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/chunk-1b8d33d6.158a7fff.css"
-    },
-    "js/chunk-1b8d33d6.7d6198f9.js": {
-      "name": "js/chunk-1b8d33d6.7d6198f9.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-1b8d33d6.7d6198f9.js"
-    },
-    "css/chunk-22cce1de.ce564cb2.css": {
-      "name": "css/chunk-22cce1de.ce564cb2.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/chunk-22cce1de.ce564cb2.css"
-    },
-    "js/chunk-22cce1de.274bdad0.js": {
-      "name": "js/chunk-22cce1de.274bdad0.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-22cce1de.274bdad0.js"
-    },
-    "css/chunk-2acb2eae.e6b6eeba.css": {
-      "name": "css/chunk-2acb2eae.e6b6eeba.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/chunk-2acb2eae.e6b6eeba.css"
-    },
-    "js/chunk-2acb2eae.a96458c0.js": {
-      "name": "js/chunk-2acb2eae.a96458c0.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2acb2eae.a96458c0.js"
-    },
-    "js/chunk-2d0b9f47.db61c2c0.js": {
-      "name": "js/chunk-2d0b9f47.db61c2c0.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2d0b9f47.db61c2c0.js"
-    },
-    "js/chunk-2d0cb6b4.1630f97d.js": {
-      "name": "js/chunk-2d0cb6b4.1630f97d.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2d0cb6b4.1630f97d.js"
-    },
-    "css/chunk-2f149e56.158a7fff.css": {
-      "name": "css/chunk-2f149e56.158a7fff.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/chunk-2f149e56.158a7fff.css"
-    },
-    "js/chunk-2f149e56.2eae2fc3.js": {
-      "name": "js/chunk-2f149e56.2eae2fc3.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2f149e56.2eae2fc3.js"
-    },
-    "js/chunk-5a883aa4.98971265.js": {
-      "name": "js/chunk-5a883aa4.98971265.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-5a883aa4.98971265.js"
-    },
-    "css/chunk-679f4946.e6b6eeba.css": {
-      "name": "css/chunk-679f4946.e6b6eeba.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/chunk-679f4946.e6b6eeba.css"
-    },
-    "js/chunk-679f4946.255c378e.js": {
-      "name": "js/chunk-679f4946.255c378e.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-679f4946.255c378e.js"
-    },
-    "css/chunk-82d5c266.d9da5309.css": {
-      "name": "css/chunk-82d5c266.d9da5309.css",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/css/chunk-82d5c266.d9da5309.css"
-    },
-    "js/chunk-82d5c266.ef18c95a.js": {
-      "name": "js/chunk-82d5c266.ef18c95a.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-82d5c266.ef18c95a.js"
-    },
-    "js/chunk-bd0c8fb0.3f399f3c.js": {
-      "name": "js/chunk-bd0c8fb0.3f399f3c.js",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-bd0c8fb0.3f399f3c.js"
-    },
-    "bundle.js.map": {
-      "name": "bundle.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/bundle.js.map"
-    },
-    "js/chunk-065f3703.8aeac008.js.map": {
-      "name": "js/chunk-065f3703.8aeac008.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-065f3703.8aeac008.js.map"
-    },
-    "js/chunk-1b8d33d6.7d6198f9.js.map": {
-      "name": "js/chunk-1b8d33d6.7d6198f9.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-1b8d33d6.7d6198f9.js.map"
-    },
-    "js/chunk-22cce1de.274bdad0.js.map": {
-      "name": "js/chunk-22cce1de.274bdad0.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-22cce1de.274bdad0.js.map"
-    },
-    "js/chunk-2acb2eae.a96458c0.js.map": {
-      "name": "js/chunk-2acb2eae.a96458c0.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2acb2eae.a96458c0.js.map"
-    },
-    "js/chunk-2d0b9f47.db61c2c0.js.map": {
-      "name": "js/chunk-2d0b9f47.db61c2c0.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2d0b9f47.db61c2c0.js.map"
-    },
-    "js/chunk-2d0cb6b4.1630f97d.js.map": {
-      "name": "js/chunk-2d0cb6b4.1630f97d.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2d0cb6b4.1630f97d.js.map"
-    },
-    "js/chunk-2f149e56.2eae2fc3.js.map": {
-      "name": "js/chunk-2f149e56.2eae2fc3.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-2f149e56.2eae2fc3.js.map"
-    },
-    "js/chunk-5a883aa4.98971265.js.map": {
-      "name": "js/chunk-5a883aa4.98971265.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-5a883aa4.98971265.js.map"
-    },
-    "js/chunk-679f4946.255c378e.js.map": {
-      "name": "js/chunk-679f4946.255c378e.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-679f4946.255c378e.js.map"
-    },
-    "js/chunk-82d5c266.ef18c95a.js.map": {
-      "name": "js/chunk-82d5c266.ef18c95a.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-82d5c266.ef18c95a.js.map"
-    },
-    "js/chunk-bd0c8fb0.3f399f3c.js.map": {
-      "name": "js/chunk-bd0c8fb0.3f399f3c.js.map",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/js/chunk-bd0c8fb0.3f399f3c.js.map"
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/bundle.js",
+      "publicPath": "http://127.0.0.1:8080/bundle.js"
     },
     "index.html": {
       "name": "index.html",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/index.html"
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/index.html",
+      "publicPath": "http://127.0.0.1:8080/index.html"
     },
     "favicon.ico": {
       "name": "favicon.ico",
-      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/favicon.ico"
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/favicon.ico",
+      "publicPath": "http://127.0.0.1:8080/favicon.ico"
+    },
+    "app.2243f9017c7467036d30.hot-update.js": {
+      "name": "app.2243f9017c7467036d30.hot-update.js",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/app.2243f9017c7467036d30.hot-update.js",
+      "publicPath": "http://127.0.0.1:8080/app.2243f9017c7467036d30.hot-update.js"
+    },
+    "2243f9017c7467036d30.hot-update.json": {
+      "name": "2243f9017c7467036d30.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/2243f9017c7467036d30.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/2243f9017c7467036d30.hot-update.json"
+    },
+    "48b85aaffac50b577ee9.hot-update.json": {
+      "name": "48b85aaffac50b577ee9.hot-update.json",
+      "path": "/home/herschel/pythonProjects/BlogApp/frontend/dist/48b85aaffac50b577ee9.hot-update.json",
+      "publicPath": "http://127.0.0.1:8080/48b85aaffac50b577ee9.hot-update.json"
     }
   },
   "chunks": {
     "app": [
-      "css/app.c04055bc.css",
-      "bundle.js",
-      "css/app.c04055bc.css.map",
-      "bundle.js.map"
+      "bundle.js"
     ]
-  }
+  },
+  "publicPath": "http://127.0.0.1:8080/"
 }

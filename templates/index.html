@@ -1,4 +1,8 @@
-{% load render_bundle from webpack_loader %}
+{% extends 'base-vue.html' %}
+{% block content %}
+    <div id="app"></div>
+{% endblock %}
+<!-- {% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,5 +17,4 @@
     <div id="app"></div>
     {% render_bundle 'app' 'js' %}
   </body>
-</html>
-
+</html> -->

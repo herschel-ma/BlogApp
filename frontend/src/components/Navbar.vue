@@ -568,7 +568,7 @@ export default {
       ...toRefs(data),
       showMobileMenu: () => (data.hidden = data.hidden == "" ? "hidden" : ""),
       handleLogOut: () => {
-        data.hidden = data.hidden == "" ? "hidden" : "";
+        data.hidden = "hidden";
         store.dispatch("logout");
       },
       loggedIn,
