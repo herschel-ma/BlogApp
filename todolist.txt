@@ -52,4 +52,8 @@
 41. 限流 done
 42. 网易云随机音乐 done
 43. 接口文档,大概 done
-44. 部署
+44. 部署 done
+45. 修改github授权回调地址 done
+46. 修改 加载Debug boolean 类型的配置 done
+47. 修改详情页目录样式  done
+48. 标题和favicon.ico done
