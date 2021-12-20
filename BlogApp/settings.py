@@ -169,6 +169,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_URL = "accounts/login"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+Rate = '20/min' if DEBUG else ''
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y/%m/%d %H:%M:%S",
     'DEFAULT_PAGINATION_CLASS': 'blog.pagination.CustomPageNumber',
@@ -176,7 +177,7 @@ REST_FRAMEWORK = {
     # 'EXCEPTION_HANDLER': 'blog.exception.exception_handler'
     'DEFAULT_THROTTLE_CLASSES': ['rest_framework.throttling.UserRateThrottle'],
     'DEFAULT_THROTTLE_RATES': {
-        'user': '20/min',
+        'user': Rate,
     }
 }
 """ WEBPACK_LOADER = {

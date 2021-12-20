@@ -254,7 +254,7 @@
             {{ a.title }}
           </router-link>
           <div
-            class="flex space-y-3 items-center
+            class="flex space-y-3 items-center justify-center
             md:flex-col md:justify-center md:space-x-0 md:space-y-3  
             lg:flex-row lg:space-y-0 lg:justify-between lg:space-x-12 
             sm:flex-row sm:space-y-0 sm:justify-between sm:space-x-12
