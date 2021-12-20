@@ -169,7 +169,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_URL = "accounts/login"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-Rate = '20/min' if DEBUG else ''
+Rate = '20/min' if DEBUG is False else None
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y/%m/%d %H:%M:%S",
     'DEFAULT_PAGINATION_CLASS': 'blog.pagination.CustomPageNumber',
