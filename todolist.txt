@@ -57,3 +57,4 @@
 46. 修改 加载Debug boolean 类型的配置 done
 47. 修改详情页目录样式  done
 48. 标题和favicon.ico done
+49. 更改上线后发送邮件的smp服务

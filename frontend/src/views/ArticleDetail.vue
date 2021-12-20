@@ -27,7 +27,7 @@
   </div>
   <div class="container mx-auto flex flex-wrap">
     <!-- Post Section -->
-    <section class="w-full md:w-2/3 flex flex-col px-3 ">
+    <section class="w-full md:w-2/3 flex flex-col xxs:px-0 md:px-3 ">
       <article class="flex flex-col shadow my-4">
         <!-- Article Image -->
         <a class="hover:opacity-75">
@@ -258,7 +258,7 @@
             md:flex-col md:justify-center md:space-x-0 md:space-y-3  
             lg:flex-row lg:space-y-0 lg:justify-between lg:space-x-12 
             sm:flex-row sm:space-y-0 sm:justify-between sm:space-x-12
-            xs:flex-row sm:space-y-0 xs:justify-between sm:space-x-12"
+            xs:flex-row sm:space-y-0 xs:justify-between sm:space-x-12 xxs:space-y-0"
           >
             <div class="flex items-center align-center md:mt-2 lg:mt-0">
               <img

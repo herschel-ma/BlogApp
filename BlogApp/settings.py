@@ -212,10 +212,18 @@ PAGE_SIZE = env("PAGE_SIZE")
 OLD_PASSWORD_FIELD_ENABLED = True
 LOGOUT_ON_PASSWORD_CHANGE = False
 # 上线前更改为smp
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 配置默认缓存/上线考虑换成redis
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.126.com'
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_SUBJECT_PREFIX = '[HERSCHEL的博客] '
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
