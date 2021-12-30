@@ -61,6 +61,11 @@ const routes = [
     name: "tags",
     component: () => import("@/views/TagsDetail"),
   },
+  {
+    path: "/chat",
+    name: "chat",
+    component: () => import("@/views/Chat"),
+  },
 ];
 
 const router = createRouter({

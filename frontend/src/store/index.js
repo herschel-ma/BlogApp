@@ -178,6 +178,7 @@ const store = createStore({
     usersInfo: (state) => state.usersInfo,
     searchWord: (state) => state.searchWord,
     userId: (state) => state.userId,
+    username: (state) => state.user_name,
   },
 });
 

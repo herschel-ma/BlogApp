@@ -208,12 +208,31 @@
 <script>
 import Cookies from "js-cookie";
 import axios from "axios";
-import { onMounted, toRefs, reactive, computed, watch, onUnmounted } from "vue";
-import Authors from "@/components/Authors";
-import Category from "@/components/Category";
-import RecentPost from "@/components/RecentPost";
-import VPagination from "@hennge/vue3-pagination";
-import Tags from "@/views/Tags";
+import {
+  onMounted,
+  toRefs,
+  reactive,
+  computed,
+  watch,
+  onUnmounted,
+  defineAsyncComponent,
+} from "vue";
+
+const Authors = defineAsyncComponent({
+  loader: () => import("@/components/Authors"),
+});
+const Category = defineAsyncComponent({
+  loader: () => import("@/components/Category"),
+});
+const RecentPost = defineAsyncComponent({
+  loader: () => import("@/components/RecentPost"),
+});
+const VPagination = defineAsyncComponent({
+  loader: () => import("@hennge/vue3-pagination"),
+});
+const Tags = defineAsyncComponent({
+  loader: () => import("@/views/Tags"),
+});
 import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 import { useToast } from "vue-toastification";
 import { useStore } from "vuex";

@@ -128,6 +128,11 @@
                   @click="showDropDown = false"
                   class="block cursor-pointer px-2 py-1 text-sm  text-gray-700 hover:bg-gray-400 hover:text-white"
                   >新建博文</router-link
+                ><router-link
+                  :to="{ name: 'chat' }"
+                  @click="showDropDown = false"
+                  class="block cursor-pointer px-2 py-1 text-sm  text-gray-700 hover:bg-gray-400 hover:text-white"
+                  >聊天室</router-link
                 >
               </div>
             </div>
@@ -223,6 +228,12 @@
                 @click="showMobileMenu"
                 class="block cursor-pointer px-2 py-1 text-sm  text-gray-700 hover:bg-gray-400 hover:text-white"
                 >新建博文</router-link
+              >
+              <router-link
+                :to="{ name: 'chat' }"
+                @click="showMobileMenu"
+                class="block cursor-pointer px-2 py-1 text-sm  text-gray-700 hover:bg-gray-400 hover:text-white"
+                >聊天室</router-link
               >
               <li
                 @click="handleLogOut"
