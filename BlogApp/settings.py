@@ -53,10 +53,12 @@ INSTALLED_APPS = [
     'django_filters',
     'taggit',
     'drf_yasg',  #文档
+    'channels',
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
     'backend_res.apps.BackendResConfig',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'BlogApp.wsgi.application'
+ASGI_APPLICATION = 'BlogApp.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

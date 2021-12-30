@@ -23,7 +23,11 @@
 18. 首页，分类详情页面展示标签 done 
 19. 首页，分类详情页面链接去到标签详情页 done
 20. 全文搜索 notdo
-21. 聊天室 realy_todo?
+21. 聊天室
+    基本聊天室功能 done
+    页面美化 done
+    消息存储
+    在线人数
 22. 修改文章时可以删除标签 done
 23. 修改文章时可以删除分类 done
 24. 评论 done
@@ -59,3 +63,4 @@
 48. 标题和favicon.ico done
 49. 更改上线后发送邮件的smp服务 done
 50. 更改 md-editor-v3 源码 highlight.js cdn 地址为https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js done
+51. 首屏渲染速度加强 done
