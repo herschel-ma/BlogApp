@@ -1,4 +1,4 @@
-.collapse-enter-active{transition:opacity 2s}.collapse-leave-active{transition:opacity .5s}.collapse-enter,.collapse-leave-to{opacity:0}#app{background-color:#ece9e9}
+.collapse-enter-active{transition:opacity 2s}.collapse-leave-active{transition:opacity .5s}.collapse-enter,.collapse-leave-to{opacity:0}#app,body{background-color:#ece9e9}
 
 /*! tailwindcss v2.2.17 | MIT License | https://tailwindcss.com */
 

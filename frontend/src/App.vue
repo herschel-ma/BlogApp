@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style>
+body,
 #app {
   background-color: rgb(236, 233, 233);
 }
