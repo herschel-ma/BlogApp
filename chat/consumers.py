@@ -1,6 +1,9 @@
 import json
 import time
 from channels.generic.websocket import AsyncWebsocketConsumer
+from asgiref.sync import sync_to_async
+#from users.models import userModel
+from .models import Message
 
 
 class chatConsumer(AsyncWebsocketConsumer):
@@ -23,7 +26,7 @@ class chatConsumer(AsyncWebsocketConsumer):
         """receive message from websocket"""
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
-
+        await self.save_message(self.room_name, message)
         # send message to the group
         await self.channel_layer.group_send(
             self.room_group_name, {
@@ -44,3 +47,11 @@ class chatConsumer(AsyncWebsocketConsumer):
                 'sendtime': time.strftime('%Y-%m-%d %H:%M:%S',
                                           time.localtime()),
             }))
+
+    @sync_to_async
+    def save_message(self, room, content):
+        user = self.scope['user']
+
+        Message.objects.create(sender=user.username,
+                               room=room,
+                               message=content)

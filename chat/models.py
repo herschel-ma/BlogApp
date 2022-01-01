@@ -1,14 +1,11 @@
 from django.db import models
-from users.models import userModel
 
 
 class Message(models.Model):
-    sender = models.ForeignKey(userModel,
-                               on_delete=models.CASCADE,
-                               related_name='sender',
-                               verbose_name='发送者'),
+    room = models.CharField(max_length=100, verbose_name='房间名')
     message = models.TextField(verbose_name='消息')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    sender = models.CharField(max_length=100, verbose_name='发送者')
 
     def __str__(self):
         return self.message[:20]

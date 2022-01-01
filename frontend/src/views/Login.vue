@@ -102,7 +102,7 @@
           <div class="text-sm">
             <a
               @click="toggleModal"
-              class="font-medium text-indigo-500 hover:text-indigo-500"
+              class="font-medium cursor-pointer text-indigo-500 hover:text-indigo-500"
               >忘记密码?</a
             >
           </div>

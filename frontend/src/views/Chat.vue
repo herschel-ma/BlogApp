@@ -90,6 +90,9 @@
 <script>
 import { onMounted, reactive, toRefs, computed } from "vue";
 import { useStore } from "vuex";
+import Cookies from "js-cookie";
+import axios from "axios";
+
 export default {
   setup() {
     const store = useStore();
@@ -99,6 +102,7 @@ export default {
       websocket: null,
       roomId: 1,
       sender: computed(() => store.getters.username),
+      isLoggedIn: computed(() => store.getters.isLoggedIn),
     });
     const sendMessage = () => {
       state.websocket.send(
@@ -113,6 +117,24 @@ export default {
       return "float-right bg-green-300";
     };
     onMounted(() => {
+      axios
+        .get(`/api/messages/${state.roomId}`, {
+          headers: {
+            "Content-Type": "Application/json",
+            "X-CSRFTOKEN": Cookies.get("csrftoken"),
+            Authorization: "Token " + state.isLoggedIn,
+          },
+        })
+        .then((response) => {
+          if (response.data.length > 0) {
+            const changedData = response.data.map((v) => {
+              v.sendtime = v.created_time;
+              return v;
+            });
+            state.messages.push(...changedData);
+          }
+        })
+        .catch((e) => console.log(e));
       const chatSocket = new WebSocket(
         "ws://" + window.location.host + "/ws/chat/" + state.roomId + "/"
       );
