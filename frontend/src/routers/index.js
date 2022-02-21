@@ -66,6 +66,11 @@ const routes = [
     name: "chat",
     component: () => import("@/views/Chat"),
   },
+  {
+    path: "/friendchains",
+    name: "friendchains",
+    component: () => import("@/views/FriendChains"),
+  },
 ];
 
 const router = createRouter({

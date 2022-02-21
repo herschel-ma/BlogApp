@@ -400,7 +400,7 @@ export default {
     const store = useStore();
     const router = useRouter();
     // 默认渲染的所有标签
-    state.tags = store.state.tags;
+    state.tags = store.getters.tags;
     state.categorys = store.getters.categorys;
     onMounted(() => {
       axios
@@ -453,11 +453,23 @@ export default {
             toast.success("删除标签成功", { timeout: 2000 });
             store.dispatch("deleteDeleteTag");
             state.showDelModal = !state.showDelModal;
-            router.push({ name: "home" });
+            //router.push({ name: "home" });
           })
           .catch((e) => {
             console.log(e);
           });
+        setTimeout(() => {
+          axios
+            .get("/api/tag/")
+            .then((res) => {
+              state.tags = [];
+              state.tags.push(...res.data);
+              store.dispatch("storeTags", res.data);
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+        }, 500);
       },
       tolggleDeleteCate: (cate) => {
         // 存储要删除的分类的id,删除后需要删除存储id并跳转页面
@@ -477,11 +489,22 @@ export default {
             toast.success(`删除分类成功`, { timeout: 2000 });
             store.dispatch("deleteDeleteCata");
             state.showDelCateModal = !state.showDelCateModal;
-            router.push({ name: "home" });
           })
           .catch((e) => {
             console.log(e);
           });
+        setTimeout(() => {
+          axios
+            .get("/api/category/")
+            .then((res) => {
+              state.categorys = [];
+              state.categorys.push(...res.data);
+              store.dispatch("storeCategories", res.data);
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+        }, 500);
       },
       handleCreate: () => {
         axios
@@ -617,8 +640,19 @@ export default {
             // 刷新分类
             // 关闭modal
             state.showModal = !state.showModal;
-            router.push({ name: "home" });
           })
+          .then(
+            axios
+              .get("/api/category/")
+              .then((res) => {
+                state.categorys = [];
+                state.categorys.push(...res.data);
+                store.dispatch("storeCategories", res.data);
+              })
+              .catch((error) => {
+                console.log(error.message);
+              })
+          )
           .catch((e) => {
             if (e.response) {
               state.Rcate = e.response.data.title
@@ -659,8 +693,7 @@ export default {
               toast.success(`标签${resp.data.name}创建成功`, { timeout: 2000 });
             }
             // 关闭modal
-            state.showModal = !state.showModal;
-            router.push({ name: "home" });
+            state.showTagModal = !state.showTagModal;
           })
           .catch((e) => {
             if (e.response) {
@@ -687,6 +720,18 @@ export default {
               console.log(e.message);
             }
           });
+        setTimeout(() => {
+          axios
+            .get("/api/tag/")
+            .then((res) => {
+              state.tags = [];
+              state.tags.push(...res.data);
+              store.dispatch("storeTags", res.data);
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+        }, 500);
       },
       handleUploadImg: async (files, callback) => {
         const res = await Promise.all(

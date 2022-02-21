@@ -297,8 +297,19 @@ export default {
 
             // 关闭modal
             state.showModal = !state.showModal;
-            router.push({ name: "home" });
           })
+          .then(
+            axios
+              .get("/api/category/")
+              .then((res) => {
+                state.categorys = [];
+                state.categorys.push(...res.data);
+                store.dispatch("storeCategories", res.data);
+              })
+              .catch((error) => {
+                console.log(error.message);
+              })
+          )
           .catch((e) => {
             if (e.response) {
               state.Rcate = e.response.data.title

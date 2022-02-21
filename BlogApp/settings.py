@@ -49,9 +49,9 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'corsheaders',
     'mdeditor',
-    'webpack_loader',
+    'webpack_loader',  # 不确定是否必须
     'django_filters',
-    'taggit',
+    'taggit',  # 标签系统
     'drf_yasg',  #文档
     'channels',
     'users.apps.UsersConfig',
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'comments.apps.CommentsConfig',
     'backend_res.apps.BackendResConfig',
     'chat.apps.ChatConfig',
+    'links.apps.LinksConfig'
 ]
 
 MIDDLEWARE = [

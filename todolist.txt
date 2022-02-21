@@ -48,7 +48,8 @@
     忘记密码，重置密码 记得改源码 admin/templetes/password_reset_complete.html l:14`<p><a href="/">{% translate 'Log in' %}</a></p>` done
 35. 尝试迁移博客数据 进来  done
     图片显示 done 
-36. 友链 l_todo
+36. 友链 done
+    36-1 罗列所有的友链 l_todo
 37. 搜索优化 done
 38. 更改发布时间 done
 39. 更改上传图片路径与老博客一致 done

@@ -47,6 +47,7 @@ urlpatterns = [
     path('api/', include('blog.urls')),
     path('api/', include('comments.urls')),
     path('api/', include('chat.urls')),
+    path('api/', include('links.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('auth/', include('rest_framework.urls')),
     path('rest-auth/', include('rest_auth.urls')),
